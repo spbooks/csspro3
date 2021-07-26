@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using scroll-behavior and :target
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+<style>
+    main a:link {
+        padding: 1rem;
+    }
+
+    main a:hover {
+        text-decoration-style: solid;
+    }
+
+    nav ul {
+        align-items: center;
+        display: flex;
+        font-size: 3rem;
+        font-weight: bold;
+        gap: 3rem;
+        list-style: none;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    nav li::marker {
+        content: unset;
+        padding: 0;
+    }
+
+    form {
+        margin: 2rem auto;
+        scroll-behavior: smooth;
+        width: 80%;
+    }
+
+    form p {
+        margin: 2rem 0;
+    }
+
+    legend {
+        font-weight: bold;
+    }
+
+    .flex {
+        height: 100%;
+        width: 400%;
+    }
+
+    .scroll-container {
+        border: 2px inset var(--border-b);
+        display: flex;
+        font-size: 20rem;
+        font-weight: 500;
+        gap: 2rem;
+        margin: auto;
+
+        /*
+        * When the container has a fixed width, its contents may
+        * overflow it
+        */
+        width: 80%;
+    
+        /*
+        * Can also use `overflow` as a property. Value can also be
+        * `scroll`.
+        */
+        overflow: auto;
+
+        scroll-behavior: smooth;
+    }
+
+    /* 
+    * Remember, motion can make some people dizzy!
+    */
+    @media screen and ( prefers-reduced-motion ) {
+        .scroll-container {
+            scroll-behavior: auto;
+        }
+    }
+
+    .scroll-container [id] {
+        align-items: center;
+        background-color: var( --palette-t-80 );
+        color: var( --palette-t-30 );
+        flex: 1 0 80%;
+        display: flex;
+        justify-content: center;
+        padding: 5rem 0;
+    }
+
+    .scroll-container [id]:target {
+        background-color: var( --palette-p-80 );
+        color: var( --palette-n-30 );
+    }
+
+</style>
+
+</head>
+
+<body class="scrollbehavior">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Managing Scrolling with CSS</a>
+      </li>
+      <li><a href="./" aria-current="page">Using <code>scroll-behavior</code> and <code>:target</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using <code>scroll-behavior</code> and <code>:target</code></h2>
+
+
+
+  <div class="message warning">
+  <p>This demo may cause dizziness if you have a vestibular disorder.</p>
+</div>
+
+<div class="message note">
+  <p>This demo may not work as intended if you've disabled animations in your operating system's settings (also known as <code>prefers-reduced-motion</code>).</p>
+</div>
+
+<p>The <code>scroll-behavior</code> property works whether you're scrolling horizontally or vertically. In some cases, you may wish use the <code>:target</code> pseudo-class to highlight the element to which you've scrolled.</p>
+<nav>
+  <ul>
+      <li><a href="#A">A</a></li>
+      <li><a href="#B">B</a></li>
+      <li><a href="#C">C</a></li>
+      <li><a href="#D">D</a></li>
+      <li><a href="#E">E</a></li>
+      <li><a href="#F">F</a></li>
+      <li><a href="#G">G</a></li>
+      <li><a href="#H">H</a></li>
+  </ul>
+</nav>
+
+<div class="scroll-container">
+    <div id="A">A</div>
+    <div id="B">B</div>
+    <div id="C">C</div>
+    <div id="D">D</div>
+    <div id="E">E</div>
+    <div id="F">F</div>
+    <div id="G">G</div>
+    <div id="H">H</div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

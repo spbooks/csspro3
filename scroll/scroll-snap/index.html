@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Creating a scroll-snap container
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+        .scroll-container {
+            border: 2px inset var(--border-b);
+            font-size: 20rem;
+            font-weight: 500;
+            display: flex;
+            gap: 2rem;
+            height: 50rem;
+            margin: 0 auto;
+
+            /*
+            * These two properties force the element to be a scrolling
+            * container. The value of overflow should be `auto` or `scroll`.
+            */
+            width: 90vw;
+            overflow-x: auto;
+            
+            
+            /* 
+            * Makes the element a scroll snap container
+            */
+            scroll-snap-type: x mandatory;
+        }
+
+        .scroll-container p {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+
+            /*
+            * Makes every flex item exactly 40vw. The total width of
+            * the children overflows the width of the container 
+            */
+            flex: 0 0 40vw;
+            
+            /*
+            * Where to snap after scrolling 
+            */
+            scroll-snap-align: none center; 
+        }
+
+
+        /* 
+        * Remember, motion can make some people dizzy!
+        */
+        @media screen and ( prefers-reduced-motion ) {
+            .scroll-container {
+                scroll-behavior: auto;
+            }
+        }
+
+        .scroll-container p:first-of-type {
+            background-color: var( --palette-j-80 );
+        }
+
+        .scroll-container p:nth-of-type(2) {
+            background-color: var( --palette-n-80 );
+        }
+
+        .scroll-container p:nth-of-type(3) {
+            background-color: var( --palette-e-80 );
+        }
+
+        .scroll-container p:nth-of-type(4) {
+            background-color: var( --palette-k-80 );
+        }
+
+        .scroll-container p:nth-of-type(5) {
+            background-color: var( --palette-o-80 );
+        }
+
+        .scroll-container p:nth-of-type(6) {
+            background-color: var( --palette-l-80 );
+        }
+
+        .scroll-container p:nth-of-type(7) {
+            background-color: var( --palette-i-80 );
+        }
+
+        .scroll-container p:nth-of-type(8) {
+            background-color: var( --palette-e-80 );
+        }
+        .scroll-container p:last-of-type {
+            background-color: var( --palette-q-80 );
+        }
+    </style>
+
+</head>
+
+<body class="scrollsnap">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Managing Scrolling with CSS</a>
+      </li>
+      <li><a href="./" aria-current="page">Creating a <code>scroll-snap</code> container</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Creating a <code>scroll-snap</code> container</h2>
+
+
+
+  <p>The total width of the children of the containing <code>div</code> element exceeds that of the container. Adding <code>overflow-x: scroll</code> or <code>overflow-x: auto</code>turns <code>div.scroll-container</code> into a scroll container. Adding a <code>scroll-snap-type</code> rule enables scroll snapping behavior.</p>
+<div class="scroll-container">
+    <p>A</p>
+    <p>B</p>
+    <p>C</p>
+    <p>D</p>
+    <p>E</p>
+    <p>F</p>
+    <p>G</p>
+    <p>H</p>
+    <p>I</p>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

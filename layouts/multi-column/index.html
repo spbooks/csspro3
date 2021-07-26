@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Understanding Multiple Column Layout
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+  <link rel="stylesheet" href="../../theme/css/grid-base.css" id="Grid_CSS">
+
+
+  <style>
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  .content {
+    margin: 2em 0;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  form > p:last-child {
+    margin-top: 2rem;
+  }
+
+  form {
+    border: 1px solid #607d8b;
+    background: rgba(96, 125, 139, 0.25);
+    padding: 1rem;
+    margin: 0 0 1rem;
+  }
+
+  form label {
+    display: block;
+  }
+
+  form input, form select {
+    display: block;
+  }
+
+  form > div {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    text-align: center;
+  }
+
+  input:not([type=checkbox]), select {
+    border: 1px solid #ccc;
+    padding: .5rem;
+    margin: auto;
+  }
+
+  [type=number] {
+    width: 5rem;
+  }
+
+  .serif {
+    font: normal 18px / 1.2 'Palatino','Cambria','Georgia',serif;
+  }
+
+  .multi-col-span {
+    columns: 2 10em;
+    margin: 3em 0;
+    padding: 0;
+    clear: both;
+  }
+  .multi-col-span p {
+    margin-top: 0;
+  }
+  .multi-col-span h1 {
+    column-span: all;
+    padding-bottom: .5em;
+  }
+
+  .mono {
+    white-space: nowrap;
+  }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">CSS Layout</a>
+      </li>
+      <li><a href="./" aria-current="page">Understanding Multiple Column Layout</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Understanding Multiple Column Layout</h2>
+
+
+
+  <p>Enter values below in order to understand how multiple-column layout works.</p>
+<form id="multi">
+<div>
+<p>
+    <label for="columnWidth" class="code">column-width:</label>
+    <input type="text" id="columnWidth" pattern="auto|[0-9]{1,}(px|em|rem|ch|ex|vw|vh|vmin|vmax|cm|mm|in|pt|pc)" value="auto" size="6" aria-describedby="column-width-note">
+    <br><span id="column-width-note">Should be a length such as <code>10rem</code> or <code>300px</code>. Percentages and negative values are invalid.</span>
+
+</p>
+
+<p>
+    <label for="columnCount" class="code">column-count: </label>
+    <input type="text" id="columnCount" value="auto" size="7">
+</p>
+
+<p>
+    <label for="gap" class="code">gap / column-gap: </label>
+    <input type="text" id="gap" value="normal" pattern="normal|[0-9]{1,}(px|em|rem|ch|ex|vw|vh|vmin|vmax|cm|mm|in|pt|pc)" size="7">
+</p>
+
+<p>
+    <label for="columnRuleWidth" class="code">column-rule-width: </label>
+    <input type="text" id="columnRuleWidth" value="medium" pattern="thin|thick|medium|[0-9]{1,}(px|em|rem|ch|ex|vw|vh|vmin|vmax|cm|mm|in|pt|pc)" size="7" aria-describedby="column-rule-width-note">
+    <br><span id="column-rule-width-note">Should be a keyword such as <code>thin</code>,  <code>thick</code>,<br>or <code>medium</code>  or a length such as <code>2em</code>, or <code>1rem</code>.</span>
+</p>
+
+<p>
+    <label for="columnRuleStyle" class="code">column-rule-style: </label>
+    <select id="columnRuleStyle">
+        <option>none</option>
+        <option>dashed</option>
+        <option>dotted</option>
+        <option>double</option>
+        <option>groove</option>
+        <option>hidden </option>
+        <option>inset</option>
+        <option>outset</option>
+        <option>solid</option>
+        <option>ridge</option>
+    </select>
+</p>
+
+ <p>
+    <label for="columnRuleColor" class="code">column-rule-color: </label>
+    <input type="text" id="columnRuleColor" size="12" value="transparent" aria-describedby="column-rule-color">
+    <br><span id="column-rule-color-note">Should be a valid color value.</span>
+</p>
+</div>
+
+<p>
+    <button type="reset">Reset</button>
+</p>
+</form>
+
+<div class="multi-col">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id odio fringilla, euismod metus at, suscipit odio. Nullam aliquam, arcu eleifend elementum pretium, sem nisl faucibus mauris, vitae mattis odio erat a nisl. Etiam et est accumsan, bibendum dolor id, posuere arcu. Quisque felis mi, lobortis vitae erat vel, lacinia ultricies nunc.</p>
+<p><img src="../../images/portrait.png"> Donec pretium, libero sit amet imperdiet laoreet, nulla tellus sollicitudin nulla, et pellentesque tellus felis auctor tortor. Duis turpis mi, malesuada in augue ut, mattis maximus metus. Proin efficitur nunc maximus odio iaculis commodo.</p>
+<p>
+Pellentesque luctus enim laoreet dui posuere tempor. Ut egestas nibh a nisi volutpat bibendum. Quisque purus sem, scelerisque sit amet suscipit vitae, scelerisque at tellus. Pellentesque dictum vitae lorem nec malesuada. Morbi sagittis risus urna, eget rutrum sapien interdum eu. In a est ex. Donec id ligula tellus. Nunc eget metus vel arcu pellentesque euismod. Ut vel ipsum urna. Cras finibus elit sapien, et rutrum ipsum venenatis eu. In et neque sed magna congue malesuada.
+</p>
+ <p>
+Duis at egestas urna. Nam sed elementum lectus. Cras eu suscipit libero, id placerat mauris. Proin convallis justo eget dui pulvinar posuere. Vivamus sodales suscipit diam, pharetra placerat tortor molestie eget. Aliquam finibus consectetur nibh nec vestibulum. Pellentesque vitae ante sit amet arcu tristique elementum bibendum ac diam. Phasellus tempor dolor eu sagittis euismod.
+</p>
+<p>
+In sed metus eu lectus rhoncus mollis. Nullam ut massa vulputate, consectetur lorem a, egestas sem. In ornare, leo eget congue aliquet, ligula nulla tempor metus, quis tristique eros metus in ligula. Aenean at feugiat ligula. Etiam at blandit lectus. Donec id rutrum risus, nec mattis turpis. Phasellus erat ante, sollicitudin quis pharetra a, bibendum eget nunc. Suspendisse dapibus ut sapien vitae placerat.
+</p>
+<p>
+Etiam posuere orci ornare risus elementum tempus. Donec iaculis id tortor at hendrerit. Nulla eget justo vulputate, sodales purus et, volutpat diam. Nullam lacinia elit a accumsan cursus. Etiam eu lacus sem. Pellentesque sed mi elit. Proin dapibus nisl nec lectus aliquet consectetur. Nulla at tempor turpis. Ut et nunc a libero commodo accumsan vitae non odio. Proin dignissim, purus non sollicitudin aliquam, ex libero tincidunt nisl, sit amet posuere eros ipsum eu purus.
+</p>
+<p>
+Suspendisse nec elementum sem. Fusce quis odio dictum, placerat elit in, scelerisque mauris. Vestibulum elementum tortor vel eros elementum mollis. Nulla ut mauris mollis neque dignissim maximus sed nec lectus. Curabitur a blandit quam. Aliquam erat volutpat. Phasellus eget gravida ex. Vivamus tristique, ligula ac facilisis convallis, nisi turpis maximus mi, eget tincidunt leo felis a nulla. Nullam pulvinar justo auctor, ornare ante vel, fringilla nisl. Phasellus eget lorem sagittis, aliquam neque a, dictum nisi. Nulla dolor odio, vulputate eget mollis et, aliquam at augue. Aliquam magna tortor, ornare in tortor at, porta hendrerit neque. Nulla faucibus nisi velit, sit amet lobortis lacus hendrerit vel. Vestibulum et interdum velit.
+</p>
+<p>
+Quisque pulvinar volutpat lectus vitae ultricies. Praesent non turpis eget dolor hendrerit feugiat. Quisque vitae nisl vel nunc aliquam bibendum. Integer in tempus massa. Maecenas convallis dapibus tristique. Cras egestas viverra molestie. In cursus arcu quis lacus sodales congue. Quisque at nisl sapien. Phasellus magna sem, rutrum id commodo et, faucibus eget urna. Mauris dictum neque quis lacus egestas, nec varius felis consequat. Aliquam nulla nisi, vehicula id dui a, mattis tincidunt eros. Donec hendrerit molestie mi, sit amet laoreet nibh rhoncus at. Suspendisse mollis lorem nisi, nec malesuada nulla imperdiet id. Fusce malesuada, turpis eget ultricies facilisis, diam turpis cursus nunc, vel tristique ex odio vitae elit. Nullam in est in eros sagittis elementum.
+</p>
+<p>
+Curabitur nec bibendum libero. Fusce sollicitudin turpis molestie justo posuere faucibus. Etiam vel convallis odio, quis finibus sapien. Nunc pulvinar posuere ipsum, eget imperdiet tellus semper gravida. Pellentesque a ex dapibus, tincidunt arcu vel, hendrerit dolor. Donec placerat maximus justo. Fusce mi elit, semper at felis id, commodo aliquam lectus. Praesent pellentesque mattis mattis. Donec aliquam tristique varius. Aliquam id placerat neque, nec egestas nisi. Nulla dignissim posuere est, vel rutrum urna bibendum at. Aenean non lobortis lorem, congue interdum magna.
+</p>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed sodales nisl enim, id volutpat ipsum ultricies in. Curabitur lacus ex, venenatis imperdiet condimentum vitae, tempor et nisl. Aenean scelerisque mi eget nisl scelerisque volutpat. Integer porttitor elit dolor, in aliquam ex egestas ut. Cras hendrerit commodo dui, nec iaculis tortor mattis sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor nunc diam, quis mollis felis vestibulum vel. Praesent convallis lectus eget augue bibendum varius. Suspendisse potenti. Quisque tincidunt dapibus dui, in imperdiet mi ullamcorper sit amet. Aliquam viverra malesuada tempus. Curabitur ultricies laoreet tortor sed aliquam. Nulla malesuada ligula sapien, non pretium nunc aliquet at.
+</p>
+<p>
+Etiam ac porta nibh. Etiam porttitor consectetur lorem, id euismod nibh ultricies eget. Integer et ligula a mi porta ultrices. Vivamus quis nisi scelerisque, hendrerit odio in, ullamcorper sapien. Aenean eget lectus sed velit imperdiet lacinia. Nam lacinia, mi et mattis pulvinar, ligula nisl vulputate eros, ultricies porttitor justo ligula mattis elit. Integer nunc arcu, vulputate eu sem in, sagittis porta ex.
+</p>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    ((win, doc) => {
+      const form = doc.forms[0];
+      const container = doc.querySelector('.multi-col');
+
+      const onLoad = () => {
+        form.reset();
+      }
+
+      const onReset = () => {
+        container.removeAttribute('style');
+      }
+
+      const onInput = ( domEvent ) => {
+        const prop = domEvent.target.id;
+        const value = domEvent.target.value;
+
+        console.log( prop );
+        console.log( value );
+
+        container.style[ prop ] = value;
+      }
+
+      form.addEventListener( 'reset', onReset );
+      form.addEventListener( 'input', onInput );
+      win.addEventListener( 'load', onLoad );
+
+    })(window, document)
+  </script>
+</body>
+</html>

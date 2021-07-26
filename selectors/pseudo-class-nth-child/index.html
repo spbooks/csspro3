@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using :nth-child( even ) and :nth-child( odd )
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  table {
+    border: 1px solid rgba(96, 125, 139, 0.5);
+    margin: 1em auto;
+    width: 80%;
+  }
+
+  thead {
+    background: rgba(96, 125, 139, 0.7);
+    color: #fff;
+  }
+
+  th:first-child {
+    text-align: left;
+  }
+
+  th:last-child {
+    text-align: right;
+    text-align: decimal;
+  }
+
+  th, td {
+    padding: .2rem 1rem;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(96, 125, 139, 0.2);
+  }
+
+  tr:nth-child(even) {
+    background: rgba(96, 125, 139, 0.1);
+  }
+
+  td:first-child {
+    width: 40%;
+  }
+
+  td:nth-child(2),
+  td:nth-child(3) {
+    text-align: center;
+    width: 20%;
+  }
+
+  td:last-child {
+    text-align: right;
+    width: 20%;
+  }
+
+  </style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page">Using <code>:nth-child( even )</code> and  <code>:nth-child( odd )</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using <code>:nth-child( even )</code> and  <code>:nth-child( odd )</code></h2>
+
+
+
+  <p><code>:nth-child( even )</code> and <code>:nth-child( odd )</code> lets us target every other element.</p>
+<table>
+    <thead>
+      <tr>
+         <th>Team name</th>
+         <th>W</th>
+         <th>L</th>
+         <th>PCT</th>
+      </tr>
+   </thead>
+   <tbody>
+       <tr>
+          <td>Harrisburg</td>
+          <td>49</td>
+          <td>33</td>
+          <td>0.598</td>
+
+       </tr>
+       <tr>
+          <td>Needham</td>
+          <td>40</td>
+          <td>42</td>
+          <td>0.488</td>
+
+       </tr>
+       <tr>
+          <td>Bloomington</td>
+          <td>38</td>
+          <td>44</td>
+          <td>0.463</td>
+
+       </tr>
+       <tr>
+          <td>Ottawa</td>
+          <td>18</td>
+          <td>64</td>
+          <td>0.220</td>
+
+       </tr>
+       <tr>
+          <td>Jolliet</td>
+          <td>17</td>
+          <td>65</td>
+          <td>0.207</td>
+       </tr>
+
+       <tr>
+          <td>Dayton</td>
+          <td>53</td>
+          <td>29</td>
+          <td>0.646</td>
+       </tr>
+       <tr>
+          <td>Buffalo</td>
+          <td>50</td>
+          <td>32</td>
+          <td>0.610</td>
+       </tr>
+       <tr>
+          <td>Madison</td>
+          <td>41</td>
+          <td>41</td>
+          <td>0.500</td>
+       </tr>
+       <tr>
+          <td>Uniondale</td>
+          <td>38</td>
+          <td>44</td>
+          <td>0.463</td>
+       </tr>
+       <tr>
+          <td>Grand Rapids</td>
+          <td>32</td>
+          <td>50</td>
+          <td>0.390</td>
+        </tr>
+    </tbody>
+</table>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

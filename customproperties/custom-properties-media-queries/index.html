@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using Custom Properties With Media Queries
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  :root {
+    --base-font-size: 1rem;
+    --opacity: 1;
+  }
+
+  @media print {
+      :root {
+          --base-font-size: 10pt;
+      }
+  }
+
+  @media screen and (min-width: 64rem) {
+      :root {
+          --base-font-size: 2rem;
+          --h1-hue: 300deg;
+      }
+  }
+
+  @media screen and (min-width: 769px) {
+      :root {
+          --base-font-size: 3rem;
+          --h1-hue: 120deg;
+      }
+  }
+
+  @media screen and (min-width: 120rem) {
+      :root {
+          --base-font-size: 4rem;
+          --h1-hue: 210deg;
+      }
+  }
+
+  .demo__wrapper {
+    font-size: var(--base-font-size);
+    color: #666;
+  }
+
+  /*
+  You can also use custom properties with the calc() function to, for
+  example, maintain typographic ratios despite the text size.
+  */
+
+  .demo__wrapper h1 {
+    font-size: calc( var(--base-font-size) * 1.5);
+    font-family: 'Zilla Slab', serif;
+    color: hsl( var( --h1-hue ), 100%, 30% );
+  }
+
+  .demo__wrapper p + p {
+    margin: calc( var( --base-font-size ) * 1.5) 0;
+  }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Custom Properties</a>
+      </li>
+      <li><a href="./" aria-current="page">Using Custom Properties With Media Queries</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using Custom Properties With Media Queries</h2>
+
+
+
+  <p>We can also use Custom Properties with <a href="https://www.w3.org/TR/mediaqueries-4/" target="_blank">Media Queries</a>. Adjust the viewport of this page to get a sense of how this works.</p>
+<section class="demo__wrapper">
+    <h1>Custom property value changes at different viewport breakpoints</h1>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dictum congue sollicitudin. Nam nibh mi, blandit nec consequat at, imperdiet vel eros. Fusce tincidunt metus in elit euismod, at fringilla nulla condimentum. Ut dictum nibh non ante pretium, in dapibus nulla lobortis.</p>
+
+    <p>Aenean pharetra porta est, vitae imperdiet lacus eleifend id. Maecenas eget libero a turpis cursus ultrices sed ut risus. Praesent ut vehicula libero. Pellentesque posuere ultrices turpis, a bibendum massa.</p>
+
+    <p>Proin eleifend in massa id commodo. Nam maximus tempus nisl at aliquam. Phasellus hendrerit dapibus metus id euismod. Nullam tempus, sapien sit amet eleifend mattis, tellus risus tincidunt tellus, quis elementum massa nisi et eros.</p>
+</section>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

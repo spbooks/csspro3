@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using SVG Fragment Identifiers
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+<style>
+.flex {
+  gap: 5rem;
+}
+
+iframe {
+  height: 45rem;
+}
+
+.flex > * {
+  flex: 1;
+}
+
+[class*="-bg"] {
+  padding: 20rem;
+  background-position: center;
+}
+
+.star-bg {
+  background-image: url(/images/svg-icons.svg#star);
+  background-size: 2rem 2rem;
+}
+
+.hex-bg {
+  background-image: url(/images/svg-icons.svg#hexagon);
+  background-size: 2rem 2rem;
+}
+
+.tri-bg {
+  background-image: url(/images/svg-icons.svg#triangle);
+  background-size: 2rem 2rem;
+}
+
+
+</style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Using CSS with SVG</a>
+      </li>
+      <li><a href="./" aria-current="page">Using SVG Fragment Identifiers</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using SVG Fragment Identifiers</h2>
+
+
+
+  <section id="frag-fg">
+<h3>Using fragment identifiers as a foreground image</h3>
+<div class="flex">
+    <iframe sandbox src="../../images/svg-icons.svg#star"></iframe>
+    <iframe sandbox src="../../images/svg-icons.svg#hexagon"></iframe>
+    <iframe sandbox src="../../images/svg-icons.svg#triangle"></iframe>
+  </div>
+</section>
+<section id="frag-bg">
+  <h3>Using fragment identifiers as a background image</h3>
+  <div class="flex">
+    <div class="star-bg"></div>
+    <div class="hex-bg"></div>
+    <div class="tri-bg"></div>
+  </div>
+</section>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

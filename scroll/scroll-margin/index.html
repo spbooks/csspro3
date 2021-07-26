@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using scroll-margin
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+
+        form.flex {
+            gap: 2rem;
+            margin: 2rem auto;
+            font-size: 2.4rem;
+            font-weight: bold;
+            justify-content: space-between;
+        }
+
+        form input {
+            font-size: inherit;
+            width: 20ch;
+        }
+
+        form p {
+            margin: 1rem 0 0;
+        }
+
+        .flex {
+            align-items: center;
+            justify-content: start;
+            gap: 2rem;
+        }
+
+        .scroll-container p:first-of-type {
+            background-color: var( --palette-j-80 );
+        }
+
+        .scroll-container p:nth-of-type( 2 ) {
+            background-color: var( --palette-n-80 );
+        }
+
+        .scroll-container p:nth-of-type( 3 ),
+        .scroll-container p:nth-of-type( 12 ),
+        .scroll-container p:nth-of-type( 25 ) {
+            background-color: var( --palette-g-80 );
+        }
+
+        .scroll-container p:nth-of-type( 4 ),
+        .scroll-container p:nth-of-type( 16 ),
+        .scroll-container p:nth-of-type( 19 ) {
+            background-color: var( --palette-k-80 );
+        }
+
+        .scroll-container p:nth-of-type( 5 ) {
+            background-color: var( --palette-c-80 );
+        }
+
+        .scroll-container p:nth-of-type( 6 ) {
+            background-color: var( --palette-l-80 );
+        }
+
+        .scroll-container p:nth-of-type( 7 ),
+        .scroll-container p:nth-of-type( 23 ) {
+            background-color: var( --palette-q-80 );
+        }
+
+        .scroll-container p:nth-of-type( 8 ),
+        .scroll-container p:nth-of-type( 24 ) {
+            background-color: var( --palette-e-80 );
+        }
+
+        .scroll-container p:nth-of-type( 9 ),
+        .scroll-container p:nth-of-type( 21 ) {
+            background-color: var( --palette-m-80 );
+        }
+
+        .scroll-container p:nth-of-type( 10 ),
+        .scroll-container p:nth-of-type( 15 ),
+        .scroll-container p:nth-of-type( 17 ) {
+            background-color: var( --palette-p-80 );
+        }
+
+        .scroll-container p:nth-of-type( 11 ) {
+            background-color: var( --palette-j-80 );
+        }
+
+        .scroll-container p:nth-of-type( 13 ),
+        .scroll-container p:nth-of-type( 18 ) {
+            background-color: var( --palette-n-80 );
+        }
+
+        .scroll-container p:nth-of-type( 14 ) {
+            background-color: var( --palette-j-80 );
+        }
+
+        .scroll-container p:nth-of-type( 20 ) {
+            background-color: var( --palette-c-80 );
+        }
+
+        .scroll-container p:nth-of-type( 22 ) {
+            background-color: var( --palette-h-80 );
+        }
+
+        .scroll-container p:last-of-type {
+            background-color: var( --palette-q-80 );
+        }
+
+        .slideshow {
+            position: relative;
+            margin: auto;
+            width: 85%;
+        }
+
+        .controls {
+            background-color: rgba( 0, 0, 0, .5 );
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .scroll-container {
+            display: flex;
+            border: 2px inset var( --border-b );
+            font-size: 20rem;
+            font-weight: 500;
+            gap: 2rem;
+            height: 50rem;
+            margin: 0 auto;
+            scroll-behavior: smooth;
+            width: 100%;
+            overflow: auto;
+        }
+
+        .column {
+            flex-direction: column;
+        }
+
+        .scroll-container p {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            flex: 1 0 50vw;
+
+            /**
+             * Don't bother snapping in the block axis because
+             * this is a horizontal / inline demo
+             */
+
+            scroll-snap-align: center center;
+        }
+
+        .column p {
+            flex: 1 0 43rem;
+        }
+
+        /**
+         * Remember, motion can make some people dizzy!
+         */
+        @media screen and ( prefers-reduced-motion ) {
+            .scroll-container {
+                scroll-behavior: auto;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body class="scrollmargin">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Managing Scrolling with CSS</a>
+      </li>
+      <li><a href="./" aria-current="page">Using <code>scroll-margin</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using <code>scroll-margin</code></h2>
+
+
+
+  <p><code>scroll-margin</code> uses the same syntax as the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin"><code>margin</code></a> property. It's applied to the children of a scroll container. Negative length values are valid. A negative margin along one edge of a scroll container's child is, effetively, the same as a positive margin along it's opposing edge.</p>
+<form class="flex">
+    <p class="flex">
+        <label for="scrollmargin" class="code">scroll-margin: </label>
+        <input type="text" id="scrollmargin" name="scrollmargin" size="30" value="0px 0px 0px 0px">
+    </p>
+
+    <p class="flex">
+        <input type="radio" id="block" name="scrollaxis" value="block">
+        <label for="block" class="code">block / vertical</label>
+    </p>
+
+    <p class="flex">
+        <input type="radio" value="inline" id="inline" name="scrollaxis" checked>
+        <label for="inline" class="code">inline / horizontal</label>
+    </p>
+
+    <button type="reset">Reset</button>
+
+</form>
+
+<div class="slideshow">
+    <p class="controls">
+        <button type="button" data-direction="up" disabled>Up</button>
+        <button type="button" data-direction="down" disabled>Down</button>
+        <button type="button" data-direction="left">Left</button>
+        <button type="button" data-direction="right">Right</button>
+    </p>
+    <div class="scroll-container">
+        <p><b>A</b></p>
+        <p><b>B</b></p>
+        <p><b>C</b></p>
+        <p><b>D</b></p>
+        <p><b>E</b></p>
+        <p><b>F</b></p>
+        <p><b>G</b></p>
+        <p><b>H</b></p>
+        <p><b>I</b></p>
+    </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+    <script>
+        ( ( win, doc ) => {
+            const form = doc.forms[0];
+            const container = doc.querySelector('.scroll-container');
+            const controls = doc.querySelector('.controls');
+
+            const onChange = ( domEvent = null ) => {
+                if( !form ) return;
+                const value = form.elements.scrollmargin.value;
+                const scrollItems = container.querySelectorAll( 'p' );
+
+                scrollItems.forEach( ( si ) => si.style.scrollMargin = value );
+
+                const scrollAxis = form.querySelector( '[name=scrollaxis]:checked' );
+
+                if( scrollAxis ) {
+                    setScrollSnapType( scrollAxis.value );
+                    setButtonState( scrollAxis.value );
+                }
+            };
+
+            const onSubmit = ( domEvent ) => {
+                domEvent.preventDefault();
+            }
+
+            const onReset = () => {
+                form.elements.scrollmargin.value = form.querySelector('#scrollmargin').getAttribute( 'value' );
+
+                container.removeAttribute( 'style' );
+                container.classList.remove( 'column' );
+
+                const scrollItems = container.querySelectorAll( 'p' );
+                if( scrollItems.length) {
+                    scrollItems.forEach( p => p.removeAttribute( 'style' ) );
+                }
+
+                setScrollSnapType( 'inline' );
+                setButtonState( 'inline' );
+            }
+
+            const setButtonState = ( direction = 'inline' ) => {
+                const inline = doc.querySelectorAll( '[data-direction="left"], [data-direction="right"] ');
+                const block  = doc.querySelectorAll( '[data-direction="up"], [data-direction="down"] ');
+
+                if( direction == 'inline' ) {
+                    inline.forEach(  e => e.removeAttribute( 'disabled' ) );
+                    block.forEach( e => e.disabled = true );
+                } else {
+                    block.forEach(  e => e.removeAttribute( 'disabled' ) );
+                    inline.forEach( e => e.disabled = true );
+                }
+            }
+
+            const setScrollSnapType = ( direction = 'inline' ) => {
+                let scrollSnapAxis;
+
+                if( direction == 'block' ) {
+                    scrollSnapAxis = 'y';
+                    container.classList.add('column');
+                } else {
+                    scrollSnapAxis = 'x';
+                    container.classList.remove('column');
+                }
+
+                container.style.scrollSnapType = `${ scrollSnapAxis } mandatory`;
+            }
+
+            form.addEventListener( 'input', onChange );
+            form.addEventListener( 'submit', onSubmit );
+            form.addEventListener( 'reset', onReset );
+
+            const moveIt = ( evt ) => {
+
+                if( evt.type === 'click') {
+                    if( evt.target.nodeName !== 'BUTTON' ) return;
+                }
+
+                const containerDimensions = container.getBoundingClientRect();
+
+                let xdistance = 0;
+                let ydistance = 0;
+                let opts = {
+                    top: ydistance,
+                    left: xdistance,
+                    behavior: 'smooth'
+                };
+
+                switch ( evt.target.dataset.direction ) {
+                    case 'up':
+                        opts = { 
+                            top: parseInt( containerDimensions.height, 10 ) * -1,
+                            left: ydistance
+                        };
+                        break;
+                    case 'down':
+                        opts = { 
+                            top: parseInt( containerDimensions.height, 10 ),
+                            left: ydistance
+                        };
+                        break;
+                    case 'left':
+                        opts = { 
+                            top: xdistance,
+                            left: parseInt( containerDimensions.width, 10 ) * -1
+                        };
+                        break;
+                    case 'right':
+                        opts = { 
+                            top: xdistance,
+                            left: parseInt( containerDimensions.width, 10 )
+                        };
+                        break;
+                    default:
+                        opts = {...opts}
+                }
+
+                container.scrollBy( opts );
+            }
+
+            controls.addEventListener( 'click', moveIt );
+
+            win.addEventListener( 'load', () => form.reset() );
+        })( window, document );
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Defining a Custom Property With a Fallback Value
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+<style>
+svg {
+  display: block;
+  height: auto;
+  margin: auto;
+  width: 50rem;
+}
+</style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Custom Properties</a>
+      </li>
+      <li><a href="./" aria-current="page">Defining a Custom Property With a Fallback Value</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Defining a Custom Property With a Fallback Value</h2>
+
+
+
+  <p>The <code>var()</code> function accepts up to two arguments. The second one will be used if the first value is not defined. Toggle the checkbox to see this in action.</p>
+
+<div class="two__panels">
+
+<svg viewBox="0 0 181 151" style="fill: var(--primary-color, hsl(280, 95%, 51%))">
+  <desc>H in a Hexagon</desc>
+  <g id="hex" stroke="none" stroke-width="1" fill-rule="nonzero">
+    <polygon id="hexagonbg" points="45.2 151 0 75.5 45.2 0 135.5 0 180.7 75.5 135.5 151"></polygon>
+    <path d="M48,24.5 L81,24.5 L81,59.7 L99.4,59.7 L99.4,24.5 L132.6,24.5 L132.6,127.9 L99.4,127.9 L99.4,89.6 L81,89.6 L81,127.9 L48,127.9 L48,24.5 Z M67.5,115.5 L67.5,76.3 L113.1,76.3 L113.1,115.5 L117.1,115.5 L117.1,36.9 L113.1,36.9 L113.1,72.5 L67.5,72.5 L67.5,36.9 L63.5,36.9 L63.5,115.5 L67.5,115.5 Z" id="letterH" stroke-width="2.1528" fill="#FFFFFF"></path>
+  </g>
+</svg>
+
+<form class="demo__controls">
+  <p>
+    <code>:root {</code>
+  </p>
+  <div>
+    <input type="checkbox" id="defined" checked>
+    <label for="defined" class="code">    --primary-color: hsl(190, 95%, 51%);</label>
+  </div>
+<pre><code>}
+
+svg {
+    fill: var(--primary-color, hsl(280, 95%, 51%));
+}
+</code></pre>
+</form>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script>
+// Grabs the label text. Using mostly to keep things consistent.
+const vartxt = document.querySelector('[for=defined]').firstChild.nodeValue;
+const logo = document.getElementsByTagName('svg')[0];
+const form = document.getElementsByTagName('form')[0];
+
+const css = logo.style.cssText;
+
+function setVar() {
+  logo.style.cssText = `${vartxt};${logo.style.cssText};`
+};
+
+function unsetVar() {
+  logo.style.cssText = css.replace(vartxt,'');
+};
+
+window.addEventListener('load', setVar);
+
+
+form.addEventListener('change', function(event) {
+  if(event.target.checked) {
+    setVar();
+  } else {
+    unsetVar();
+  }
+});
+</script>
+</body>
+</html>

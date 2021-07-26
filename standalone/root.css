@@ -1,0 +1,15 @@
+:root {
+  border: 1rem dotted magenta;
+}
+
+svg:root {
+  width: 90%;
+  height: 90%;
+  overflow: hidden;
+}
+
+iframe {
+  display: block;
+  width: 50rem;
+  height: 50rem;
+}

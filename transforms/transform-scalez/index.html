@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Scaling the Z-dimension With scaleZ()
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+    main {
+      min-height: 80rem;
+    }
+
+    .dice {
+      perspective: 800px;
+      transform-style: preserve-3d;
+      height: 200px;
+      position: relative;
+      margin: auto;
+      width: 200px;
+      pointer-events: none;
+    }
+
+    .dice div {
+      background: rgba(221, 0, 0, 0.8);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dice div:first-child {
+      transform: rotate(0deg) translateZ(-100px);
+      background: rgba(103, 58, 183, 0.8);
+    }
+
+    .dice div:nth-child(2) {
+      transform: rotateX(-90deg) translateZ(100px);
+      background: rgba(0, 150, 136, 0.8);
+    }
+
+    .dice div:nth-child(3) {
+      transform: rotateY(-90deg) translateZ(100px);
+      background: rgba(255, 193, 7, 0.8);
+    }
+
+    .dice div:nth-child(4) {
+      transform: rotateY(90deg) translateZ(100px);
+      background: rgba(233, 30, 99, 0.8);
+    }
+
+    .dice div:nth-child(5) {
+      transform: rotateX(90deg) translateZ(100px);
+      background: rgba(0, 150, 136, 0.8);
+    }
+
+    .dice div:last-child {
+      transform: rotate(180deg) translateZ(100px);
+      background: rgba(139, 195, 74, 0.8);
+    }
+
+    .dice circle {
+      fill: rgba(255, 255, 255, 0.8);
+    }
+
+    .backface .side {
+      backface-visibility: hidden;
+    }
+
+    #output {
+      margin-top: 2rem;
+    }
+
+    [type=range] {
+      display: inline-block;
+      width: 100%;
+    }
+
+    [id=scale] {
+      margin-top: 20rem;
+      perspective: 400px;
+    }
+
+    b {
+      display: inline-block;
+      padding: 0 1em;
+    }
+
+    .flex {
+      align-items: center;
+    }
+
+    form {
+      padding: 1rem;
+      background: rgba(255, 255, 255, .8);
+      position: relative;
+      z-index: 1;
+    }
+    </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">Scaling the Z-dimension With <code>scaleZ()</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Scaling the Z-dimension With <code>scaleZ()</code></h2>
+
+
+
+  <h3><code id="output" aria-live="polite">transform: scaleZ(0)</code></h3>
+
+<p>The <code>scaleZ()</code> function scales points along the Z-axis &#8212; the axis that's perpendicular to your viewing position.</p>
+<form>
+    <div class="flex">
+        <b>-5</b>
+        <input type="range" id="scaleZ" name="factor" min="-3" max="3" value="1" step=".1" aria-valuemin="-3" aria-valuemax="-3" aria-valuenow="1">
+        <b>5</b>
+        <button type="reset">Reset</button>
+    </div>
+</form>
+
+<div id="scale" class="dimen">
+    <div class="dice backface">
+        <div class="d1">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+
+         <div class="d2">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            </svg>
+         </div>
+
+
+         <div class="d3">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+
+         <div class="d4">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            </svg>
+        </div>
+
+
+        <div class="d5">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+        </div>
+
+        <div class="d6">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                <circle cx="50" cy="40" r="25"/>
+                <circle cx="149.9" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="40" r="25"/>
+                <circle cx="50" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="100" r="25"/>
+                <circle cx="50" cy="100" r="25"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script>
+    (( win ) => {
+        const scale = document.querySelector('.dice');
+        const form = document.querySelector('form');
+
+        const onInput = ( domEvent = null ) => {
+            if( domEvent.target.name !== 'factor') return;
+
+            const propValue = `transform: ${domEvent.target.id}( ${ domEvent.target.value } );`;
+
+            scale.style = propValue;
+
+            domEvent.target.setAttribute('aria-valuenow', domEvent.target.value);
+
+            updateText( propValue )
+        }
+
+        const updateText = ( text ) => {
+            const output = document.querySelector('#output');
+            output.firstChild.replaceWith( text );
+        }
+
+        const onReset = () => {
+            const factor = form.querySelector('[name=factor]');
+
+            factor.value = 1;
+            factor.setAttribute('aria-valuenow', 1);
+
+            const inp = new Event('input', { bubbles: true });
+            form.factor.dispatchEvent( inp );
+        }
+
+        form.addEventListener( 'input', onInput );
+        form.addEventListener( 'reset', onReset );
+        win.addEventListener( 'load', onInput );
+
+    })( window );
+</script>
+</body>
+</html>

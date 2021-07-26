@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Descendant Combinator
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  /**
+   * These are both examples of descendant combinators.
+   * These will match match ANY h1 or p element that's a descendant
+   * of the form element, regardless of its depth in the DOM tree.
+   */
+
+  form h1 {
+    color: #009;
+  }
+
+  form p {
+    font-size: 22px;
+  }
+  </style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page">Descendant Combinator</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Descendant Combinator</h2>
+
+
+
+  <form>
+  <h1>Buy Tickets to the Web Developer Gala</h1>
+  <p>Tickets are $10 each. Dinner packages are an extra $5. All fields are required.</p>
+
+  <fieldset>
+    <legend>Tickets and Add-ons</legend>
+    <p>
+      <label for="quantity">Number of Tickets</label> 
+      <span class="help">Limit 8</span>
+      <input id="quantity" max="8" min="1" name="quantity" step="1" type="number" value="1">
+    </p>
+    <p>
+      <label for="dinners">Dinner Packages</label> 
+      <span class="help">Serves 2</span>
+      <input id="dinners" max="4" min="0" name="dinners" step="1" type="number" value="0">
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Payment</legend>
+    <p>
+      <label for="ccn">Credit card number</label>
+      <span class="help" id="ccn-note">No spaces or dashes, please.</span>
+      <input id="ccn" maxlength="16" name="ccn" placeholder="372000000000008" size="16" type="text" aria-describedby="#ccn-note">
+    </p>
+    <p>
+      <label for="expiration">Expiration date</label>
+      <span class="help" id="expiration-note"><abbr title="Two-digit month">MM</abbr>/<abbr title="Four-digit Year">YYYY</abbr></span>
+      <input id="expiration" maxlength="7" name="expiration" placeholder="01/2018" size="7" type="text" aria-describedby="#expiration-note">
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Billing Address</legend>
+    <p>
+      <label for="name">Name</label>
+      <input id="name" name="name" placeholder="ex: John Q. Public" size="40" type="text"> 
+    </p>
+    <p>
+      <label for="street_address">Street Address</label>
+      <input id="name" name="name" placeholder="ex: 12345 Main Street, Apt 23" size="40" type="text">
+    </p>
+    <p>
+      <label for="city">City</label>
+      <input id="city" name="city" placeholder="ex: Anytown" type="text">
+    </p>
+    <p>
+      <label for="state">State</label>
+      <input id="state" maxlength="2" name="state" pattern="[A-W]{2}" placeholder="CA" size="2" type="text">
+    </p>
+    <p>
+      <label for="zip">ZIP</label>
+      <input id="zip" maxlength="5" name="zip" pattern="0-9{5}" placeholder="12345" size="5" type="text">
+    </p>
+  </fieldset>
+  <button type="submit">Buy Tickets!</button>
+</form>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    document.forms[0].addEventListener( 'submit', ( domEvent ) => { domEvent.preventDefault();
+      alert( "This form doesn't really work. 😄");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Negative transition-delay
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  section {
+    background: #ececff;
+    border: 1px solid #96f;
+    border-radius: .3rem;
+    height: auto;
+    margin: 1.6rem 0;
+    padding: 3.2rem;
+    position: relative;
+  }
+  section:before, section:after {
+    display: block;
+    clear: both;
+  }
+  section h3 {
+    margin: -1rem 0 0 0;
+    font-size: 1.8rem;
+  }
+  section div {
+    background: #96f;
+    height: 10vw;
+    margin: 1rem 0;
+    position: relative;
+    left: 0;
+    top: 0;
+    transition: 2s ease-in;
+    width: 10vw;
+    max-height: 20rem;
+    max-width: 20rem;
+  }
+
+  .moved {
+    left: 90%;
+  }
+
+  .delay1s {
+    transition-delay: -1s;
+  }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transitions &amp; Animations</a>
+      </li>
+      <li><a href="./" aria-current="page">Negative <code>transition-delay</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Negative <code>transition-delay</code></h2>
+
+
+
+  <p><button type="button" class="all">Run all</button> transitions.</p>
+<section>
+    <h3><code>transition-delay: 0s</code></h3>
+    <div></div>
+</section>
+
+<section>
+    <h3><code>transition-delay: -1s</code></h3>
+    <div class="delay1s"></div>
+</section>
+
+<p>Click to <button type="button" class="all">trigger all</button> transitions.</p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script type="text/javascript">
+    var triggerall = document.getElementsByClassName('all');
+
+    Array.prototype.map.call(triggerall, function(b){
+        b.onclick = function(evt) {
+            var movethese = document.querySelectorAll('section > div');
+            Array.prototype.map.call(movethese, function(o) {
+                o.classList.toggle('moved');
+            });
+        }
+    });
+</script>
+</body>
+</html>

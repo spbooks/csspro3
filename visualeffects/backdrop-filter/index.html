@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using Filter Effects With backdrop-filter
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    main {
+      display: grid;
+      grid-template-areas: "a a a a a"
+                           "b b b b b"
+                           "c c c c c"
+                           "d d d e e"
+                           "f f f f f";
+      grid-template-columns: 3fr 2fr;
+      gap:  3rem;
+      align-items: start;
+      position: relative;
+    }
+
+    h2 {
+      grid-area: a;
+      margin-bottom: 0;
+    }
+
+    .message {
+      grid-area: b;
+      text-align: center;
+    }
+
+    .message p {
+      margin: 2rem auto;
+      width: 90%;
+      max-width: 90rem;
+    }
+
+    [id="filter-object"] {
+      grid-area: d;
+      height: 100%;
+    }
+
+    [id="filter-object"] > div {
+      align-items: center;
+      display: flex;
+      grid-area: b;
+      background: center url( '../../images/flamingo-alejandro-contreras-wTPp323zAEw-unsplash.jpg' );
+      background-size: contain;
+      font-size: 4rem;
+      font-weight: 700;
+      height: 60rem;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      width: auto;
+    }
+
+    [id="filter-object"] p {
+      display: flex;
+      padding: 3rem;
+    }
+
+    form {
+      grid-area: e;
+      background: var( --palette-t-80 );
+      padding: 2rem;
+      font-size: 2rem;
+      width: min-content;
+    }
+
+    form h3 {
+      margin-top: 0;
+    }
+
+    h2 ~ p {
+      grid-area: c;
+    }
+
+    label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: bold;
+    }
+
+    input {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 2.2rem;
+    }
+
+    [id|=about] {
+      display: block;
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-block-start: 1rem;
+    }
+
+    main p:last-of-type {
+      grid-area: f;
+      margin: 0;
+    }
+  </style>
+
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Visual Effects</a>
+      </li>
+      <li><a href="./" aria-current="page">Using Filter Effects With <code>backdrop-filter</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using Filter Effects With <code>backdrop-filter</code></h2>
+
+
+
+  <div class="message note" hidden>
+  <p markdown=1>Your browser does not support <code>backdrop-filter</code>. Firefox users: you can enable support by setting the <code>layout.css.backdrop-filter.enabled</code> and <code>gfx.webrender.all</code> preference to <code>true</code> in <code>about:config</code>.</p>
+</div>
+
+<p>You can also use these functions with the <a href="../../visualeffects/filter/index.html"><code>filter</code></a> proeprty. The <code>background-filter</code> filter property adjusts areas of the background image where the foreground overlaps.</p>
+<div id="filter-object">
+    <div>
+        <p>Flamingos are pink!</p>
+    </div>
+</div>
+
+<form>
+<h3>Filter functions</h3>
+<p>
+    <label for="backgroundColor">background-color</label>
+    <input type="text" name="backgroundColor" value="hsla( 22.4, 44.9%, 63.7%, .9 )" id="backgroundColor" size="40" aria-describedby="about-bg">
+    <span id="about-bg">Try using a color with an alpha value of less than 1, or the <code>transparent</code> keyword.</span>
+</p>
+<p>
+    <label for="blur">blur()</label>
+    <input type="text" name="blur" value="0px" id="blur" aria-describedby="about-blur">
+    <span id="about-blur">Value must be a length such as <code>px</code>, <code>em</code>, or <code>rem</code>.</span>
+</p>
+<p>
+    <label for="brightness">brightness()</label>
+    <input type="number" name="brightness" value="1" id="brightness" min="0" step=".1" aria-describedby="about-brightness">
+    <span id="about-brightness">Value may be a number or percentage.</span>
+</p>
+<p>
+    <label for="contrast">contrast()</label>
+    <input type="number" name="contrast" value="1" id="contrast" min="0" max="1000" step=".1" aria-describedby="about-contrast">
+    <span id="about-contrast">Value must be a number or a percentage.</span>
+</p>
+<p>
+    <label for="drop-shadow">drop-shadow()</label>
+    <input type="text" name="drop-shadow" value="0 0 0 transparent" id="drop-shadow" aria-describedby="about-drop-shadow">
+    <span id="about-drop-shadow">Shadow value should follow the synax of values for <a href="http://www.w3.org/TR/css3-background/#box-shadow"><code>box-shadow</code></a>.</div>
+</p>
+<p>
+    <label for="grayscale">grayscale()</label>
+    <input type="number" name="grayscale" value="0" id="grayscale" min="0" max="1" step=".1" aria-describedby="about-grayscale">
+    <span id="about-grayscale">Value must be a number between 0 and 1 or a percentage.</span>
+</p>
+<p>
+    <label for="hue-rotate">hue-rotate()</label>
+    <input type="text" name="hue-rotate" value="0deg" id="hue-rotate" aria-describedby="about-hue-rotate" aria-describedby="about-hue-rotate">
+    <span id="about-hue-rotate">Value must be an angle, in degrees (<code>deg</code>), radians (<code>rad</code>), gradians (<code>grad</code>), or turns (<code>turn</code>).</span>
+</p>
+<p>
+    <label for="invert">invert()</label>
+    <input type="number" name="invert" value="0" id="invert" min="0" max="1" step=".01" aria-describedby="about-invert">
+    <span id="about-invert">Value must be a number between 0 and 1 or a percentage.</span>
+</p>
+<p>
+    <label for="opacity">opacity()</label>
+    <input type="number" name="opacity" value="1" id="opacity" min="0" max="1" step=".01" aria-describedby="about-opacity">
+    <span id="about-opacity">Value must be a number between 0 and 1 or a percentage.</span>
+</p>
+<p>
+    <label for="saturate">saturate()</label>
+    <input type="number" name="saturate" value="1" id="saturate" min="0" max="1" step=".01" aria-describedby="about-saturate">
+    <span id="about-saturate">Value must be a number or a percentage.</span>
+</p>
+<p>
+    <label for="sepia">sepia()</label>
+    <input type="number" name="sepia" value="0" id="sepia" min="0" max="1" step=".01"  aria-describedby="about-sepia">
+    <span id="about-sepia">Value must be a number between 0 and 1 or a percentage.</span>
+</p>
+<p><button type="reset">Reset</button></p>
+</form>
+<p>Background photo by <a href="https://unsplash.com/photos/wTPp323zAEw" target="_blank">Alejandro Contreras</a>, Unsplash</p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    ( (win, doc) => {
+      const form = doc.forms[0];
+      const filterObject = doc.querySelector('[id="filter-object"] p');
+
+      const onReset = () => {
+        filterObject.removeAttribute( 'style' );
+        filterObject.style.backgroundColor = form.elements.backgroundColor.getAttribute( 'value' );
+      }
+
+      const onInput = ( domEvent ) => {
+        let functions = Array.from( form.elements );
+        functions = functions
+                    .filter( f => f.hasAttribute( 'value' ) && f.id !== 'backgroundColor' )
+                    .map( f => `${ f.id }( ${ f.value.trim() } )`);
+
+        filterObject.style.backdropFilter  = functions.join( ' ' );
+        filterObject.style.backgroundColor = form.elements.backgroundColor.value.trim();
+      }
+
+      form.addEventListener( 'input', onInput );
+      form.addEventListener( 'reset', onReset );
+
+      win.addEventListener( 'load', () => {
+        form.reset();
+        filterObject.style.backgroundColor = form.elements.backgroundColor.value.trim();
+      });
+    } )( window, document );
+
+  ( ( win, doc ) => {
+
+    /* If support isn't available, show an error message. */
+    const showError = () => {
+      const supportsBackdrop = CSS.supports('backdrop-filter: initial') || CSS.supports('-webkit-backdrop-filter: initial');
+
+      if( !supportsBackdrop ) {
+        const msg = doc.querySelector('.message[ hidden ]').removeAttribute( 'hidden ');
+      }
+    }
+    win.addEventListener( 'load', showError );
+  }) ( window, document );
+</script>
+</body>
+</html>

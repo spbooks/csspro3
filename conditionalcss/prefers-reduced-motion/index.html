@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using prefers-reduced-motion
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    img {
+        display: block;
+        margin: 3rem auto;
+        width: 50rem;
+        max-width: 50%;
+    }
+
+    @media screen and ( min-width: 540px ) {
+      ul {
+        columns:  2;
+      }
+    }
+
+    .wobble {
+        --wobble-min-scale: .5;
+        --wobble-max-scale: 1.5;
+        --skew-rotate: 5deg;
+
+        animation: 3s wobble infinite both alternate;
+    }
+
+    /** 
+     * `prefers-reduced-motion` and `prefers-reduced-motion: reduce`
+     * are equivalent.
+     */
+    @media screen and ( prefers-reduced-motion ) {
+        .wobble {
+          animation-name: hue-change;
+          animation-duration: 8s;
+        }
+    }
+
+    @keyframes wobble {
+        25% {
+            transform: scale( var( --wobble-min-scale ) ) skewX( calc( -1 * var( --skew-rotate ) ) ) rotate( calc( -1 * var( --skew-rotate ) ) );
+        }
+        50% {
+             transform: skewY( var( --skew-rotate ) ) rotate( var( --skew-rotate ) );
+        }
+        75% {
+             transform: skewX( calc( -1 * var( --skew-rotate ) ) ) rotate( calc( -1 * var( --skew-rotate ) ) ) scale( var( --wobble-max-scale ) );
+         }
+        100% {
+            transform: scale( var( --wobble-max-scale ) );
+        }
+    }
+
+    @keyframes hue-change {
+        25% {
+            filter:  hue-rotate( 90deg );
+        }
+        50% {
+            filter:  hue-rotate( 190deg );
+        }
+        75% {
+            filter:  hue-rotate( 270deg );
+         }
+        100% {
+            filter:  hue-rotate( 0deg );
+        }
+    }
+
+  </style>
+
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Using CSS Conditionally</a>
+      </li>
+      <li><a href="./" aria-current="page">Using <code>prefers-reduced-motion</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using <code>prefers-reduced-motion</code></h2>
+
+
+
+  <div class="message warning">
+  <p>This demo may cause dizziness or seizures if you have a vestibular or seizure disorder.</p>
+</div>
+
+<p>Animations and transitions can, for some people, trigger dizziness or seisures. We can accommodate them by using the <code>prefers-reduced-motion</code> media feature.</p>
+<p>To understand how this demo works, you'll need to disable or reduce animations for your operating system.</p>
+<ul>
+<li><strong>Windows</strong>: <em>Settings</em> &rarr;<em>Ease of Access</em> &rarr;<em>Display</em> &rarr; <em>Show animations in Windows</em>.</li>
+<li><strong>macOS</strong>:<em>System Preferences</em> &rarr;<em>Accessibility</em> &rarr;<em>Display</em> &rarr;<em>Reduce motion</em></li>
+<li><strong>iOS</strong>:<em>Settings</em> &rarr;<em>General</em> &rarr;<em>Accessibility</em> &rarr;<em>Reduce Motion</em></li>
+<li><strong>Ubuntu</strong>: Using <em>Gnome Tweak Tool</em> go to <em>General</em> and enable <em>Animations</em></li>
+</ul>
+<p>If you've indicated that you prefer reduced motion in your operating system, the animation below cycles through the color wheel. Otherwise, you'll see a skew, scale, and rotate transformation.</p>
+<p><button type="button">Toggle animation</button></p>
+<div>
+    <img src="../../images/csscircle.svg">
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    (( doc ) => {
+      const wobbler = doc.querySelector( 'main div:last-of-type' );
+      const button  = doc.querySelector( 'button' );
+
+      const onClick = () => {
+        wobbler.classList.toggle('wobble');
+      };
+
+      button.addEventListener( 'click', onClick );
+
+    })( document );
+
+  </script>
+</body>
+</html>

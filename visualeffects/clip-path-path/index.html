@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Creating Complex Clipping Regions with path()
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+        main > div {
+            background: linear-gradient(to bottom, hsl(31, 100%, 41%), hsl(31, 100%, 61%), rgb(233, 206, 10)) no-repeat fixed;
+            background-size: 100vw 100vh;
+        }
+
+        main > div p {
+            display: inherit;
+            justify-content: center;
+            width: max-content;
+
+          /* Creates a blob-shaped clipping area */
+          clip-path: path('m 104.3412,-94.552373 a 235.57481,242.55224 0 0 0 -235.57475,242.551213 235.57481,242.55224 0 0 0 235.57475,242.55309 235.57481,242.55224 0 0 0 35.90179,-2.83462 116.28209,116.28209 0 0 0 -0.3821,9.42037 A 116.28209,116.28209 0 0 0 256.14311,513.4198 116.28209,116.28209 0 0 0 363.17355,442.59305 288.39157,288.39157 0 0 0 645.41323,671.74187 288.39157,288.39157 0 0 0 933.80515,383.34996 288.39157,288.39157 0 0 0 645.41323,94.957809 288.39157,288.39157 0 0 0 587.24283,100.88816 116.28209,116.28209 0 0 0 587.69599,90.618827 116.28209,116.28209 0 0 0 471.41379,-25.663306 116.28209,116.28209 0 0 0 355.88656,77.404732 230.96342,158.23655 0 0 0 328.66979,73.946711 235.57481,242.55224 0 0 0 104.34119,-94.552373 Z');
+        }
+
+
+        img {
+          display: block;
+          height: 95vh;
+          margin: auto;
+          width: auto;
+        }
+    </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Visual Effects</a>
+      </li>
+      <li><a href="./" aria-current="page">Creating Complex Clipping Regions with <code>path()</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Creating Complex Clipping Regions with <code>path()</code></h2>
+
+
+
+  <p>Using the <code>path()</code> function lets us create more complex shapes that include curves and arcs, in addition to straight lines.</p>
+<p>The easiest way to create path data is by creating an SVG image that contains a <code>path</code> element and grabbing value of the <code>path</code> element’s <code>d</code> attribute.</p>
+<div>
+    <p><img src="../../images/milk-5267300_1920.jpg"></p>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

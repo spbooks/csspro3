@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Transforms: the transform-style property
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+
+  .dice {
+    transform-style: preserve-3d;
+    height: 30rem;
+    position: relative;
+    margin: auto;
+    width: 30rem;
+    pointer-events: none;
+  }
+
+  .dice div {
+    background: rgba(221, 0, 0, 0.4);
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .dice div:first-child {
+    transform: rotate(0deg) translateZ(-150px);
+  }
+
+  .dice div:nth-child(2) {
+    transform: rotateX(-90deg) translateZ(150px);
+  }
+
+  .dice div:nth-child(3) {
+    transform: rotateY(-90deg) translateZ(150px);
+  }
+
+  .dice div:nth-child(4) {
+    transform: rotateY(90deg) translateZ(150px);
+  }
+
+  .dice div:nth-child(5) {
+    transform: rotateX(90deg) translateZ(150px);
+  }
+
+  .dice div:last-child {
+    transform: rotate(180deg) translateZ(150px);
+  }
+
+  .dice circle {
+    fill: rgba(255, 255, 255, 0.8);
+  }
+
+  #output {
+    margin-top: 2rem;
+  }
+
+  [type=range] {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .dimen {
+    perspective: 15rem;
+  }
+
+  [id=perspective] {
+    perspective: 2000rem;
+    height: 60rem;
+  }
+
+  .flat {
+    transform-style: flat !important;
+  }
+
+  .flex {
+    gap:  2rem;
+    justify-content: space-between;
+  }
+
+  .flex p {
+    margin: 0;
+  }
+
+  @keyframes rotatey {
+    from {
+      transform: rotate3d(1, 1, 0, 0.01deg);
+    }
+    to {
+      transform: rotate3d(1, 1, 0, 360deg);
+    }
+  }
+
+  .rotatey {
+    animation: rotatey 3s infinite;
+    transform-origin: 50% 50%;
+    padding-top: 25rem;
+  }
+
+  .paused {
+    animation-play-state: paused;
+  }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">Transforms: the <code>transform-style</code> property</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Transforms: the <code>transform-style</code> property</h2>
+
+
+
+  <h3>
+    <code id="output" aria-live="polite">transform-style: <span>flat</span></code>
+</h3>
+
+<form>
+    <div class="flex">
+        <p>
+            <input type="radio" id="flat" name="transformstyle" value="flat" checked>
+            <label for="flat" class="code">flat</label>
+        </p>
+        <p>
+            <input type="radio" id="preserve3d" name="transformstyle" value="preserve-3d">
+            <label for="preserve3d" class="code">preserve-3d</label>
+        </p>
+        <button type="reset">Toggle play state</button>
+    </div> 
+</form>
+
+<div id="perspective">
+    <div class="dice rotatey flat">
+        <div class="d1">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+         <div class="d2">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            </svg>
+         </div>
+         <div class="d3">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+         <div class="d4">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            </svg>
+        </div>
+        <div class="d5">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+        </div>
+        <div class="d6">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                <circle cx="50" cy="40" r="25"/>
+                <circle cx="149.9" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="40" r="25"/>
+                <circle cx="50" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="100" r="25"/>
+                <circle cx="50" cy="100" r="25"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script type="text/javascript">
+    var rulestr = '#perspective .wrapper{ transform-style: %s }';
+
+    var form   = document.forms[0],
+        persp  = document.querySelectorAll('[type=radio]'),
+        output = document.querySelector('#output span'),
+        pause  = function() {
+          document.querySelector('.dice').classList.toggle('paused');
+        },
+      
+      updatePerspective = function( domEvent ){
+          var cl = document.querySelector('.dice').classList,
+              len = cl.length,
+              i,
+              rule,
+              txt;
+
+          cl.remove('flat');
+          cl.remove('preserve-3d');
+          cl.remove('paused');
+
+          rule = rulestr.replace(/\%s/g,  domEvent.target.value);
+
+          txt = document.createTextNode(domEvent.target.value);
+
+          if( output.firstChild ) {
+              output.replaceChild(txt, output.firstChild);
+          }  else {
+              output.appendChild(txt);
+          } 
+
+          document.querySelector('.dice').classList.add(domEvent.target.value);
+      };
+
+    form.addEventListener('change', updatePerspective, true);
+
+    form.addEventListener('reset', pause, true);
+
+    window.addEventListener('load', pause, false);
+  </script>
+</body>
+</html>

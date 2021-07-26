@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  How perspective-origin works
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  main {
+    min-height: 80rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  #perspective {
+    perspective: 50rem;
+    margin-top: 6.4rem;
+  }
+
+  .flex {
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .dice {
+    transform-style: preserve-3d;
+    height: 20rem;
+    position: relative;
+    margin: auto;
+    width: 20rems;
+  }
+
+  .dice div {
+    background: rgba(221, 0, 0, 0.4);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .dice div:first-child {
+    transform: rotate(0deg) translateZ(-100px);
+  }
+
+  .dice div:nth-child(2) {
+    transform: rotateX(-90deg) translateZ(100px);
+  }
+
+  .dice div:nth-child(3) {
+    transform: rotateY(-90deg) translateZ(100px);
+  }
+
+  .dice div:nth-child(4) {
+    transform: rotateY(90deg) translateZ(100px);
+  }
+
+  .dice div:nth-child(5) {
+    transform: rotateX(90deg) translateZ(100px);
+  }
+
+  .dice div:last-child {
+    transform: rotate(180deg) translateZ(100px);
+  }
+
+  .dice circle {
+    fill: rgba(255, 255, 255, 0.8);
+  }
+
+  .multi div:first-child {
+    background: rgba(103, 58, 183, 0.8);
+  }
+
+  .multi div:nth-child(2) {
+    background: rgba(0, 150, 136, 0.8);
+  }
+
+  .multi div:nth-child(3) {
+    background: rgba(255, 193, 7, 0.8);
+  }
+
+  .multi div:nth-child(4) {
+    background: rgba(233, 30, 99, 0.8);
+  }
+
+  .multi div:nth-child(5) {
+    background: rgba(0, 150, 136, 0.8);
+  }
+
+  .multi div:last-child {
+    background: rgba(139, 195, 74, 0.8);
+  }
+
+  .backface .side,
+  .bvh {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  [for=xpos],
+  [for=ypos] {
+    display: block;
+    margin-bottom: .25em;
+  }
+
+  [type=number] {
+    font: inherit;
+  }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">How <code>perspective-origin</code> works</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>How <code>perspective-origin</code> works</h2>
+
+
+
+  <form>
+    <p class="flex">
+        <span>
+            <label for="xpos">x-position</label>
+            <input type="number" id="xpos" name="xpos" value="50" size="2">
+        </span>
+
+        <span>
+            <label for="ypos">y-position</label>
+            <input type="number" id="ypos" name="ypos" value="50" size="2">
+        </span>
+
+        <span>
+            <input type="radio" id="percentage" name="units" value="%">
+            <label for="percentage">%</label>
+        </span>
+         <span>
+            <input type="radio" id="pixels" name="units" value="px" checked>
+            <label for="pixels">px</label>
+        </span>
+        <button type="reset">Reset</button>
+    </p>
+</form>
+
+<div id="perspective">
+    <div class="dice backface">
+        <div class="d1">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+
+         <div class="d2">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            </svg>
+         </div>
+
+
+         <div class="d3">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+
+         <div class="d4">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            </svg>
+        </div>
+
+
+        <div class="d5">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+        </div>
+
+        <div class="d6">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                <circle cx="50" cy="40" r="25"/>
+                <circle cx="149.9" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="40" r="25"/>
+                <circle cx="50" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="100" r="25"/>
+                <circle cx="50" cy="100" r="25"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    var units = document.querySelectorAll('[name=units]'), 
+        p = document.getElementById('perspective'),
+        pos = document.querySelectorAll('[type=number]'),
+        rulestr = '#perspective{perspective-origin: %s}',
+        form = document.forms[0],
+        styles = document.styleSheets[2];
+
+    var parseValues = function(str) {
+      return str.replace(/px/g, '').split(' ');
+    }
+
+    var calculatePct = function(num, denom) {
+      return (num / denom) * 100;
+    }
+
+    var changeUnit = function(e) {
+      var xy, ps = p, s = getComputedStyle(ps);
+
+      xy = s.webkitPerspectiveOrigin || s.perspectiveOrigin;
+      xy = parseValues(xy);
+
+      if(e.target.value == '%') {   
+        xy[0] = calculatePct(xy[0], parseInt(s.width, 10));
+        xy[1] = calculatePct(xy[1], parseInt(s.height, 10));
+      }
+
+      xy.map(function(o, idx, obj){
+        pos[idx].value = obj[idx];
+      });
+    }
+
+    var updatePerspOrigin = function(e) {
+      var unit = form.units.value, str = [], s = styles;
+
+      if(!!s.cssRules.length){
+        s.deleteRule(0);
+      }
+
+      str[0] = pos[0].value;
+      str[1] = unit+' ';
+      str[2] = pos[1].value;
+      str[3] = unit;
+
+      var css = rulestr.replace(/%s/g, function(){
+        return str.join('');
+      });
+
+      s.insertRule(css, 0);
+    }
+
+    Array.prototype.map.call(units, function(u, idx, arr){
+      u.addEventListener('change', changeUnit, true);
+    })
+
+    Array.prototype.map.call(pos, function(u, idx, arr){
+      u.addEventListener('input', updatePerspOrigin, true);
+    })
+
+    form.addEventListener('reset', function(){
+      var s = styles;
+      s.deleteRule(0);
+    }, true);
+  </script>
+
+</body>
+</html>

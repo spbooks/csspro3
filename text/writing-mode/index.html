@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Setting Block Flow Direction With writing-mode
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+<style>
+    section {
+      background: #eee;
+      padding: 2rem;
+      margin: 3rem 0;
+    }
+    section + p {
+      margin: 2rem 0;
+    }
+    [lang=en-us], [lang=ar] {
+      /*
+      This is the property's initial value.
+      We don't actually need to set it.
+      */
+      writing-mode: horiziontal-tb;
+    }
+
+    [lang=en-us] {
+      direction: ltr; 
+    }
+
+    .vertical__lr {
+      writing-mode: vertical-lr
+    }
+    
+    [lang=ko],
+    .vertical__rl {
+      writing-mode: vertical-rl
+    }
+    code {
+      font-family: monospace;
+    }
+
+    .sideways__lr {
+      writing-mode: sideways-lr;
+    }
+
+    .sideways__rl {
+      writing-mode: sideways-rl;
+    }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Working With Text</a>
+      </li>
+      <li><a href="./" aria-current="page">Setting Block Flow Direction With <code>writing-mode</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Setting Block Flow Direction With <code>writing-mode</code></h2>
+
+
+
+  <p>Writing mode sets the <em>block flow direction</em> or the direction in which block-level boxes and table rows are ordered on the screen or page. It also determines whether lines of text within those boxes are arranged horizontally or vertically. Its initial value is <code>horizontal-tb</code>, which is a shorthand for <q>horizontal, top to bottom.</q></p>
+<p>Non-English text below was translated from English using <a href="https://translate.google.com">Google Translate</a>. <b>Related specification:</b> <a href="https://www.w3.org/TR/css-writing-modes-4/">CSS Writing Modes Level 4</a>.</p>
+<section lang="en-us">
+  <h1>When the value of `writing-mode` is `horizontal-tb`</h1>
+  <p>Blocks are stacked top-to-bottom. This is the initial value, and the writing mode of most text on the web.</p>
+
+  <p>Lines of text may flow left-to-right as with Latin, Devanagari, or Sinhala scripts. Or lines may flow right-to-left, as with Hebrew and Arabic script.</p>
+
+  <p lang="ar" dir="rtl">هذا مثال للنص العربي ، مع قيمة <bdi lang="en">`writing-mode: horizontal-tb`</bdi> واتجاه النص من اليمين إلى اليسار.</p>
+</section>
+
+<section class="vertical__lr">
+    <h1>When the value of `writing-mode` is `vertical-lr`</h1>
+  <p>Block ordering begins at the left of the container, and blocks stack rightward. Lines of text are vertically-oriented. Characters from scripts that have a native horizontal orientation (e.g. Latin script) are rotated by 90&deg;. That can be changed with the <a href="text-orientation.html">`text-orientation`</a> property.</p>
+
+  <p>Mongolian, when written using Mongolian script, is an example of a language that may use a vertical, left-to-right writing mode. Mongolian may also be written using Cyrillic script. When written using Cyrillic, Mongolian is read and written horizontally, but also from left-to-right.</p>
+</section>
+
+<section class="vertical__rl">
+  <h1>When the value of `writing-mode` is `vertical-rl`</h1>
+
+  <p>Block ordering begins at the right of the container, and blocks stack leftward. Lines of text are vertically-oriented. Chinese, Japanese, and Korean may be written horizontally _or_ vertically. When written vertically, these languages are usually written and read from right-to-left. Here too, characters from scripts that have a native horizontal orientation (e.g. Latin script) are rotated by 90&deg;.</p>
+
+  <p>Korean is a language that may be read and written vertically, from right-to-left.</p>
+
+  <p lang="ko">한국어는 수직, 왼쪽에서 오른쪽 쓰기 모드를 사용하는 언어의 한 예입니다.</p>
+</section>
+
+<section class="sideways__lr">
+  <h1>When the value of `writing-mode` is `sideways-lr`</h1>
+
+  <p>Block ordering begins at the left of the container, and blocks stack rightward. Lines of text are vertically-oriented.</p>
+
+  <p>This differs from `writing-mode: vertical-lr` because _all characters_, are rotated 90&deg;. Characters are displayed sideways regardless of their native orientation.</p>
+
+</section>
+
+<section class="sideways__rl">
+  <h1>When the value of `writing-mode` is `sideways-rl`</h1>
+    <p>Block ordering begins at the _right_ of the container, and blocks stack _rightward_. Lines of text are vertically-oriented.</p>
+    <p>This differs from `writing-mode: vertical-rl` because _all characters_, are rotated 90&deg;. Characters are displayed sideways regardless of their native orientation.</p>
+native orientation.</p>
+</section>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

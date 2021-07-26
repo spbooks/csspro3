@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Respecting Users Color Preferences with prefers-color-scheme
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    :root {
+        --background:     #ccc;
+        --foreground:     #333;
+        --button-bg:      #505;
+        --button-fg:      #eee;
+        --link:           #909;
+        --visited:        #666;
+        --header-bg:      rgba(86, 61, 123, 0.2 );
+        --header-link:    var( --palette-g );
+        --header-visited: var( --palette-e-30 );
+    }
+
+    /* Update colors for the background, foreground, and buttons */
+    @media screen and ( prefers-color-scheme: light ) {
+       :root {
+            --background:     #fff;
+            --foreground:     #000;
+            --button-bg:      #f0f;
+            --button-fg:      #fff;
+            --header-bg:      #fff;
+            --header-link:    #000;
+            --header-visited: #fcf;
+       }
+    }
+
+    @media screen and ( prefers-color-scheme: dark ) {
+        :root {
+            --background:     #222;
+            --foreground:     #eee;
+            --button-bg:      #c0c;
+            --button-fg:      #fff;
+            --link:           #f0f;
+            --visited:        #e0f;
+            --header-bg:      hsl(264.2, 33.7%, 36.1%);
+            --header-link:    #f9f;
+            --header-visited: #fcf;
+        }
+    }
+
+    body {
+      background: var( --background );
+      color:  var( --foreground );
+    }
+
+    body > header {
+      background: var( --header-bg );
+    }
+
+    /* Override a global style. */
+    :is(header, footer) a:hover {
+      background: transparent;
+    }
+
+    [aria-label="Breadcrumb"] a:link {
+      color: var( --header-link );
+    }
+
+    [aria-label="Breadcrumb"] a:visited {
+      color: var( --header-visited );
+    }
+
+    main a,
+    main button {
+      font-size: 3.6rem;
+      font-weight: bold;
+    }
+
+    a:link {
+      color: var( --link );
+    }
+
+    a:visited {
+      color: var( --visited );
+    }
+
+    button {
+      background: var( --button-bg );
+      color:  var( --button-fg );
+      border-color: transparent;
+    }
+
+    main p:last-of-type {
+      display: flex;
+      gap:  5rem;
+    }
+
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Using CSS Conditionally</a>
+      </li>
+      <li><a href="./" aria-current="page">Respecting Users Color Preferences with <code>prefers-color-scheme</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Respecting Users Color Preferences with <code>prefers-color-scheme</code></h2>
+
+
+
+  <p>To develop and test for dark mode, you'll first need to enable it. </p>
+<ul>
+<li><strong>Windows</strong>: Go to <em>Settings</em> &rarr; <em>Personalization</em> &rarr; <em>Colors</em> &rarr; <em>Choose your color</em></li>
+<li><strong>macOS</strong>: Go to <em>System Preferences</em> &rarr; <em>General</em> &rarr; <em>Appearance</em></li>
+<li><strong>Ubuntu</strong>: Go to <em>Settings</em> &rarr; <em>Appearance</em> &rarr; <em>Window colors</em></li>
+</ul>
+<p>Chrome and Edge also allow users to set a preference at the browser level by changing enabling the <em>Force Dark Mode for Web Contents</em> setting. You can find this setting at  <code>chrome://flags/#enable-force-dark</code> and <code>edge://flags/#enable-force-dark</code>, respectively. Even when <em>Force Dark Mode</em> is enabled, <code>matchMedia('(prefers-dark-mode)').matches</code> may return <code>false</code> for some operating systems.</p>
+<p><a href="http://sitepoint.com/" target="_blank">An example of a link</a> <button type="button">Just a button</button></p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

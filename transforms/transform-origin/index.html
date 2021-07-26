@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using the transform-origin property
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">Using the <code>transform-origin</code> property</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using the <code>transform-origin</code> property</h2>
+
+
+
+  <form id="form">
+    <fieldset>
+        <div class="flex">
+            <legend>Pick a transform</legend>
+            <p>
+                <input type="radio" name="transformation" id="rotate" value="rotate">
+                <label class="code" for="rotate">rotate(45deg)</label>
+            </p>
+            <p>
+                <input type="radio" name="transformation" id="scale" value="scale">
+                <label class="code" for="scale">scale(1.5)</label>
+            </p>
+            <p>
+                <input type="radio" name="transformation" id="skewX" value="skewX">
+                <label class="code" for="skewX">skewX(45deg)</label>
+            </p>
+            <p>
+                <input type="checkbox" name="animate" id="animate" checked>
+                <label class="code" for="animate">transition</label>
+            </p>
+            <p><button type="reset">Reset</button></p>
+        </div>
+    </fieldset>
+</form>
+
+<div class="demo__transforms">
+    <div class="to">
+        <div><b>50% 50% 0</b></div>
+    </div>
+
+    <div class="to to000">
+        <div><b>0 0 0</b></div>
+    </div>
+
+    <div class="to to100100">
+        <div><b>100% 100% 0</b></div>
+    </div>
+
+    <div class="to to150150">
+        <div><b>150% 150% 0</b></div>
+    </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

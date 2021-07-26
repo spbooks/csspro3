@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Managing Mask Processing with mask-mode
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    main > div {
+        display: flex;
+        gap: 3rem;
+        justify-content: space-between;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        mask-image:  linear-gradient(to bottom, hsla(0, 100%, 100%, .4), hsla(0, 0%, 0%, .8) 90% );
+    }
+
+    .alpha img {
+        mask-mode: alpha;
+    }
+
+    .luminance img {
+        mask-mode: luminance;
+    }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Visual Effects</a>
+      </li>
+      <li><a href="./" aria-current="page">Managing Mask Processing with <code>mask-mode</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Managing Mask Processing with <code>mask-mode</code></h2>
+
+    <div class="message note">
+      <p>This demo only works when the browser can create an origin. You may need to run a <a href="../../help/local-server/">local server</a> for this demo.</p>
+    </div>
+
+
+  <div>
+  <div class="alpha">
+    <h3><code>mask-mode: alpha</code></h3>
+    <img src="../../images/zdenek-machacek-eqXiLNfZDc0-unsplash.jpg" alt="A keel-billed toucan with a gradient mask in alpha mode applied.">
+  </div>
+
+  <div class="luminance">
+    <h3><code>mask-mode: luminance</code></h3>
+    <img src="../../images/zdenek-machacek-eqXiLNfZDc0-unsplash.jpg" alt="A keel-billed toucan with a gradient mask in luminance mode applied.">
+  </div>
+</div>
+
+<p><em>Keel-billed toucan photo by <a href="https://unsplash.com/photos/jfWHzG7gIRw">Zdeněk Macháček</a> from Unsplash.</em></p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

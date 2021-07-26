@@ -1,0 +1,29 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink=
+"http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 497
+ 184" enable-background="new 0 0 497 184" xml:space="preserve">
+ <style>
+/**
+ * Although we can't use many CSS properties with SVG documents,
+ * it IS possible to use CSS syntax with SVG. SVG elements and 
+ * attributes can be used as selectors. Some SVG attribute values
+ * can be used as CSS properties.
+ * 
+ */
+#star {
+    fill: hsl( 44, 100%, 50% );
+}
+
+circle {
+    fill: cornflowerblue;
+    stroke: darkblue;
+    stroke-width: 10;
+    stroke-dasharray: 10, 15;
+    stroke-linecap: round;
+}
+</style>
+
+    <polygon id="star" points="77,23.7 98.2,66.6 145.5,66.5 111.2,
+106.9,119.3,154 77,131.8 34.7,154 42.8,106.9 8.5,67.5 55.8,
+66.6 "/>
+    <circle cx="245" cy="88.9" r="67.5"/>
+</svg>

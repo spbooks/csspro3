@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using the clip-path Property: ellipse() function
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+        main > div {
+            background: linear-gradient(to bottom, hsl(304, 100%, 21%), hsl(304, 100%, 61%)) no-repeat fixed;
+            background-size: 100vw 100vh;
+        }
+
+        main > div p {
+            display: inherit;
+            justify-content: center;
+        }
+
+
+        img {
+            display: block;
+            height: 95vh;
+            width: auto;
+            clip-path: ellipse( 50% 50% at 50% 50% );
+            margin: 2rem auto;
+        }
+    </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Visual Effects</a>
+      </li>
+      <li><a href="./" aria-current="page">Using the <code>clip-path</code> Property: <code>ellipse()</code> function</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using the <code>clip-path</code> Property: <code>ellipse()</code> function</h2>
+
+
+
+  <p>The <code>clip-path</code> property accepts a basic shape or the URL of an SVG clip path.There are five basic shape functions defined by the <a href="https://drafts.csswg.org/css-shapes/#basic-shape-functions">CSS Shapes</a> specification:</p>
+<ul>
+<li><code>inset()</code> (used to create rectangles)</li>
+<li><code>circle()</code></li>
+<li><code>ellipse()</code></li>
+<li><a href="../../visualeffects/clip-path-polygons/index.html"><code>polygon()</code></a> </li>
+<li><a href="../../visualeffects/clip-path-path/index.html"><code>path()</code></a> (which must be an SVG path data string)</li>
+</ul>
+<p>The example below uses the <code>ellipse()</code> function. <code>circle()</code> uses the same syntax. </p>
+<div>
+    <p><img src="../../images/milk-5267300_1920.jpg"></p>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

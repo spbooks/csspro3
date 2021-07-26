@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using the scroll-snap-type property
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+        .flex {
+            justify-content: space-between;
+        }
+
+        p.code,
+        form {
+            gap: 2rem;
+            margin: 2rem auto;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        fieldset {
+            flex: 1;
+            background: var( --palette-t-95 );
+            padding: 1rem;
+        }
+
+        fieldset:disabled {
+            background-color: whitesmoke;
+            color: #666;
+        }
+
+        fieldset:disabled label {
+            cursor: not-allowed;
+        }
+
+        .scroll-container p:first-of-type {
+            background-color: var( --palette-j-80 );
+        }
+
+        .scroll-container p:nth-of-type( 2 ) {
+            background-color: var( --palette-n-80 );
+        }
+
+        .scroll-container p:nth-of-type( 3 ),
+        .scroll-container p:nth-of-type( 12 ),
+        .scroll-container p:nth-of-type( 25 ) {
+            background-color: var( --palette-g-80 );
+        }
+
+        .scroll-container p:nth-of-type( 4 ),
+        .scroll-container p:nth-of-type( 16 ),
+        .scroll-container p:nth-of-type( 19 ) {
+            background-color: var( --palette-k-80 );
+        }
+
+        .scroll-container p:nth-of-type( 5 ) {
+            background-color: var( --palette-c-80 );
+        }
+
+        .scroll-container p:nth-of-type( 6 ) {
+            background-color: var( --palette-l-80 );
+        }
+
+        .scroll-container p:nth-of-type( 7 ),
+        .scroll-container p:nth-of-type( 23 ) {
+            background-color: var( --palette-q-80 );
+        }
+
+        .scroll-container p:nth-of-type( 8 ),
+        .scroll-container p:nth-of-type( 24 ) {
+            background-color: var( --palette-e-80 );
+        }
+
+        .scroll-container p:nth-of-type( 9 ),
+        .scroll-container p:nth-of-type( 21 ) {
+            background-color: var( --palette-m-80 );
+        }
+
+        .scroll-container p:nth-of-type( 10 ),
+        .scroll-container p:nth-of-type( 15 ),
+        .scroll-container p:nth-of-type( 17 ) {
+            background-color: var( --palette-p-80 );
+        }
+
+        .scroll-container p:nth-of-type( 11 ) {
+            background-color: var( --palette-j-80 );
+        }
+
+        .scroll-container p:nth-of-type( 13 ),
+        .scroll-container p:nth-of-type( 18 ) {
+            background-color: var( --palette-n-80 );
+        }
+
+        .scroll-container p:nth-of-type( 14 ) {
+            background-color: var( --palette-j-80 );
+        }
+
+        .scroll-container p:nth-of-type( 20 ) {
+            background-color: var( --palette-c-80 );
+        }
+
+        .scroll-container p:nth-of-type( 22 ) {
+            background-color: var( --palette-h-80 );
+        }
+
+        .scroll-container p:last-of-type {
+            background-color: var( --palette-q-80 );
+        }
+
+        .scroll-container {
+            border: 2px inset var( --border-b );
+            font-size: 20rem;
+            font-weight: 500;
+            display: grid;
+            grid-template-columns: repeat( 6, 66rem );
+            grid-auto-rows: 40rem;
+            gap: 2rem;
+            height: 50rem;
+            margin: 0 auto;
+
+            /**
+             * Limit the width so that the total width of the children
+             * overflow the container.
+             */
+            width: 85%;
+
+            /**
+             * Makes the element a scroll snap container. In this
+             * demo, this property is set via JavaScript, using the `style`
+             * attribute.
+             
+             scroll-snap-type: x mandatory;
+             */
+
+             overflow: auto;
+        }
+
+        form p {
+            margin: 1rem 0 0;
+        }
+
+        .scroll-container p {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+
+            /**
+             * Where to snap after scrolling 
+             */
+            scroll-snap-align: center; 
+        }
+
+
+        /**
+         * Remember, motion can make some people dizzy!
+         */
+        @media screen and ( prefers-reduced-motion ) {
+            .scroll-container {
+                scroll-behavior: auto;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body class="scrollsnaptype">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Managing Scrolling with CSS</a>
+      </li>
+      <li><a href="./" aria-current="page">Using the <code>scroll-snap-type</code> property</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using the <code>scroll-snap-type</code> property</h2>
+
+
+
+  <form class="flex">
+    <fieldset>
+        <div>
+            <legend>Axis</legend>
+            <div>
+                <p>
+                    <input type="radio" id="none" name="axis" value="none" checked>
+                    <label for="none" class="code">none</label>
+                </p>
+                <p>
+                    <input type="radio" id="x" name="axis" value="x">
+                    <label for="x" class="code">x</label>
+                </p>
+                <p>
+                    <input type="radio" id="y" name="axis" value="y">
+                    <label for="y" class="code">y</label>
+                </p>
+                <p>
+                    <input type="radio" id="inline" name="axis" value="inline">
+                    <label for="inline" class="code">inline</label>
+                </p>
+                <p>
+                    <input type="radio" id="block" name="axis" value="block">
+                    <label for="block" class="code">block</label>
+                </p>
+                <p>
+                    <input type="radio" id="both" name="axis" value="both">
+                    <label for="both" class="code">both</label>
+                </p>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset disabled id="strictness">
+        <div>
+            <legend>Strictness</legend>
+            <div>
+                <p>
+                    <input type="radio" id="proximity" name="strictnesslevel" value="proximity">
+                    <label for="proximity" class="code">proximity</label>
+                </p>
+                <p>
+                    <input type="radio" id="mandatory" name="strictnesslevel" value="mandatory">
+                    <label for="mandatory" class="code">mandatory</label>
+                </p>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div>
+            <legend><code>writing-mode</code></legend>
+            <p>
+                <input type="radio" id="horizontal-tb" name="writing-mode" value="horizontal-tb" checked>
+                <label for="horizontal-tb" class="code">horizontal-tb</label>
+            </p>
+            <p>
+                <input type="radio" id="vertical-lr" name="writing-mode" value="vertical-lr">
+                <label for="vertical-lr" class="code">vertical-lr</label>
+            </p>
+            <p>
+                <input type="radio" id="vertical-rl" name="writing-mode" value="vertical-rl">
+                <label for="vertical-rl" class="code">vertical-rl</label>
+            </p>
+        </div>
+    </fieldset>
+</form>
+
+<h3 aria-live="polite" class="code"><code>scroll-snap-type: none</code></h3>
+
+<div class="scroll-container">
+    <p><b>A</b></p>
+    <p><b>B</b></p>
+    <p><b>C</b></p>
+    <p><b>D</b></p>
+    <p><b>E</b></p>
+    <p><b>F</b></p>
+    <p><b>G</b></p>
+    <p><b>H</b></p>
+    <p><b>I</b></p>
+    <p><b>J</b></p>
+    <p><b>K</b></p>
+    <p><b>L</b></p>
+    <p><b>M</b></p>
+    <p><b>N</b></p>
+    <p><b>O</b></p>
+    <p><b>P</b></p>
+    <p><b>Q</b></p>
+    <p><b>R</b></p>
+    <p><b>S</b></p>
+    <p><b>T</b></p>
+    <p><b>U</b></p>
+    <p><b>V</b></p>
+    <p><b>W</b></p>
+    <p><b>X</b></p>
+    <p><b>Y</b></p>
+    <p><b>Z</b></p>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+    <script>
+        ( ( win ) => {
+            const form = document.forms[0];
+            const container = document.querySelector('.scroll-container');
+
+            const updateIndicator = ( scrollSnap = 'none' ) => {
+                let update = document.querySelector('[aria-live="polite"]');
+                update.firstChild.replaceWith( `scroll-snap-type: ${ scrollSnap }` );
+            }
+
+            const onChange = ( domEvent = null ) => {
+                if( !form ) return;
+
+                const fields = form.elements;
+                if( !fields ) return;
+
+                let axis = fields.namedItem('axis');
+                let strictness = form.querySelector( '#strictness' ); // Fieldset
+                let writingMode = fields.namedItem('writing-mode');
+
+                if( axis.value !== 'none' ) {
+                    strictness.removeAttribute( 'disabled' );
+                } else {
+                    strictness.querySelector('input').checked = false;
+                    strictness.setAttribute( 'disabled', '' );
+                }
+
+                let strictnesslevel = fields.namedItem('strictnesslevel').value || '';
+
+                const scrollSnapStyle = `scroll-snap-type: ${ axis.value } ${ strictnesslevel }; writing-mode: ${ writingMode.value };`;
+                container.style = scrollSnapStyle;
+
+                updateIndicator( `${ axis.value } ${ strictnesslevel }` );
+            };
+
+            const onSubmit = ( domEvent ) => {
+                domEvent.preventDefault();
+            }
+
+            form.addEventListener( 'change', onChange );
+            form.addEventListener( 'submit', onSubmit );
+
+        })( window );
+    </script>
+
+</body>
+</html>

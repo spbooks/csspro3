@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Creating a Mask with mask-image
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    main div {
+      background-color: hsl(100.7, 25%, 22%);
+    }
+
+    select,
+    option {
+      font:  inherit;
+    }
+
+    img {
+      height: 95vh;
+      margin: auto;
+      display: block;
+      width: auto;
+
+      /**
+       * Masking properties still require a prefix in Chromium and 
+       * WebKit-based browsers.
+       */
+
+      -webkit-mask-image: url('../../images/star.png');
+              mask-image: url('../../images/star.png');
+      }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Visual Effects</a>
+      </li>
+      <li><a href="./" aria-current="page">Creating a Mask with <code>mask-image</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Creating a Mask with <code>mask-image</code></h2>
+
+    <div class="message note">
+      <p>This demo only works when the browser can create an origin. You may need to run a <a href="../../help/local-server/">local server</a> for this demo.</p>
+    </div>
+
+
+  <p>Masking is likely familiar to you if you&#8217;ve ever worked with graphics editors such as Photoshop, Sketch, or Glimpse. It&#8217;s an effect created when the painted areas of one layer reveal portions of another layer.</p>
+<p><code>mask-image</code> behaves much like <code>background-image</code>, and also supports <a href="../../visualeffects/masking-multiple-images/index.html">multiple image masks</a>. </p>
+<div>
+  <img src="../../images/aaron-burden-2IzoIHBgYAo-unsplash.jpg" alt="A tall sunflower in a field of sunflowers against a blue sky.">
+</div>
+
+<p><em>Sunflower photo by <a href="https://unsplash.com/photos/2IzoIHBgYAo">Aaron Burden</a> from Unsplash.</em></p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

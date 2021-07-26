@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using Shape Functions
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+  <link rel="stylesheet" href="../../theme/css/grid-base.css" id="Grid_CSS">
+
+
+  <style>
+    main {
+      --circle:  circle( 50% at 50% 50% );
+      --ellipse: ellipse( 20% 40% at 20% 17rem );
+      --inset:   inset( 6rem 1rem 0rem 0rem round 2rem );
+      --polygon: polygon( 100% 0, 0% 50%, 100% 100% );
+    }
+
+    main > div {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3.2rem;
+    }
+
+    label code {
+      white-space: pre;
+    }
+
+    [id|=shape] {
+      font-size: 3rem;
+      padding: 2rem;
+    }
+
+    [id|=shape] p {
+      margin: 0;
+    }
+
+    .show-shapes ::before {
+      background: blueviolet;
+    }
+
+    [id|=shape]::before {
+      content: '\00a0';
+      width: 40rem;
+      height: 40rem;
+      shape-margin: 1rem;
+    }
+
+    [id=shape-circle] {
+      background: var( --palette-c-80 );
+    }
+
+    [id=shape-ellipse] {
+      background: var(  --palette-l-80 );
+    }
+
+    [id=shape-inset] {
+      background: var(  --palette-k-80 );
+    }
+
+    [id=shape-polygon] {
+      background: var(  --palette-o-80 );
+    }
+
+    [id=shape-circle]::before {
+      shape-outside: var( --circle );
+      float: inline-start;
+    }
+
+    .show-shapes [id=shape-circle]::before {
+      clip-path:  var( --circle );
+    }
+
+    [id=shape-ellipse]::before {
+      shape-outside: var( --ellipse );
+      float: inline-start;
+    }
+
+    .show-shapes [id=shape-ellipse]::before {
+      clip-path:  var( --ellipse );
+    }
+
+    [id=shape-inset]::before {
+      shape-outside: var( --inset );
+      float: inline-start;
+      width: 30rem;
+      height: 30rem;
+    }
+
+    .show-shapes [id=shape-inset]::before {
+     clip-path:  var( --inset );
+    }
+
+    [id=shape-polygon]::before {
+      shape-outside: var( --polygon );
+      float: inline-end;
+    }
+
+    .show-shapes [id=shape-polygon]::before {
+      clip-path:  var( --polygon );
+    }
+
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">CSS Layout</a>
+      </li>
+      <li><a href="./" aria-current="page">Using Shape Functions</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using Shape Functions</h2>
+
+
+
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Shapes/Basic_Shapes">Shapes</a> are a type of CSS value, like length, angle, or color units. Although used here with the <code>shape-outside</code> property, shape values also apply to the <code>clip-path</code> and <code>offset-path</code> properties.</p>
+<form>
+  <p>
+    <input type="checkbox" id="showShape">
+    <label for="showShape">Show the shape (Uses <code> clip-path()</code>)</label>
+  </p>
+</form>
+
+<div>
+  <div id="shape-circle">This is an example of using the <code>circle()</code> shape function with the <code>shape-outside</code> property. We also need to float the shape to the start or end of a line in order for the text to wrap around the shape.
+  </div>
+
+  <div id="shape-ellipse">This is an example of using the <code>ellipse()</code> shape function with the <code>shape-outside</code> property. In this example, we are floating the element to the end of the line, so the text wraps around the starting inline area of the shape.
+  </div>
+
+  <div id="shape-inset">Using the <code>inset()</code> shape function creates a rectangular shape. Here too, the shape is floated to the start of the inline direction. In this instance, <code>round 1rem</code> gives the rectangle rounded corners.
+  </div>
+
+  <div id="shape-polygon">
+<p>We can also use the <code>polygon()</code> shape to create multi-sided shapes such as triangles and hexagons. A polygon can be any shape, as long as that shape has flat sides.</p>
+<p>Of course, if the text is not long enough, it may not wrap around all sides of the shape.</div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    ( ( win, doc ) => {
+      const form = doc.forms[0];
+
+      const onChange = ( domEvent ) => {
+        const shaped = doc.querySelector( 'main > div' );
+        const className = 'show-shapes';
+
+        if( form.elements.showShape.checked ) {
+          shaped.classList.add( className )
+        } else {
+          shaped.classList.remove( className )
+        }
+      }
+
+
+      form.addEventListener( 'change', onChange );
+      win.addEventListener( 'load', () => form.reset() )
+    })( window, document )
+
+  </script>
+</body>
+</html>

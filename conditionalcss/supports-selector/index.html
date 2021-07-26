@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Determining Selector Support With selector()
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    .star {
+      fill: var( --palette-k );
+    }
+
+    .hex {
+      fill: var( --palette-e );
+    }
+
+    @supports ( selector( :nth-of-type( 2n of .star ) ) ) {
+      :nth-of-type( 2n of .star ) {
+          stroke: var( --palette-p );
+          stroke-width: .5rem;
+          stroke-dasharray: .7rem;
+          stroke-linecap: round
+      }
+    }
+
+    @supports not ( selector( :nth-of-type( 2n of .star ) ) ) {
+      .hex:nth-child( 3 ) {
+          fill: blue;
+      }
+    }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Using CSS Conditionally</a>
+      </li>
+      <li><a href="./" aria-current="page">Determining Selector Support With <code>selector()</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Determining Selector Support With <code>selector()</code></h2>
+
+
+
+  <p>If your browser supports the <em>of S</em> clause for the <code>nth-of-type()</code> selector, matching elements will have a dashed, 10 pixel, dashed orange border.</p>
+<p>If it does not, the second hexagon (and third <code>path</code> element below) will be blue.</p>
+<p>As of July 2021, Safari is the only browser to support this syntax. This may have changed by the time you view this demo.</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 123.2 618.2 235.8"><path class="hex" d="M36.2 220.6l-22.1-38 22.1-38h44.2l22.1 38-22.1 38z"/><path class="star" d="M178.4 139.5l10.7 29.7 33.6.5-26.1 22.5 9.2 33.4-27.4-18.4-27.3 18.4 7.2-32.4-24.1-23.5 31.6-.5z"/><path class="hex" d="M276.5 220.6l-22.1-38 22.1-38h44.2l22.1 38-22.1 38z"/><path class="star" d="M418.8 139.5l10.6 29.7 33.6.5-26.1 22.5 9.2 33.4-27.3-18.4-27.4 18.4 7.2-32.4-24.1-23.5 31.6-.5z"/><path class="hex" d="M516.8 220.6l-22.1-38 22.1-38H561l22.1 38-22.1 38z"/><path class="star" d="M58.3 251.8L69 281.5l33.5.4-26.1 22.6 9.2 33.4-27.3-18.4L31 337.9l7.2-32.4-24.1-23.6 31.5-.4z"/><path class="hex" d="M156.3 332.8l-22.1-38 22.1-38h44.2l22.1 38-22.1 38z"/><path class="star" d="M298.6 251.8l10.7 29.7 33.5.4-26.1 22.6 9.2 33.4-27.3-18.4-27.3 18.4 7.2-32.4-24.1-23.6 31.5-.4z"/><path class="hex" d="M396.6 332.8l-22.1-38 22.1-38h44.3l22.1 38-22.1 38z"/><path class="star" d="M538.9 251.8l10.7 29.7 33.5.4-26.1 22.6 9.2 33.4-27.3-18.4-27.3 18.4 7.2-32.4-24.1-23.6 31.5-.4z"/></svg></p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

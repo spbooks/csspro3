@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Specifying a Default Size for Implicit Grid Tracks
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+  <link rel="stylesheet" href="../../theme/css/grid-base.css" id="Grid_CSS">
+
+
+  <style>
+    .demo__grid {
+      background: #eee;
+      display: grid;
+      grid-template-columns: 25rem 40rem 25rem;
+      grid-template-rows: 25rem 15rem;
+      grid-auto-rows: 12rem;
+    }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">CSS Layout</a>
+      </li>
+      <li><a href="./" aria-current="page">Specifying a Default Size for Implicit Grid Tracks</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Specifying a Default Size for Implicit Grid Tracks</h2>
+
+
+
+  <p>We've explicitly defined three columns for this grid using <code>grid-template-columns: 25rem 40rem 25rem</code> and two rows using <code>grid-template-rows: 25rem 15rem;</code>.</p>
+<p>Since our grid container has eight children, we also have a third grid row. In the <a href="./grid-implicit.html">implicit grid example</a>, our third row or grid track size was <code>auto</code>. Here, we've used the <code>grid-auto-rows</code> property to set a size of <code>12rem</code> for all implicit tracks. We can use <code>grid-auto-columns</code> to do the same for columns.</p>
+<p><b>Related specification:</b> <a href="https://www.w3.org/TR/css-grid-1/">CSS Grid Layout Module Level 1</a>.</p>
+<div class="demo__grid">
+  <div>Grid item A</div>
+  <div class="text__light">Grid item B</div>
+  <div>Grid item C</div>
+  <div>Grid item D</div>
+  <div>Grid item E</div>
+  <div class="text__light">Grid item F</div>
+  <div class="text__light">Grid item G</div>
+  <div>Grid item H</div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

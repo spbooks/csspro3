@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Showing the backface-visibility property
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    form > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3.2rem;
+    }
+
+    form > div p {
+      margin: 0;
+      flex: 1;
+    }
+
+    button {
+      align-self: end;
+    }
+
+    .dice {
+      transform-style: preserve-3d;
+      height: 20rem;
+      position: relative;
+      margin: auto;
+      width: 20rem;
+      pointer-events: none;
+    }
+
+    .dice div {
+      background: rgba(221, 0, 0, 0.4);
+      border: .1rem solid #ccc;
+      border-radius: .4rem;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .dice div:first-child {
+      transform: rotate(0deg) translateZ(-100px);
+    }
+    .dice div:nth-child(2) {
+      transform: rotateX(-90deg) translateZ(100px);
+    }
+    .dice div:nth-child(3) {
+      transform: rotateY(-90deg) translateZ(100px);
+    }
+    .dice div:nth-child(4) {
+      transform: rotateY(90deg) translateZ(100px);
+    }
+    .dice div:nth-child(5) {
+      transform: rotateX(90deg) translateZ(100px);
+    }
+    .dice div:last-child {
+      transform: rotate(180deg) translateZ(100px);
+    }
+    .dice circle {
+      fill: rgba(255, 255, 255, 0.8);
+    }
+
+    .multi div:first-child {
+      background: rgba(103, 58, 183, 0.8);
+    }
+    .multi div:nth-child(2) {
+      background: rgba(0, 150, 136, 0.8);
+    }
+    .multi div:nth-child(3) {
+      background: rgba(255, 193, 7, 0.8);
+    }
+    .multi div:nth-child(4) {
+      background: rgba(233, 30, 99, 0.8);
+    }
+    .multi div:nth-child(5) {
+      background: rgba(0, 150, 136, 0.8);
+    }
+    .multi div:last-child {
+      background: rgba(139, 195, 74, 0.8);
+    }
+
+    .backface .side,
+    .bvh > div {
+      backface-visibility: hidden;
+    }
+
+    .card {
+      transition: transform 1s linear;
+      transform-style: preserve-3d;
+      border: 1px solid #ccc;
+      border-radius: .8rem;
+      box-sizing: content-box;
+      height: 30rem;
+      position: relative;
+      width: 24rem;
+    }
+
+    .side {
+      height: inherit;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: inherit;
+    }
+
+
+    .dn {
+      display: none;
+    }
+
+    #rotate {
+      font-size: 1.6rem;
+      height: 1.6rem;
+      margin: 4.8rem auto;
+      padding:  1.5rem;
+      width:  1.6rem;
+      pointer-events: none;
+      transform-style: preserve-3d;
+    }
+
+    #output {
+      font-size: 2rem;
+      margin-top: 2rem;
+    }
+
+    [type=range] {
+      display: inline-block;
+      width: 100%;
+    }
+
+    .dimen {
+      perspective: 20rem;
+    }
+
+    .mono {
+      font-family: monospace;
+    }
+
+    .unit {
+      font-weight: normal;
+    }
+
+    .animate {
+      -webkit-transition: 2s;
+      transition: 2s;
+    }
+
+    .r900 {
+      transform: rotate( 900deg );
+    }
+
+    h3 {
+      font-size: 1.1em;
+    }
+
+    #perspective {
+      perspective: 50rem;
+      margin-top: 4.8rem;
+    }
+
+    .flex > *,
+    .flexl > * {
+      margin-right: 2em;
+    }
+
+    .multi div:first-child {
+      background: rgba(103, 58, 183, 0.8);
+    }
+    .multi div:nth-child(2) {
+      background: rgba(0, 150, 136, 0.8);
+    }
+    .multi div:nth-child(3) {
+      background: rgba(255, 193, 7, 0.8);
+    }
+    .multi div:nth-child(4) {
+      background: rgba(233, 30, 99, 0.8);
+    }
+    .multi div:nth-child(5) {
+      background: rgba(0, 150, 136, 0.8);
+    }
+    .multi div:last-child {
+      background: rgba(139, 195, 74, 0.8);
+    }
+
+    output {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">Showing the <code>backface-visibility</code> property</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Showing the <code>backface-visibility</code> property</h2>
+
+
+
+  <p>Click the button below to toggle between <code>backface-visibility</code> states.</p>
+<form>
+    <output id="value" aria-live="polite">backface-visibility: hidden</output>
+
+    <p class="flex">
+        <button type="button" data-classname="bvh">Toggle backface visibility</button>
+        <span>
+            <input type="checkbox" id="multi" name="multi" data-classname="multi">
+            <label for="multi">use multiple colors</label>
+        </span>
+    </p>
+
+    <div>
+        <p>
+            <label for="angle">rotateX</label>
+            <input type="range" id="angleX" name="angleX" min="-360" max="360" value="0" step="5" class="angle">
+        </p>
+        <p>
+            <label for="angle">rotateY</label>
+            <input type="range" id="angleY" name="angleY" min="-360" max="360" value="0" step="5" class="angle">
+        </p>
+
+        <button type="submit">Reset</button>
+    </div>
+</form>
+
+<div id="perspective">
+
+ <div class="dice">
+        <div class="d1">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+
+         <div class="d2">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            </svg>
+         </div>
+
+
+         <div class="d3">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+
+         <div class="d4">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            </svg>
+        </div>
+
+
+        <div class="d5">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+        </div>
+
+        <div class="d6">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                <circle cx="50" cy="40" r="25"/>
+                <circle cx="149.9" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="40" r="25"/>
+                <circle cx="50" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="100" r="25"/>
+                <circle cx="50" cy="100" r="25"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script>
+
+const trigger = document.querySelector('[type=button]');
+const dice = document.querySelector('.dice');
+const multi = document.getElementById('multi');
+const form = document.querySelector('form');
+
+const onToggle = ( domEvent ) => {
+    dice.classList.toggle( 'bvh' );
+    const val = document.getElementById('value');
+
+    let text = 'visible';
+    if( dice.classList.contains( 'bvh') ) {
+        text = 'hidden';
+    }
+
+    const bv = document.createTextNode( `backface-visibility: ${text}` );
+    val.firstChild.replaceWith( bv );
+}
+
+const onMultiColorChange = ( domEvent ) => {
+    dice.classList.toggle(domEvent.target.dataset.classname);
+}
+
+const onSubmit = ( domEvent ) => {
+    domEvent.preventDefault();
+}
+
+const onReset = ( domEvent ) => {
+    dice.classList.remove('bvh', 'multi');
+    dice.removeAttribute( 'style' );
+}
+
+trigger.addEventListener('click', onToggle );
+multi.addEventListener('change', onMultiColorChange );
+
+const onInput = ( domEvent ) => {
+    const form = domEvent.currentTarget;
+
+    const x = form.elements.angleX.value;
+    const y = form.elements.angleY.value;
+
+    dice.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`;
+}
+
+form.addEventListener( 'input', onInput )
+form.addEventListener( 'reset', onReset );
+form.addEventListener( 'submit', onSubmit );
+
+window.addEventListener( 'load', () => form.reset() );
+</script>
+</body>
+</html>

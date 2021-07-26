@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Scaling in Three Dimensions With scale3d()
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    :is( [type="checkbox"] ) + label::before,
+    :is( [type="checkbox"] ) + label::after {
+      margin-right:  0 !important;
+    }
+
+    [type="checkbox"] + label {
+      gap: .5ch;
+    }
+
+    form {
+      background: hsla(0, 100%, 100%, .8);
+      padding: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dice {
+      transform-style: preserve-3d;
+      height: 20rem;
+      position: relative;
+      margin: auto;
+      width: 20rem;
+      pointer-events: none;
+    }
+
+    .dice div {
+      background: rgba(221, 0, 0, 0.4);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dice div:first-child {
+      transform: rotate(0deg) translateZ(-100px);
+    }
+
+    .dice div:nth-child(2) {
+      transform: rotateX(-90deg) translateZ(100px);
+    }
+
+    .dice div:nth-child(3) {
+      transform: rotateY(-90deg) translateZ(100px);
+    }
+
+    .dice div:nth-child(4) {
+      transform: rotateY(90deg) translateZ(100px);
+    }
+
+    .dice div:nth-child(5) {
+      transform: rotateX(90deg) translateZ(100px);
+    }
+    .dice div:last-child {
+      transform: rotate(180deg) translateZ(100px);
+    }
+    .dice circle {
+      fill: rgba(255, 255, 255, 0.8);
+    }
+
+    .backface {
+      backface-visibility: visible;
+    }
+
+     #scale {
+      font-size: 1.6rm;
+      height: 24rem;
+      margin: 4.8rem auto;
+      padding: 1.6rem;
+      width: 24rem;
+      pointer-events: none;
+      transform-style: preserve-3d;
+      perspective: 40rem;
+    }
+
+    #scale {
+      display: block;
+    }
+
+    #scalez {
+      pointer-events: none;
+    }
+
+    #scalez .dice {
+      transform-style: preserve-3d;
+      backface-visibility: visible;
+    }
+
+    [id=scale3d] {
+      display: flex;
+      gap: 5rem;
+
+    }
+
+    [id=scale3d] div {
+      flex: 1;
+    }
+
+    [id=scale3d] .flex {
+      gap: 2rem;
+    }
+
+    [type=range] {
+      display: block;
+      width: 100%;
+    }
+
+    label {
+      display: block;
+    }
+
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">Scaling in Three Dimensions With <code>scale3d()</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Scaling in Three Dimensions With <code>scale3d()</code></h2>
+
+
+
+  <h3><code id="output" aria-live="profile">transform: scale3d( 1, 1, 1 )</code></h3>
+
+<form id="scale3d" class="flex">
+    <div>
+        <label for="xdim">X direction</label>
+        <span class="flex">
+            <b>-3</b>
+            <input type="range" id="xdim" name="x" min="-3" max="3" value="1" step=".1">
+            <b>3</b>
+        </span>
+    </div>
+
+    <div>
+        <label for="ydim">Y direction</label>
+        <span class="flex">
+            <b>-3</b>
+            <input type="range" id="ydim" name="y" min="-3" max="3" value="1" step=".1">
+            <b>3</b>
+        </span>
+    </div>
+    <div>
+        <label for="zdim">Z direction</label>
+        <span class="flex">
+            <b>-3</b>
+            <input type="range" id="zdim" name="z" min="-3" max="3" value="1" step=".1">
+            <b>3</b>
+        </span>
+    </div>
+    <p> <button type="reset">Reset</button></p>
+</form>
+
+<div id="scale">
+    <div class="dice backface">
+        <div class="d1">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+
+         <div class="d3">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            </svg>
+         </div>
+
+
+         <div class="d3">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+
+         <div class="d4">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            </svg>
+        </div>
+
+
+        <div class="d5">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+        </div>
+
+        <div class="d6">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                <circle cx="50" cy="40" r="25"/>
+                <circle cx="149.9" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="40" r="25"/>
+                <circle cx="50" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="100" r="25"/>
+                <circle cx="50" cy="100" r="25"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+    <script>
+    (( win ) => {
+        const form = document.querySelector('form');
+        const scale = document.querySelector('#scale')
+
+        const onInput = ( domEvent = null ) => {
+
+            const [x, y, z ] = [ 
+                form.xdim.value,
+                form.ydim.value,
+                form.zdim.value,
+            ];
+
+            const propValue = `transform: scale3d( ${x}, ${y}, ${z} );`;
+
+            scale.style = propValue;
+
+            updateText( propValue )
+        }
+
+        const updateText = ( text ) => {
+            const output = document.querySelector('#output');
+            output.firstChild.replaceWith( text );
+        }
+
+        const onReset = () => {
+            form.xdim.value = 1;
+            form.ydim.value = 1;
+            form.zdim.value = 1;
+
+            const inp = new Event('input', { bubbles: true});
+            form.dispatchEvent( inp )
+        }
+
+        form.addEventListener( 'input', onInput );
+        form.addEventListener( 'reset', onReset );
+        win.addEventListener( 'load', onInput );
+
+    })( window );
+    </script>
+</body>
+</html>

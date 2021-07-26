@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using the skewY() function
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+      main {
+        height: 80rem;
+      }
+
+      #skewimg {
+        display: block;
+        height: 24rem;
+        margin: 4rem auto;
+        padding: 1.6em;
+        width: 24rem;
+        pointer-events: none;
+      }
+
+      #output {
+        margin-top: 2rem;
+      }
+
+      fieldset,
+      legend {
+        padding: 0;
+        border: 0;
+      }
+
+      legend {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+      }
+
+      label  {
+        font-weight: 500;
+        display: block;
+        width: 100%;
+      }
+
+      .flex {
+        gap:  3rem;
+        align-items: flex-end;
+        align-items: end;
+      }
+
+      .flex p {
+        flex: 1;
+        margin: 0;
+      }
+
+      form {
+        background: hsla(0, 100%, 100%, .8);
+        padding: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      [type=range] {
+        flex: 1;
+      }
+    </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">Using the <code>skewY()</code> function</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using the <code>skewY()</code> function</h2>
+
+
+
+  <h3><code id="output" aria-live="polite">transform: skewY( 1 )</code></h3>
+
+<form style="padding: 0;">
+    <label for="skewY">Adjust the slider to skew the object below.</label>
+    <div class="flex">
+        <b>-360</b>
+        <input type="range" id="skewY" name="factor" min="-360" max="360" value="0" step=".1" aria-valuemin="-360" aria-valuemax="-360" aria-valuenow="0">
+        <b>360</b>
+        <button type="reset">Reset</button>
+    </div>
+</form>
+
+<div><img id="skewimg" src="../../images/csscircle.svg" alt="Circle that contains the letters CSS"></div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+    <script>
+        ( (win) => {
+            const form = document.querySelector('form');
+
+            const onInput = ( domEvent) => {
+                const degree = form.querySelector( '[type=range]' );
+
+                if( domEvent.type === 'reset') {
+                    degree.value = 0;
+                }
+
+                domEvent.target.setAttribute( 'aria-valuenow', degree.value );
+
+                let skew = `${ degree.id }( ${degree.value }deg )`;
+
+                const img   = document.querySelector('#skewimg');
+                img.style.transform  = skew;
+                updateText( `transform: ${ skew }` );
+            }
+
+            const updateText = ( skewString = '' ) => {
+                const output = document.querySelector('#output');
+                const update = document.createTextNode( skewString );
+                output.firstChild.replaceWith( update );
+            }
+
+            form.addEventListener( 'input', onInput );
+            form.addEventListener( 'reset', onInput );
+
+        })(window)
+     
+
+    </script>
+</body>
+</html>

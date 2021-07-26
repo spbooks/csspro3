@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using SVG With Media Queries in a Background Image
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+<style>
+.flex {
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.svgmqbg {
+  align-items: center;
+  background: url(../../images/svgmqbg.svg) center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.svgmqbg > header,
+.svgmqbg > footer {
+  background-color: inherit;
+  min-width: 25rem;
+}
+
+.content > * {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 1.6rem 3rem;
+  min-width: 25rem;
+}
+
+.small .svgmqbg {
+  background-size: 10rem;
+}
+
+.medium .svgmqbg {
+  background-size: 20rem;
+}
+
+.large .svgmqbg {
+  background-size: 30rem;
+}
+
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+</style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Using CSS with SVG</a>
+      </li>
+      <li><a href="./" aria-current="page">Using SVG With Media Queries in a Background Image</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using SVG With Media Queries in a Background Image</h2>
+
+
+
+  <div class="svgmqbg">
+  <div class="content">
+    <form>
+        <ul class="flex">
+          <li>
+            <input type="radio" id="small" name="bgsize" value="small" checked>
+            <label for="small" class="mono"><code>background-size: 10rem auto</code></label>
+          </li>
+          <li>
+            <input type="radio" id="medium" name="bgsize" value="medium" >
+            <label for="medium" class="mono"><code>background-size: 20rem auto</code></label>
+          </li>
+          <li>
+            <input type="radio" id="large" name="bgsize" value="large">
+            <label for="large" class="mono"><code>background-size: 30rem auto</code></label>
+          </li>
+        </ul>
+    </form>
+    <p><a href="../../images/svgmqbg.svg">View the image</a></p>
+  </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script>
+( ( win ) => {
+  const form   = document.querySelector('form');
+  const values = Array.from( form.querySelectorAll('[value]') )
+                      .map( input => input.value );
+
+  const body = document.body;
+
+  const changeClass = ( domEvent = null ) => {
+    let selected;
+
+    /**
+     * Ternary operator. If domEvent is defined, use the value
+     * of its target. Otherwise, use the value of the element
+     * marked `checked`. This lets us use the same function to
+     * handle both the load and change events.
+     */
+
+    selected = domEvent ? domEvent.target.value : document.querySelector(':checked').value;
+    let remove   = values.filter( (val) => val !== selected );
+    
+    remove.map( ( className ) => { body.classList.remove( className ); });
+
+    body.classList.add( selected );
+  }
+
+  form.addEventListener( 'change', changeClass );
+  win.addEventListener( 'load', changeClass );
+
+} )( window );
+</script>
+</body>
+</html>

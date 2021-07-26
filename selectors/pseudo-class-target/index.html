@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using the :target pseudo-class
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    [id=comments] {
+      max-width: 50%;
+      margin: 3rem auto;
+    }
+
+    [id=comments] ul {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    [id=comments] li + li {
+      margin: 2rem 0;
+    }
+
+    [id|=comment] {
+      display: grid;
+      border: 1px solid var(--palette-t);
+      border-radius: .5rem;
+      font-size: 1.6rem;
+      gap: 2rem;
+      grid-template-columns: 1fr 3fr;
+      padding: 1.6rem;
+    }
+
+    [id|=comment]:target {
+      background: var(--palette-o-80);
+    }
+
+    .comment__meta {
+      display: flex;
+      justify-content: space-between;
+      margin: 0
+    }
+
+    .comment__avatar {
+      height: 12rem;
+      width: 12rem;
+    }
+  </style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page">Using the <code>:target</code> pseudo-class</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using the <code>:target</code> pseudo-class</h2>
+
+
+
+  <p>Jump to the <a href="#comment-34567">third comment</a> in order to understand how the <code>:target</code> pseudoclass works.</p>
+<section id="comments">
+  <h2>Comments</h2>
+  <!-- Avatar images based on patterns from https://www.heropatterns.com/ -->
+  <ul>
+    <li>
+      <article id="comment-12345">
+        <img src="../../images/a.png" class="comment__avatar" alt="Jada's avatar">
+        <div>
+          <p class="comment__meta">
+            <b class="comment__author">Jada</b>
+            <a href="#comment-12345">19 September</a>
+          </p>
+
+          <div class="comment__body">
+            <p>
+               Suspendisse tincidunt dolor sit amet dolor congue interdum. Mauris accumsan pellentesque purus sollicitudin tincidunt. Ut vel laoreet lectus.
+            </p>
+
+            <p>
+              Integer arcu diam, imperdiet ac cursus sit amet, ultricies tempus metus. In hac habitasse platea dictumst. Nullam sed pulvinar ipsum.
+            </p>
+          </div>
+        </div>
+      </article>
+    </li>
+
+    <li>
+      <article id="comment-23456">
+        <img src="../../images/b.png" class="comment__avatar" alt="Lisa's avatar">
+        <div>
+          <p class="comment__meta">
+            <b class="comment__author">Lisa</b>
+            <a href="#comment-23456">24 September</a>
+          </p>
+
+          <div class="comment__body">
+            <p>
+              Suspendisse tincidunt dolor sit amet dolor congue interdum. Mauris accumsan pellentesque purus sollicitudin tincidunt. Ut vel laoreet lectus.
+            </p>
+
+            <p>
+              Nam quis risus magna. Aenean at vulputate dolor. Integer arcu diam, imperdiet ac cursus sit amet, ultricies tempus metus. In hac habitasse platea dictumst. Nullam sed pulvinar ipsum.
+            </p>
+          </div>
+        </div>
+      </article>
+    </li>
+
+    <li>
+      <article id="comment-34567">
+        <img src="../../images/c.png" class="comment__avatar" alt="Jasmine's avatar">
+        <div>
+          <p class="comment__meta">
+            <b class="comment__author">Jasmine</b>
+            <a href="#comment-34567">24 September</a>
+          </p>
+
+          <div class="comment__body">
+            <p>
+              Suspendisse tincidunt dolor sit amet dolor congue interdum. Mauris accumsan pellentesque purus sollicitudin tincidunt. Ut vel laoreet lectus.
+            </p>
+
+            <p>
+              Nam quis risus magna. Aenean at vulputate dolor. Integer arcu diam, imperdiet ac cursus sit amet, ultricies tempus metus. In hac habitasse platea dictumst. Nullam sed pulvinar ipsum.
+            </p>
+          </div>
+        </div>
+      </article>
+    </li>
+
+    <li>
+      <article id="comment-45678">
+        <img src="../../images/d.png" class="comment__avatar" alt="Dawnn's avatar">
+        <div>
+          <p class="comment__meta">
+            <b class="comment__author">Dawnn</b>
+            <a href="#comment-45678">24 September</a>
+          </p>
+
+          <div class="comment__body">
+            <p>
+              Nam quis risus magna. Aenean at vulputate dolor. Integer arcu diam, imperdiet ac cursus sit amet, ultricies tempus metus. In hac habitasse platea dictumst. Nullam sed pulvinar ipsum.
+            </p>
+          </div>
+        </div>
+      </article>
+    </li>
+
+    <li>
+      <article id="comment-56789">
+        <img src="../../images/e.png" class="comment__avatar" alt="Marisa's avatar">
+        <div>
+          <p class="comment__meta">
+            <b class="comment__author">Marisa</b>
+            <a href="#comment-56789">24 Setember</a>
+          </p>
+
+          <div class="comment__body">
+            <p>
+               Phasellus elit quam, consequat et consequat ac, posuere quis mi. Cras sed elit libero. Cras sed efficitur risus, eu ornare quam.
+            </p>
+
+            <p>
+               Suspendisse tincidunt dolor sit amet dolor congue interdum. Mauris accumsan pellentesque purus sollicitudin tincidunt. Ut vel laoreet lectus.
+            </p>
+
+            <p>
+              Integer arcu diam, imperdiet ac cursus sit amet, ultricies tempus metus. In hac habitasse platea dictumst. Nullam sed pulvinar ipsum.
+            </p>
+          </div>
+        </div>
+      </article>
+    </li>
+
+    <li>
+      <article id="comment-67890">
+        <img src="../../images/f.png" class="comment__avatar" alt="Charnelle's avatar">
+        <div>
+          <p class="comment__meta">
+            <b class="comment__author">Charnelle</b>
+            <a href="#comment-67890">6 October</a>
+          </p>
+
+          <div class="comment__body">
+            <p>
+              In semper justo id velit interdum ultricies. Aenean sed viverra magna. Nulla nec pulvinar dui. Etiam consectetur elementum placerat. Quisque pretium felis ut feugiat semper. Nullam eget diam vel arcu rhoncus ultrices at quis velit. Sed cursus justo ut sodales luctus. Etiam convallis tempor erat quis viverra.
+            </p>
+          </div>
+        </div>
+      </article>
+    </li>
+
+    <li>
+      <article id="comment-78901">
+        <img src="../../images/g.png" class="comment__avatar" alt="Cree's avatar">
+        <div>
+          <p class="comment__meta">
+            <b class="comment__author">Cree</b>
+            <a href="#comment-78901">6 October</a>
+          </p>
+
+          <div class="comment__body">
+            <p>
+               Phasellus elit quam, consequat et consequat ac, posuere quis mi. Cras sed elit libero. Cras sed efficitur risus, eu ornare quam.
+            </p>
+
+            <p>
+               Suspendisse tincidunt dolor sit amet dolor congue interdum. Mauris accumsan pellentesque purus sollicitudin tincidunt. Ut vel laoreet lectus.
+            </p>
+
+            <p>
+              Integer arcu diam, imperdiet ac cursus sit amet, ultricies tempus metus. In hac habitasse platea dictumst. Nullam sed pulvinar ipsum.
+            </p>
+          </div>
+        </div>
+      </article>
+    </li>
+  </ul>
+  <p><a href="#top">Back to top</a></p>
+</section>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

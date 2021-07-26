@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using the font-variation-settings Property
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+<style>
+
+  @font-face {
+      font-family: 'Amstelvar';
+      src: url('../../fonts/amstelvar/Amstelvar-Roman-blended-VF.ttf');
+      /* Future-proof format syntax. See http://clagnut.com/blog/2391 */
+      src: url('../../fonts/amstelvar/Amstelvar-Roman-blended-VF.ttf') format('truetype', supports variations);
+      font-weight: 100 900;
+  }
+
+  main > div {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    position: relative;
+  }
+
+  .demo__wrapper {
+    font-family: 'Amstelvar';
+    max-height: 190rem;
+  }
+
+  .demo__wrapper p {
+    margin: 0;
+  }
+
+  form {
+    height: 80rem;
+    background:  var( --palette-t-80 );
+    padding: 2rem;
+    position: sticky;
+    top: 0;
+  }
+
+  form p {
+    display: grid;
+    grid-template: "a a a" "b b c";
+    gap: 1rem;
+  }
+
+  form p + p {
+    margin: 2rem 0;
+  }
+
+  form > div {
+    padding: 2rem;
+  }
+
+  label {
+    grid-area: a;
+  }
+
+
+  [type=range] {
+    grid-area: b;
+  }
+
+  output {
+    grid-area: c;
+  }
+
+</style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Working With Text</a>
+      </li>
+      <li><a href="./" aria-current="page">Using the <code>font-variation-settings</code> Property</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using the <code>font-variation-settings</code> Property</h2>
+
+
+
+  <p>With the <code>font-variation-settings</code> property, we can also use CSS to modify the appearance of a range of font features &mdash; <em>if</em> the font supports it. <a href="https://github.com/TypeNetwork/Amstelvar">Amstelvar</a> is one of those fonts.</p>
+<p>Note that each of the values below is an <em>axis</em> defined by the font file.</p>
+<p><strong>Related specification:</strong> <a href="https://www.w3.org/TR/css-fonts-4/" class="amstelvarital">CSS Fonts Module Level 4</a></p>
+<div>
+  <div class="demo__wrapper">
+    <p>Pack my box with five dozen liquor jugs.</p>
+  </div>
+
+  <form>
+    <p>
+      <label for="font-size">font-size (rem units)</label>
+      <input type="range" id="font-size" name="font-size" min="1" max="20" value="3" step="0.25">
+      <output for="font-size" name="font-size_output"></output>
+    </p>
+
+    <p>
+      <label for="opsz">opsz (optical sizing)</label>
+      <input type="range" id="opsz" name="opsz" min="8" max="144" value="12" aria-describedby="opsz-explain">
+      <output for="opsz" name="opsz_output"></output>
+    </p>
+
+
+    <p>
+      <label for="wght" markdown=1>wght (weight)</label>
+      <input type="range" id="wght" name="wght" min="1" max="1000" value="400" aria-describedby="wght-explain">
+      <output for="wght" name="wght_output"></output>
+    </p>
+
+
+    <p>
+      <label for="wdth">wdth (width)</label>
+      <input type="range" id="wdth" name="wdth" min="60" max="200" value="100">
+      <output for="wdth" name="wdth_output"></output>
+    </p>
+
+
+    <p>
+      <label for="GRAD">GRAD (grade)</label>
+      <input type="range" id="GRAD" name="GRAD" min="-60" max="60" value="0">
+      <output for="GRAD" name="GRAD_output"></output>
+    </p>
+
+    <p><button type="reset">Reset all</button></p>
+  </form>
+
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script>
+  const form = document.querySelector( 'form' );
+  const demo = document.querySelector( '.demo__wrapper' );
+  
+  const findInputs = (el) => el.nodeName === 'INPUT';
+
+  const buildfontVariationSettings = (arrayOfNameValueObjects) => {
+    const fvs = arrayOfNameValueObjects.map((item) => {
+      form[item.name].nextElementSibling.value = item.value;
+      return `"${item.name}" ${item.value}`;
+    });
+
+    demo.style.fontVariationSettings = fvs.join(', ');
+  }
+
+  const updateFontVariationSetting = (domEvent) => {
+    const target = domEvent.currentTarget;
+
+    const values = Array.from(target.elements).filter(findInputs).map((e) => {
+      return { name: e.name, value: e.value };
+    });
+
+    /* Set the value of `font-size` */
+    const fontSize = values.shift();
+    demo.style.setProperty(fontSize.name, `${fontSize.value}rem`);
+    target[fontSize.name].nextElementSibling.value = `${target[fontSize.name].value}`;
+
+    buildfontVariationSettings(values);
+  }
+
+  const resetHandler = (domEvent) => {
+    const target = domEvent.currentTarget;
+
+    const values = Array.from(domEvent.target.elements).filter(findInputs).map((e) => {
+      // getAttribute returns the authored DOM value,
+      // instead of the current value.
+      return { name: e.name, value: e.getAttribute('value') };
+    });
+
+    /* Set the value of `font-size` */
+    
+    demo.style.fontSize = '3rem';
+    target['font-size'].nextElementSibling.defaultValue = target['font-size'].getAttribute('value');
+
+    /* Remove font-size field from values list */
+    values.shift();
+    buildfontVariationSettings(values);
+  }
+
+  form.addEventListener('input', updateFontVariationSetting);
+  form.addEventListener('submit', (domEvent) => domEvent.preventDefault());
+  form.addEventListener('reset', resetHandler);
+  window.addEventListener('load', () => form.reset() );
+</script>
+</body>
+</html>

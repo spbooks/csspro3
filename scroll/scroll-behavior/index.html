@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Smooth Internal Links With scroll-behavior
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+        main a:link {
+            padding: 1rem;
+        }
+
+        main a:hover {
+            text-decoration-style: solid;
+        }
+
+        nav ul {
+            align-items: center;
+            display: flex;
+            font-size: 3rem;
+            font-weight: bold;
+            gap: 3rem;
+            list-style: none;
+            justify-content: center;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        nav li::marker {
+            content: unset;
+            padding: 0;
+        }
+        
+        .flex {
+            gap: 10%;
+        }
+
+        form {
+            margin: 2rem auto;
+            width: 80%;
+        }
+
+        form p {
+            margin: 2rem 0;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        .scroll-container {
+            border: 2px inset var(--border-b);
+            font-size: 20rem;
+            font-weight: 500;
+            width: 80%;
+            margin: auto;
+            
+            /*
+            * When the container has a fixed height, its contents may
+            * overflow it
+            */
+            height: 40rem;
+        
+            /*
+            * Can also use `overflow` as a property. Value can also be
+            * `scroll`.
+            */
+            overflow-y: auto;
+        }
+
+
+        /* 
+        * Remember, motion can make some people dizzy!
+        */
+        @media screen and ( prefers-reduced-motion ) {
+            .scroll-container {
+                scroll-behavior: auto;
+            }
+        }
+
+        .scroll-container div {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+
+            /*
+            * Total height of child divs are large enough or contain
+            * enough content to overflow their parent container.
+            */
+            height: 100%;
+        }
+
+        .scroll-container div:first-of-type {
+            background-color: var( --palette-j-80 );
+        }
+
+        .scroll-container div:nth-of-type(2) {
+            background-color: var( --palette-n-80 );
+        }
+
+        .scroll-container div:nth-of-type(3) {
+            background-color: var( --palette-e-80 );
+        }
+
+        .scroll-container div:last-of-type {
+            background-color: var( --palette-q-80 );
+        }
+    </style>
+
+</head>
+
+<body class="scrollbehavior">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Managing Scrolling with CSS</a>
+      </li>
+      <li><a href="./" aria-current="page">Smooth Internal Links With <code>scroll-behavior</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Smooth Internal Links With <code>scroll-behavior</code></h2>
+
+
+
+  <div class="message warning">
+  <p>This demo may cause dizziness if you have a vestibular disorder.</p>
+</div>
+
+<div class="message note">
+  <p>This demo may not work as intended if you've disabled animations in your operating system's settings (also known as <code>prefers-reduced-motion</code>).</p>
+</div>
+
+<form>
+  <fieldset>
+    <div>
+      <legend>Toggle <code>scroll-behavior</code> value</legend>
+      <div class="flex">
+        <p>
+          <input type="radio" name="scrollbehavior" id="auto" value="auto" checked>
+          <label for="auto" class="code">auto</label>
+
+        </p>
+        <p>
+          <input type="radio" name="scrollbehavior" id="smooth" value="smooth">
+          <label for="smooth" class="code">smooth</label>
+        </p>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<nav>
+  <ul>
+      <li><a href="#A">A</a></li>
+      <li><a href="#B">B</a></li>
+      <li><a href="#C">C</a></li>
+      <li><a href="#D">D</a></li>
+  </ul>
+</nav>
+
+<div class="scroll-container">
+  <div id="A">A</div>
+  <div id="B">B</div>
+  <div id="C">C</div>
+  <div id="D">D</div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+    <script>
+        (( win ) => {
+            const form = document.querySelector( 'form' );
+
+            const onChange = ( domEvent = null ) => {
+                var value;
+
+                if( domEvent && domEvent.hasOwnProperty('target') ) {
+                    value = domEvent.target.value;
+                } else {
+                    value = document.querySelector(':checked').value;
+                }
+
+                const container = document.querySelector('.scroll-container');
+                container.style = `scroll-behavior: ${ value }`;
+            };
+
+            form.addEventListener( 'change', onChange );
+            window.addEventListener( 'load', onChange );
+
+        })( window )
+    </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Changing an Element’s Position With translate()
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  form {
+    background: rgba( 255, 255, 255, .8 );
+    gap: 3rem;
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  form > div {
+    flex: 1;
+  }
+
+  form .flex {
+    gap: 2rem;
+  }
+
+  #translate {
+    display: block;
+    height: 44rem;
+    margin: 4.8rem auto;
+    padding: 1.6rem;
+    width: 44rem;
+    pointer-events: none;
+    transform-style: preserve-3d;
+  }
+
+  #output {
+    margin-top: 2rem;
+  }
+
+  [type=range] {
+    flex: 1;
+  }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">Changing an Element&#8217;s Position With <code>translate()</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Changing an Element&#8217;s Position With <code>translate()</code></h2>
+
+
+
+  <h3>
+    <code id="output" aria-live="polite">transform: translate( 0, 0 )</code>
+</h3>
+
+<p>Adjust the slider to translate the object below. Translations are relative to the element's starting position. The <code>translate()</code> function accepts up to two arguments. The first argument is the <em>X</em> offset value; the second is the <em>Y</em> offset. If there isn't a second argument, its value is <code>0</code>. Using <code>translate( 200px )</code> or <code>translate( 200px, 0 )</code> is equivalent to <code>translateX( 200px )</code> and <code>translate( 0, 200px )</code> is the equivalent of <code>translateY( 200px )</code>.</p>
+<form class="flex">
+    <div>
+        <label for="xdim">X direction</label>
+        <span class="flex">
+            <b>-500px</b>
+            <input type="range" id="xdim" name="x" min="-500" max="500" value="0" step="5">
+            <b>500px</b>
+        </span>
+    </div>
+
+    <div>
+        <label for="ydim">Y direction</label>
+        <span class="flex">
+            <b>-500px</b>
+            <input type="range" id="ydim" name="y" min="-500" max="500" value="0" step="5">
+            <b>500px</b>
+        </span>
+    </div>
+    <p> <button type="reset">Reset</button></p>
+</form>
+
+<iframe id="translate" src="../../images/csscircle.svg" ></iframe>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script>
+    (( win ) => {
+        const form = document.querySelector('form');
+        const translate = document.getElementById('translate');
+
+        const onInput = ( domEvent = null ) => {
+            let propValue = `translate( ${ form.xdim.value }px )`;
+
+            if( form.ydim.value != 0 ) {
+                propValue = `translate( ${ form.xdim.value }px, ${ form.ydim.value }px )`;
+            }
+
+            translate.style.transform = propValue;
+
+            if( domEvent && domEvent.hasOwnProperty('target') ) {
+                domEvent.target.setAttribute('aria-valuenow', domEvent.target.value );
+            }
+
+            updateText( `transform: ${ propValue }` );
+        }
+
+        const updateText = ( text ) => {
+            const output = document.querySelector('#output');
+            output.firstChild.replaceWith( text );
+        }
+
+        const onReset = () => {
+            form.xdim.value = 0;
+            form.ydim.value = 0;
+
+            form.xdim.setAttribute('aria-valuenow', 0);
+            form.ydim.setAttribute('aria-valuenow', 0);
+
+            const inp = new Event('input', { bubbles: true });
+            form.xdim.dispatchEvent( inp );
+            form.ydim.dispatchEvent( inp );
+        }
+
+        form.addEventListener( 'input', onInput );
+        form.addEventListener( 'reset', onReset );
+        win.addEventListener( 'load', () => { form.reset(); } );
+
+    })( window );
+</script>
+</body>
+</html>

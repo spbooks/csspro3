@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using Stacking Context to Create a Menu
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+  <link rel="stylesheet" href="../../theme/css/grid-base.css" id="Grid_CSS">
+
+
+<style>
+  .menu__demo {
+    position: relative;
+    padding: 0;
+    max-width: calc( 100% + 4rem);
+    margin: 0;
+    z-index: 0;
+  }
+
+  .demo__news__header {
+    background: #222629;
+    color: whitesmoke;
+    position: relative;
+    padding: 2rem;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .demo__news__header__logo {
+    width: auto;
+    height: 5rem;
+    display: block;
+  }
+
+  .demo__news__header__nav {
+    background: #222629;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    left: 0;
+    top: -100rem;
+    transition: top 500ms ease-in-out;
+  }
+
+  .demo__news__header__nav a {
+    color: whitesmoke;
+  }
+
+  .open {
+    top: 9rem;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+    padding-bottom: .5rem;
+    margin: 0;
+  }
+
+  .content {
+    padding: 0 1rem;
+  }
+
+  [id=menu], [id=menu]:hover {
+    position: absolute;
+    right: 1rem;
+    bottom: .7rem;
+    padding: 0;
+    background: transparent;
+    text-align: center;
+    min-width: 0;
+    border: 0;
+    line-height: 1;
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 1.5rem;
+  }
+
+  [id=menu] img {
+    height: 4vw;
+    width: auto;
+    padding-right: 1vw;
+  }
+  [id=menu] img::hover path {
+    fill: #ffeb3b;
+  }
+
+  [id=menu-list] {
+    list-style: none;
+    padding: .5rem;
+    margin: 0;
+  }
+  [id=menu-list] li {
+    padding-left: 1rem;
+  }
+  [id=menu-list] li:first-child a {
+    border-color: #3f51b5;
+  }
+  [id=menu-list] li:nth-child(2) a {
+    border-color: #4caf50;
+  }
+  [id=menu-list] li:nth-child(3) a {
+    border-color: #e91e63;
+  }
+  [id=menu-list] li:nth-child(4) a {
+    border-color: #00bcd4;
+  }
+  [id=menu-list] li:nth-child(5) a {
+    border-color: #ff9800;
+  }
+  [id=menu-list] a {
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    padding: .1rem .75rem;
+    margin: 8px 0;
+    border-left: 5px solid #000;
+    position: static;
+  }
+
+  [id=menu-list] a:hover {
+    color: #ffeb3b;
+  }
+
+  [class|="articlepromo"] {
+    border-top: 5px solid #4caf50;
+    color: #555;
+    line-height: 1.3;
+    padding-top: .5em;
+  }
+  [class|="articlepromo"] h3 {
+    color: #000;
+    font-size: 1.3.2rem;
+    margin: 0;
+  }
+  [class|="articlepromo"] p {
+    margin: 0 0 1.6rem;
+  }
+
+  .articlepromo-entertainment {
+    border-color: #e91e63;
+  }
+  .articlepromo-sports {
+    border-color: #3f51b5;
+  }
+  .articlepromo-business {
+    border-color: #00bcd4;
+  }
+
+</style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">CSS Layout</a>
+      </li>
+      <li><a href="./" aria-current="page">Using Stacking Context to Create a Menu</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using Stacking Context to Create a Menu</h2>
+
+
+
+  <div class="menu__demo">
+  <div class="demo__news__header">
+    <iframe src="../../images/awesomenews.svg" class="demo__news__header__logo"></iframe>
+    <button type="button" id="menu">
+      <img src="../../images/menu.svg">
+    </button>
+    <nav class="demo__news__header__nav">
+      <ul id="menu-list">
+            <li><a href="/sports">Sports</a></li>
+            <li><a href="/politics">Politics</a></li>
+            <li><a href="/arts">Arts &amp; Entertainment</a></li>
+            <li><a href="/business">Business</a></li>
+            <li><a href="/travel">Travel</a></li>
+        </ul>
+    </nav>
+  </div>
+
+  <div class="content">
+    <div id="top-news">
+      <h1>Top News</h1>
+      <article class="articlepromo">
+        <h3>U.S. Finally Ratifies Kyoto Protocol</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ab eius id aliquid consectetur veritatis facilis, debitis dolorum eaque eligendi hic laborum magnam earum dolorem fugit quos modi nulla ducimus.</p>
+      </article>
+
+      <article class="articlepromo">
+        <h3>U.S. Elects First Woman President</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ab eius id aliquid consectetur veritatis facilis, debitis dolorum eaque eligendi hic laborum magnam earum dolorem fugit quos modi nulla ducimus.</p>
+      </article>
+
+      <article class="articlepromo-entertainment">
+        <h3>Amazon Buys MGM Studios</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ab eius id aliquid consectetur veritatis facilis, debitis dolorum eaque eligendi hic laborum magnam earum dolorem fugit quos modi nulla ducimus.</p>
+      </article>
+
+      <article class="articlepromo-sports">
+        <h3>New York Knicks Win NBA title</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ab eius id aliquid consectetur veritatis facilis, debitis dolorum eaque eligendi hic laborum magnam earum dolorem fugit quos modi nulla ducimus.</p>
+      </article>
+
+      <article class="articlepromo-sports">
+        <h3>United States Finally Wins the World Cup</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ab eius id aliquid consectetur veritatis facilis, debitis dolorum eaque eligendi hic laborum magnam earum dolorem fugit quos modi nulla ducimus.</p>
+      </article>
+
+      <article class="articlepromo-business">
+        <h3>Google Buys EverythingOnTheInternet.com</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ab eius id aliquid consectetur veritatis facilis, debitis dolorum eaque eligendi hic laborum magnam earum dolorem fugit quos modi nulla ducimus.</p>
+      </article>
+    </div>
+  </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script>
+document.querySelector('button').onclick = function(e){
+    document.querySelector('.demo__news__header__nav').classList.toggle('open');
+}
+</script>
+</body>
+</html>

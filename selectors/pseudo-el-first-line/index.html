@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using ::first-line
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+<style>
+
+		main div {
+			max-width: 70ch;
+			margin: 4rem auto;
+			resize: horizontal;
+		}
+
+		main p {
+			font-size: 2.4rem;
+		}
+
+		main p::first-line {
+			font: bold 3.6rem 'Zilla Slab', serif;
+			font-style: italic;
+			color: #673ab7;
+		}
+
+		.generated::before {
+			content: '!!!';
+			display: block;
+		}
+
+
+</style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page">Using <code>::first-line</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using <code>::first-line</code></h2>
+
+
+
+  <div>
+  <p lang="la"><span lang="en-us">This is a paragraph of text.</span> Proin condimentum elit sapien, ut tempor nisl porta quis. Pellentesque vel quam efficitur, pharetra urna in, suscipit tortor. Pellentesque vel nisl sed tellus eleifend efficitur. Sed imperdiet diam sem, nec sodales libero lobortis non. Nunc semper felis sem, id pharetra lacus pellentesque tempor. Ut vitae scelerisque mauris. Nunc interdum ultricies laoreet. Nam a dui luctus, egestas enim sit amet, blandit quam. Phasellus lorem libero, sollicitudin id hendrerit a, faucibus eget nisi. Nulla et suscipit felis. Phasellus auctor nisi leo, a bibendum turpis convallis nec.</p>
+
+
+  <p lang="la"><q>This text is enclosed within <code>&lt;q&gt;</code> tags.</q> Firefox includes the opening punctuation in the first line's styling. Chromium-based browsers, on the other hand, do not.</p>
+
+
+  <p>Adding a <code>&lt;br&gt;</code> or <code>&lt;hr&gt;</code> tag<br>to a line break forces a first line. Styles are limited to characters that precede the forced line break or horizontal rule.</p>
+
+  <p class="generated">Generated content can become a first line. In this example, we've added content using <code>::before</code>, but styled it using <code>display: block</code> to force a first line. Unfortunately, this does not yet work in Firefox.</p>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

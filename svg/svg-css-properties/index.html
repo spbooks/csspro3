@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using SVG Attributes As CSS Properties
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    main > div {
+      display: grid;
+      grid-template-columns: repeat( 2, 1fr );
+      gap: 4rem;
+    }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Using CSS with SVG</a>
+      </li>
+      <li><a href="./" aria-current="page">Using SVG Attributes As CSS Properties</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using SVG Attributes As CSS Properties</h2>
+
+
+
+  <p>Some SVG element attributes have equivalent <em>presentation attributes</em>. We can use CSS to set the position of <code>rect</code>, <code>circle</code>, and <code>ellipse</code> elements.</p>
+<p>Although units are optional for SVG attributes, they're <em>required</em> when using CSS.</p>
+<p>The last two demos require a <a href="https://www.chromium.org/">Chromium</a>-based browser, such as <a href="https://www.google.com/chrome/">Google Chrome</a> or <a href="https://www.microsoft.com/en-us/edge">Microsoft Edge</a>.</p>
+<p>(Note: SVG also supports the use of the <code>style</code> attribute for elements.)</p>
+<div>
+  <div markdown=0>
+    <h3>Using Element Attributes as Presentation Attributes</h3>
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <style type="text/css">
+      .small {
+        cx: 20px;
+        cy: 20px;
+        r:  20px;
+        fill:  #0c0;
+      }
+
+      .medium {
+        cx: 80px;
+        cy: 80px;
+        r:  60px;
+        fill:  #fc0;
+      }
+
+      .large {
+        cx: 220px;
+        cy: 220px;
+        r:  120px;
+        fill: #00f;
+      }
+      </style>
+      <circle class="small" />
+      <circle class="medium" />
+      <circle class="large" />
+    </svg>
+  </div>
+
+  <div markdown=0>
+    <h3>You can also set <code>rect</code> element attributes using CSS</h3>
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <style type="text/css">
+        rect {
+            x: 10px;
+            y: 10px;
+            width:  200px;
+            height: 200px;
+            stroke-width: 10px;
+            fill: hsl( 40, 100%, 50% );
+            stroke: hsl( 210, 100%, 50% );
+        }
+
+        rect:last-child {
+            x: 230px;
+            y: 50px;
+            width:  100px;
+            height: 300px;
+            fill: hsl( 120, 100%, 50% );
+            stroke: hsl( 20, 100%, 50% );
+        }
+      </style>
+      <rect />
+      <rect />
+    </svg>
+  </div>
+
+  <div markdown=0>
+    <h3>Setting Path Data With CSS (Chromium-based browsers only)</h3>
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <style type="text/css">
+        path {
+          transform: rotate(-90deg) translate(-270px, 50px);
+          fill: hsl( 270, 100%, 50% );
+          stroke: hsl( 30, 100%, 50% );
+          stroke-width: 30px;
+          /* Chromium-based browsers only */
+          d: path("M 68.978158,152.90195 C 59.064684,142.5944 52.211851,129.37884 49.499297,115.33731 46.786744,101.29578 48.224206,86.478685 53.585215,73.220403 58.946225,59.962121 68.211543,48.310234 79.921451,40.100454 91.63136,31.890674 105.74384,27.152464 120.03551,26.632312 c 14.29167,-0.520151 28.71125,3.179622 40.98698,10.516435 12.27574,7.336812 22.36357,18.284333 28.6742,31.11782 6.31063,12.833488 8.82141,27.506884 7.13678,41.708453 -1.68463,14.20156 -7.55864,27.88033 -16.69658,38.88126 -15.4551,18.60599 -38.70606,28.47768 -58.69607,42.09541 -9.99501,6.80886 -19.40484,14.78778 -26.161826,24.81793 -6.75699,10.03015 -10.690723,22.31878 -9.079539,34.30481 1.020919,7.59489 4.261722,14.87797 9.220239,20.72071 4.958516,5.84275 11.617556,10.2249 18.945286,12.46744 7.32773,2.24253 15.29874,2.33768 22.67791,0.27068 7.37917,-2.06699 14.14091,-6.28895 19.23747,-12.01168");
+        }
+      </style>
+      <path />
+    </svg>
+  </div>
+
+  <div markdown=0>
+    <h3>An Animated Path Future (Chromium browsers only)</h3>
+
+    <button type="button">Animate</button>
+
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <style type="text/css">
+        path {
+          transform: rotate(-90deg) translate(-270px, 50px);
+          fill: hsl( 270, 100%, 50% );
+          stroke: hsl( 30, 100%, 50% );
+          stroke-width: 30px;
+
+          transition: d 1s ease-in-out,
+                      transform 500ms linear,
+                      fill 500ms ease-in-out,
+                      stroke 500ms ease-in-out;
+
+          /* Chromium-based browsers only */
+          d: path("M 68.978158,152.90195 C 59.064684,142.5944 52.211851,129.37884 49.499297,115.33731 46.786744,101.29578 48.224206,86.478685 53.585215,73.220403 58.946225,59.962121 68.211543,48.310234 79.921451,40.100454 91.63136,31.890674 105.74384,27.152464 120.03551,26.632312 c 14.29167,-0.520151 28.71125,3.179622 40.98698,10.516435 12.27574,7.336812 22.36357,18.284333 28.6742,31.11782 6.31063,12.833488 8.82141,27.506884 7.13678,41.708453 -1.68463,14.20156 -7.55864,27.88033 -16.69658,38.88126 -15.4551,18.60599 -38.70606,28.47768 -58.69607,42.09541 -9.99501,6.80886 -19.40484,14.78778 -26.161826,24.81793 -6.75699,10.03015 -10.690723,22.31878 -9.079539,34.30481 1.020919,7.59489 4.261722,14.87797 9.220239,20.72071 4.958516,5.84275 11.617556,10.2249 18.945286,12.46744 7.32773,2.24253 15.29874,2.33768 22.67791,0.27068 7.37917,-2.06699 14.14091,-6.28895 19.23747,-12.01168");
+        }
+
+        .animated {
+          fill: hsl( 30, 100%, 50% );
+          stroke: hsl( 270, 100%, 50% );
+          transform: rotate(-90deg) translate(-270px, -50px);
+
+          d:  path("M 68.978158,152.90195 C 64.337875,136.30903 67.712819,117.66577 77.875542,103.7526 88.038265,89.83944 104.77161,80.953676 121.98975,80.327014 c 17.21814,-0.626662 34.55316,7.01917 45.70041,20.156746 11.14724,13.13758 15.86852,31.48618 12.44673,48.37252 -2.32849,11.49098 -8.17562,22.06493 -15.60926,31.13166 -7.43364,9.06672 -16.4317,16.72618 -25.74183,23.85261 -18.62025,14.25286 -39.139643,27.02336 -52.586345,46.23388 -10.207067,14.58224 -15.71636,32.39967 -15.521691,50.19821 0.194668,17.79854 6.092348,35.49121 16.615917,49.84671 10.523569,14.35551 25.621599,25.30369 42.536669,30.84503 16.91506,5.54134 35.5645,5.64876 52.54228,0.30264 16.97778,-5.34612 32.20093,-16.11965 42.88917,-30.35297 10.68824,-14.23333 16.78934,-31.85688 17.18902,-49.652 0.39969,-17.79512 -4.90399,-35.67483 -14.94239,-50.37368 -10.03841,-14.69886 -24.76249,-26.14502 -41.48312,-32.24802");
+        }
+      </style>
+      <path id="curve" />
+    </svg>
+  </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+    <script>
+    const btn = document.querySelector( 'button' );
+    btn.addEventListener('click', () => {
+      document.querySelector( '#curve' ).classList.toggle( 'animated' );
+    });
+    </script>
+</body>
+</html>

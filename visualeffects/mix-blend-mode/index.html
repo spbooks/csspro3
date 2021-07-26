@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using the mix-blend-mode Property
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  form > p {
+    display: grid;
+    grid-template-areas: 'label label'
+                         'select button'
+                         'output output';
+
+
+    gap:  1rem;
+    grid-template-columns: auto 100px;
+    max-width: 80%;
+  }
+
+  label {
+    font-weight: bold;
+    grid-area: label;
+  }
+
+  select {
+    grid-area: select;
+    font-family: inherit;
+  }
+
+  button {
+    grid-area: button;
+  }
+
+  option {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .demo {
+      background-image: linear-gradient(to left, #f30, #fc0);
+      width: 60vw;
+      margin: 3rem auto;
+      position: relative;
+  }
+
+  .demo p {
+      position: absolute;
+      color: black;
+      margin: 4rem;
+      font-size: 6.4rem;
+      font-weight: bold;
+  }
+
+  output {
+    font-size: 3.6rem;
+    margin: 2rem 0;
+  }
+
+  img {
+      display: block;
+      height: auto;
+      width: 100%;
+  }
+
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Visual Effects</a>
+      </li>
+      <li><a href="./" aria-current="page">Using the <code>mix-blend-mode</code> Property</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using the <code>mix-blend-mode</code> Property</h2>
+
+    <div class="message note">
+      <p>This demo only works when the browser can create an origin. You may need to run a <a href="../../help/local-server/">local server</a> for this demo.</p>
+    </div>
+
+
+  <p><code>mix-blend-mode</code> merges foreground layers with layers that are stacked below it. A layer may be a background color or image for a parent element, for the root element, or elements that sit beneath the targeted element in the stack.</p>
+<p>Some values may result in a blank or white image. This is due to the way pixel color gets calculated. </p>
+<form>
+  <p>
+    <label for="mix-blend-mode" class="code">Select a blend mode</label>
+    <select id="mix-blend-mode">
+      <option>normal</option>
+      <option>color</option>
+      <option>color-burn</option>
+      <option>color-dodge</option>
+      <option>darken</option>
+      <option>difference</option>
+      <option>exclusion</option>
+      <option>hard-light</option>
+      <option>hue</option>
+      <option>lighten</option>
+      <option>luminosity</option>
+      <option>multiply</option>
+      <option>overlay</option>
+      <option>saturation</option>
+      <option>screen</option>
+      <option>soft-light</option>
+    </select>
+
+    <button type="reset">Reset</button>
+
+    <output aria-live="polite" class="code">img { mix-blend-mode: normal }</code>
+</form>
+
+<div class="demo">
+    <p>This paragraph is absolutely-positioned.</p>
+    <img src="../../images/dahlia-6154889_1920.jpg">
+</div>
+
+<p class="image-credit">
+  Image by <a href="https://pixabay.com/users/dewdrop157-1559210/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6154889">dewdrop157</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6154889">Pixabay</a>
+</p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    ( (win, doc) => {
+      const form  = doc.forms[0];
+      const image = doc.querySelector( 'img' );
+      const indicator = doc.querySelector('output');
+
+      const updateIndicator = ( value = 'normal' ) => {
+        const textNode = doc.createTextNode( `img { mix-blend-mode: ${ value } }` );
+        indicator.firstChild.replaceWith( textNode );
+      }
+
+      const onChange = ( domEvent ) => {
+        if( !domEvent.target.value ) {
+          image.removeAttribute( 'style' );
+          updateIndicator();
+        } else {
+          image.style.mixBlendMode = domEvent.target.value;
+          updateIndicator(  domEvent.target.value );
+        }
+      }
+
+      const onReset = ( domEvent ) => {
+        image.removeAttribute( 'style' );
+        updateIndicator();
+      }
+
+      form.addEventListener( 'change', onChange );
+      form.addEventListener( 'reset', onReset );
+      win.addEventListener( 'load', () => form.reset() );
+
+    })( window, document )
+
+  </script>
+</body>
+</html>

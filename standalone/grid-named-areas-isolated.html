@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Recipes! Tuna with zucchini noodles</title>
+    <style>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    :root {
+        font: 300 10px / 1.5 "Inter", -apple-system, BlinkMacSystemFont, Helvetica, 'Liberation Sans', sans-serif;
+        padding: 0;
+        margin: 0;
+    }
+
+    .demo__grid {
+      display: grid;
+      font-size: 1.6rem;
+      grid-template: repeat(2, auto) / 4fr 1fr;
+      /*
+      Line breaks are not required in the value of grid-template-areas, but they make the grid
+      easier to visualize and understand.
+      */
+      grid-template-areas: "pagehead pagehead"
+                           "mains navigation"
+                           "pagefoot pagefoot";
+      margin: 0;
+    }
+
+    header {
+      background: #121212;
+      padding: 1rem;
+      grid-area: pagehead;
+    }
+
+    article {
+      grid-area: mains;
+    }
+
+    nav {
+      grid-area: navigation;
+    }
+
+    footer {
+      grid-area: pagefoot;
+      display: flex;
+      align-items: center;
+    }
+
+    iframe {
+      padding: 0;
+      display: inline-block;
+      border: 0;
+    }
+
+    [id=svg_logo] {
+      width: 39.1rem;
+      height: 8.8rem;
+      display: block;
+      flex: 1;
+    }
+
+    [id=search] {
+      width: 2rem;
+      height: 2rem;
+      margin-right: .5rem;
+      vertical-align: middle;
+    }
+
+    nav {
+      padding: 0 2rem;
+      background: #444a;
+      color: white;
+    }
+
+    nav a,
+    footer a{
+      color: white;
+    }
+    nav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+
+    footer {
+      background: #f30;
+      color: #fff;
+      padding: 1rem;
+    }
+
+    footer ul {
+      flex: 1 1 60%;
+      display: flex;
+      list-style: none;
+      text-transform: uppercase;
+      /*
+        place-content is a shorthand for
+        align-items: flex-end;
+        justify-content: flex-end;
+      */
+      place-content: end;
+      padding-left: 0;
+      font-weight: bold;
+      margin: 0
+    }
+
+    footer li {
+      margin: 0 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      padding-right: 2rem;
+    }
+
+    article {
+      padding: 2rem;
+    }
+
+    article h1 {
+      font-size: 4rem;
+      letter-spacing: -.1ch;
+      margin: 1rem 0 0;
+    }
+
+    article h2 {
+      margin: .5rem 0;
+    }
+
+    article p {
+      margin: .75rem 0;
+    }
+
+    .preps {
+      margin: 1rem 0
+    }
+  </style>
+
+</head>
+<body class="demo__grid">
+<header>
+    <iframe id="svg_logo" src="../../images/grid-demo-logo.svg" title="Good Recipes!"></iframe>
+  </header>
+
+  <article>
+      <h1>Tuna with zucchini noodles</h1>
+      <div class="preps"><b>Prep time:</b> 40 minutes. <b>Cook time:</b> 30 minutes. Total: 1 hour, 10 minutes.</div>
+      <div>
+         <!-- Photo from https://www.pexels.com/photo/food-dish-food-photography-tuna-110814/ -->
+        <img src="/images/dinner-food-food-photography-110814.jpg">
+      </div>
+
+
+        <h2>Ingredients</h2>
+        <ul>
+            <li>1 lb fresh tuna</li>
+            <li>1 large zucchini, cut into noodle-like spirals</li>
+            <li>1 14oz can crushed plum tomatoes</li>
+            <li>1 small onion, diced</li>
+            <li>2 cloves garlic</li>
+            <li>2 tbsp canola oil</Li>
+            <li>Salt and pepper to taste</li>
+          </ul>
+
+      <h2>Directions</h2>
+
+      <p>Throw everything into a warm skillet.</p>
+      <p>Cook the fish until it's flaky and delicious and the zucchini is no longer crunchy.</p>
+      <p>This is obviously not a real recipe, but these ingredients probably would make a pretty tasty meal. </p>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue ligula in quam varius, sagittis sodales arcu laoreet.</p>
+
+  </article>
+
+  <nav>
+      <ul>
+        <li><a href="">Breakfast</a></li>
+        <li><a href="">Lunch</a></li>
+        <li><a href="">Dinner</a></li>
+        <li><a href="">Desserts</a></li>
+        <li><a href="">Your Recipe Box</a></li>
+        <li><br><br><br><br><br><iframe id="search" src="../../images/grid-demo-search.svg"></iframe>Search</li>
+      </ul>
+    </nav>
+
+    <footer>
+      &copy; 2021 GoodRecipes.
+      <ul>
+        <li><a href="">Terms of Service</a></li>
+        <li><a href="">Privacy Policy</a></li>
+        <li><a href="">Contact Us</a></li>
+      </ul>
+    </footer>
+
+</body>
+</html>

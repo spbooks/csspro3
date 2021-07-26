@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Understanding the background-blend-mode Property
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    form > p {
+      display: grid;
+      grid-template-areas: 'label label'
+                           'select button'
+                           'output output';
+      gap:  1rem;
+      grid-template-columns: auto 100px;
+      max-width: 80%;
+    }
+
+    label {
+      font-weight: bold;
+      grid-area: label;
+    }
+
+    select {
+      grid-area: select;
+      font-family: inherit;
+    }
+
+    button {
+      grid-area: button;
+    }
+
+    option {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    main {
+      background-image: linear-gradient( 90deg, rgba( 255, 0, 0, 1 ), rgba(0, 0, 255, 1) ),
+                linear-gradient( 270deg, rgb( 127, 255, 0 ), rgb( 255, 255, 0 ) );
+
+    }
+
+    main > h2,
+    main > div {
+      background: #fff;
+      max-width: 70%;
+      padding: 2rem;
+      margin: 2rem auto;
+    }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Visual Effects</a>
+      </li>
+      <li><a href="./" aria-current="page">Understanding the <code>background-blend-mode</code> Property</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Understanding the <code>background-blend-mode</code> Property</h2>
+
+
+
+  <div>
+<form>
+<p>
+    <label for="mix-blend-mode" class="code">Select a blend mode</label>
+    <select id="mix-blend-mode">
+      <option selected>normal</option>
+      <option>color</option>
+      <option>color-burn</option>
+      <option>color-dodge</option>
+      <option>darken</option>
+      <option>difference</option>
+      <option>exclusion</option>
+      <option>hard-light</option>
+      <option>hue</option>
+      <option>lighten</option>
+      <option>luminosity</option>
+      <option>multiply</option>
+      <option>overlay</option>
+      <option>saturation</option>
+      <option>screen</option>
+      <option>soft-light</option>
+    </select>
+
+    <button type="reset">Reset</button>
+
+    <output aria-live="polite" class="code">img { background-blend-mode: normal }</code>
+</p>
+</form>
+<p>The <code>background-blend-mode</code> property combines background colors and images. In this case, <code>main</code> has two, layered background images formed by linear gradients.</p>
+<p>Even though we've only indicated one value for <code>background-blend-mode</code> here. It's possible to set a different value for each layer of a background (e.g.: <code>background-blend-mode: multiply, difference</code>).</p>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    ( (win, doc) => {
+      const form  = doc.forms[0];
+      const image = doc.querySelector( 'main' );
+      const indicator = doc.querySelector('output');
+
+      const updateIndicator = ( value = 'normal' ) => {
+        const textNode = doc.createTextNode( `main { background-blend-mode: ${ value } }` );
+        indicator.firstChild.replaceWith( textNode );
+      }
+
+      const onChange = ( domEvent ) => {
+        if( !domEvent.target.value ) {
+          image.removeAttribute( 'style' );
+          updateIndicator();
+        } else {
+          image.style.backgroundBlendMode = domEvent.target.value;
+          updateIndicator(  domEvent.target.value );
+        }
+      }
+
+      const onReset = ( domEvent ) => {
+        image.removeAttribute( 'style' );
+        updateIndicator();
+      }
+
+      form.addEventListener( 'change', onChange );
+      form.addEventListener( 'reset', onReset );
+      win.addEventListener( 'load', () => form.reset() );
+
+    })( window, document )
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Media Query Simple Example
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  [id=demo] {
+    display: block;
+    border-width: 1px 0;
+    border-style: solid;
+    padding: .5em;
+  }
+  [id=demo] ul {
+    list-style: none;
+    margin: 0;
+  }
+  [id=demo] li {
+    display: block;
+    margin-left: -4rem;
+  }
+
+  pre {
+    background: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: .3rem;
+    margin: auto;
+    overflow-x: scroll;
+    padding: 1.6rem;
+  }
+
+  @media (max-width: 59.9em) {
+    [id=demo] {
+      background: #DCE3FF;
+      border-color: #94aaff;
+    }
+  }
+  @media (max-width: 29.9em) {
+    [id=demo] {
+      background: #fcf;
+      border-color: #f361ff;
+    }
+  }
+  @media (min-width: 60em) {
+    [id=demo] {
+      background: #fff1c1;
+      border-color: #ffd500;
+    }
+
+    [id=demo] ul {
+      display: flex;
+      padding-left: 0;
+      gap:  2rem;
+    }
+
+    [id=demo] li {
+      margin: 0px;
+      padding: 0 .5em;
+    }
+  }
+  .mqmatches {
+    background: #f44336;
+  }
+
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Using CSS Conditionally</a>
+      </li>
+      <li><a href="./" aria-current="page">Media Query Simple Example</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Media Query Simple Example</h2>
+
+
+
+  <p>Resize this window to see the <a href="../css/chapter7/mq.css">media queries</a> in effect.</p>
+
+<nav id="demo">
+<ul>
+<li><a href="../../conditionalcss/media-query-simple/index.html">Simple demo</a> (resize this window)</li></li>
+<li><a href="../../conditionalcss/media-query-discrete/index.html">Media Query (Discrete feature)</a></li>
+<li><a href="../../conditionalcss/media-query-events/index.html">Media Query Events</a></li>
+</ul>
+</nav>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

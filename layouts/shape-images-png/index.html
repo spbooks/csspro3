@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using Images as Shapes: A PNG with Alpha Transparency
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+  <link rel="stylesheet" href="../../theme/css/grid-base.css" id="Grid_CSS">
+
+
+  <style>
+  main {
+    background: #222;
+    color: whitesmoke;
+    display: flow-root;
+    font-size: 2rem;
+  }
+
+  main a:link,
+  main a:visited {
+    color: currentColor;
+  }
+
+  main a:hover,
+  main a:focus {
+    color: #fc0;
+  }
+
+  main p:last-of-type {
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+
+  label code {
+    white-space: pre;
+  }
+
+  :is( [type=radio], [type=checkbox] ) + label::before {
+    border-color: whitesmoke;
+  }
+
+  [src*='pexels-foodie-factor-539432.png'] {
+    float: inline-end;
+    width: 61.5rem;
+  }
+
+  .shape-shown {
+    shape-margin: 1rem;
+    shape-outside: url('../../images/pexels-foodie-factor-539432.png');
+  }
+
+  img:not( .shape-shown ) {
+    outline: 2px dotted whitesmoke;
+  }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">CSS Layout</a>
+      </li>
+      <li><a href="./" aria-current="page">Using Images as Shapes: A PNG with Alpha Transparency</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using Images as Shapes: A PNG with Alpha Transparency</h2>
+
+    <div class="message note">
+      <p>This demo only works when the browser can create an origin. You may need to run a <a href="../../help/local-server/">local server</a> for this demo.</p>
+    </div>
+
+
+  <form>
+  <p>
+    <input type="checkbox" id="showShape">
+    <label for="showShape">Toggle <code> shape-outside</code></label>
+  </p>
+</form>
+
+<h2>A Good Cuppa Joe</h2>
+<p><img src="../../images/pexels-foodie-factor-539432.png" alt="A full mug of coffee." class="shape-shown">It's also possible to use an image as a shape with <code>shape-outside</code>. You can use <em>any</em> image with an alpha channel. This includes PNG images, SVG images with HSLA or RGBA <code>fill</code> values, and CSS gradients.</p>
+<p>It does not, however, include image formats such as GIF, that only support binary transparency. Such formats are incompatible with <code>shape-outside</code>.</p>
+<p>Although we've added a <code>shape-outside</code> declaration to an <code>img</code> element, the <em>shape</em> of the image is separate from its visibility.</p>
+<p>Without the <code>shape-outside</code> declaration, content would flow around the edges of the <code>img</code> element's box. With the <code>shape-outside</code> declaration, however, adjacent content flows around the transparent areas of the <abbr>PNG</abbr> image.</p>
+<p>Use the check box above to disable or enable the <code>shape-outside</code> declaration. Notice how the text wrapping adjusts.</p>
+<p>When using image URLs with <code>shape-outside</code>, the browser makes a <q>potentially CORS-enabled fetch</q> for the resource. The browser <em>must</em> be able to resolve the document path in such a way that it can generate an origin. The document origin is included among the request headers that accompany the browser's request for the image.</p>
+<p>Photo by <a href="https://www.pexels.com/photo/close-up-photo-white-ceramic-cup-539432/">Foodie Factor</a> from Pexels</p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    ( ( win, doc ) => {
+      const form = doc.forms[0];
+
+      const onChange = ( domEvent ) => {
+        const shaped = doc.querySelector( 'main img' );
+        const className = 'shape-shown';
+
+        if( form.elements.showShape.checked ) {
+          shaped.classList.remove( className );
+        } else {
+          shaped.classList.add( className );
+        }
+      }
+
+      form.addEventListener( 'change', onChange );
+      win.addEventListener( 'load', () => form.reset() )
+    })( window, document )
+
+  </script>
+</body>
+</html>

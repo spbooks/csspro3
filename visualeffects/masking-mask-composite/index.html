@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Managing Mask Layer Compositing with mask-composite
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    main > div {
+      background-color: hsl(183, 17%, 75%);
+    }
+
+    form,
+    form,
+    legend + div {
+      align-items: center;
+      display: flex;
+      gap: 2.4rem;
+    }
+
+    legend {
+      padding: 0 0 2rem 0;
+    }
+
+    form {
+      justify-content: space-between;
+      margin-block-end: 2rem;
+    }
+
+    form p {
+      margin: 0
+    }
+
+    select,
+    option {
+      font:  inherit;
+    }
+
+
+    img {
+      height: 95vh;
+      margin: auto;
+      display: block;
+
+      -webkit-mask-repeat:  no-repeat;
+              mask-repeat:  no-repeat;
+
+      -webkit-mask-position: center center;
+              mask-position: center center;
+    }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Visual Effects</a>
+      </li>
+      <li><a href="./" aria-current="page">Managing Mask Layer Compositing with <code>mask-composite</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Managing Mask Layer Compositing with <code>mask-composite</code></h2>
+
+    <div class="message note">
+      <p>This demo only works when the browser can create an origin. You may need to run a <a href="../../help/local-server/">local server</a> for this demo.</p>
+    </div>
+
+
+  <div class="message note" id="composite-support" hidden>
+  <p markdown=1>Your browser does not support the <code>mask-composite</code> property, even with a vendor prefix. <a href="https://caniuse.com/#masking">Current Browser Support</a></p>
+</div>
+
+<p><strong>Compositing</strong> is the process of combining separate image layers or sources into a single visual layer.</p>
+<form disabled>
+  <p>
+    <label for="maskComposite" class="code">mask-composite</label>
+    <select id="maskComposite" name="maskComposite">
+      <option selected>add</option>
+      <option>subtract</option>
+      <option>intersect</option>
+      <option>exclude</option>
+    </select>
+  </p>
+
+  <fieldset>
+    <div>
+      <legend>Swap <code>mask-image</code> order</legend>
+      <div>
+        <p>
+          <input type="radio" name="maskImage" value="circleSquare" id="circleSquare" checked>
+          <label for="circleSquare">circle.svg, square.svg</label>
+        </p>
+        <p>
+          <input type="radio" name="maskImage" value="squareCircle" id="squareCircle">
+          <label for="squareCircle">square.svg, circle.svg</label>
+        </p>
+      </div>
+    </div>
+  </fieldset>
+  <button type="reset">Reset</button>
+
+</form>
+
+<div>
+  <img src="../../images/dahlia-6154889_1920.jpg" alt="Soft pink Dahlia blooms.">
+</div>
+
+<p><em>Photo by <a href="https://pixabay.com/photos/dahlia-flower-plant-petals-bud-6154889/">dewdrop157</a> from Pixabay.</em></p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    ((win, doc) => {
+      const form = document.forms[0];
+      const maskTarget = document.querySelector( 'main img' );
+      const indicator = document.querySelector( 'output' );
+
+      const prefixProp = ( property ) => {
+        const usePrefix = !CSS.supports('mask-composite: add');
+console.log( property );
+
+        let prop = property;
+
+        if( usePrefix ) {
+          prop = property.replace(/^mask/,'webkitMask');
+        }
+
+        return prop;
+      }
+
+      const onInput = ( domEvent ) => {
+        const propName = prefixProp( domEvent.target.name );
+        let value;
+
+        if( domEvent.target.name == 'maskImage' ) {
+          value = swapOrder( domEvent.target.value )
+        } else {
+          value = domEvent.target.value;
+        }
+
+        maskTarget.style[ propName ] = value;
+      }
+
+      const swapOrder = ( order = 'circleSquare' ) => {
+        let images = ['../../images/circle.svg', '../../images/square.svg'];
+        let urls;
+
+        if( order == 'squareCircle' ) {
+          images = images.reverse();
+        }
+
+        urls = `url( ${ images[0] } ), url( ${ images[1] } )`;
+        return urls;
+      }
+
+      const setImageOrder = () => {
+        const imgOrder = document.querySelector('[checked]').value;
+        const propName = prefixProp( 'maskImage' );
+        maskTarget.style[ propName ] = swapOrder( imgOrder.value );
+      }
+
+      const showSupportError = () => {
+        if( !CSS.supports('mask-composite: add') &&
+            !CSS.supports('-webkit-mask-composite: add') ) {
+          doc.querySelector( '#composite-support' ).removeAttribute('hidden');
+
+          [...form.elements].forEach( ( control ) => control.disabled = true );
+        }
+
+      }
+
+      const onReset = ( domEvent ) => {
+        maskTarget.removeAttribute( 'style' );
+        setImageOrder();
+      }
+
+      const onLoad = () => {
+        form.reset();
+        showSupportError();
+      }
+
+      form.addEventListener( 'input', onInput );
+      form.addEventListener( 'reset', onReset );
+
+      window.addEventListener( 'load', onLoad );
+    })( window, document );
+  </script>
+</body>
+</html>

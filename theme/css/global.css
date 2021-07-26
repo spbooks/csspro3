@@ -1,0 +1,412 @@
+/**
+ * Global.css for CSS Master, third edition.
+ * Copyright 2015 - 2020
+ * SitePoint Pty., Ltd. and Tiffany Brown
+ *
+ */
+
+@charset "UTF-8";
+
+/* Reset margin, padding, and box sizing of everything */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font: 300 10px / 1.5 "Inter", -apple-system, BlinkMacSystemFont, Helvetica, 'Liberation Sans', sans-serif;
+  background: #fff;
+  color: #121212;
+  margin: 0;
+  padding: 0;
+
+  --foreground: hsl( 240, 50%, 5% );
+  --foreground-light: hsl( 0, 0%, 96% );
+
+  --palette-a: #fff;
+  --palette-b: hsl( 200, 38%, 76% );
+
+  /* Colors pulled from MaterialPalette.com */
+  --palette-c: hsl( 4, 90%, 58% );
+  --palette-d: hsl( 340, 82%, 52% );
+  --palette-e: hsl( 291, 64%, 42% );
+  --palette-f: hsl( 262, 52%, 47% );
+  --palette-g: hsl( 231, 48%, 48% );
+  --palette-h: hsl( 207, 90%, 54% );
+  --palette-i: hsl( 199, 98%, 48% );
+  --palette-j: hsl( 187, 100%, 42% );
+  --palette-k: hsl( 174, 100%, 29% );
+  --palette-l: hsl( 122, 39%, 49% );
+  --palette-m: hsl( 88, 50%, 53% );
+  --palette-n: hsl( 66, 70%, 54% );
+  --palette-o: hsl( 54, 100%, 62% );
+  --palette-p: hsl( 45, 100%, 51% );
+  --palette-q: hsl( 36, 100%, 50% );
+  --palette-r: hsl( 14, 100%, 57% );
+  --palette-s: hsl( 0, 0%, 62% );
+  --palette-t: hsl( 200, 18%, 46% );
+
+  --palette-c-80: hsl( 4, 90%, 80% );
+  --palette-d-80: hsl( 340, 82%, 80% );
+  --palette-e-80: hsl( 291, 64%, 80% );
+  --palette-f-80: hsl( 262, 52%, 80% );
+  --palette-g-80: hsl( 231, 48%, 80% );
+  --palette-h-80: hsl( 207, 90%, 80% );
+  --palette-i-80: hsl( 199, 98%, 80% );
+  --palette-j-80: hsl( 187, 100%, 80% );
+  --palette-k-80: hsl( 174, 60%, 80% );
+  --palette-l-80: hsl( 122, 39%, 80% );
+  --palette-m-80: hsl( 88, 50%, 80% );
+  --palette-n-80: hsl( 66, 70%, 80% );
+  --palette-o-80: hsl( 54, 100%, 80% );
+  --palette-p-80: hsl( 45, 100%, 80% );
+  --palette-q-80: hsl( 36, 100%, 80% );
+  --palette-r-80: hsl( 14, 100%, 80% );
+  --palette-s-80: hsl( 0, 0%, 80% );
+  --palette-t-80: hsl( 200, 18%, 80% );
+
+  --palette-c-30: hsl( 4, 90%, 30% );
+  --palette-d-30: hsl( 340, 82%, 30% );
+  --palette-e-30: hsl( 291, 64%, 30% );
+  --palette-f-30: hsl( 262, 52%, 30% );
+  --palette-g-30: hsl( 231, 48%, 30% );
+  --palette-h-30: hsl( 207, 90%, 30% );
+  --palette-i-30: hsl( 199, 98%, 30% );
+  --palette-j-30: hsl( 187, 100%, 30% );
+  --palette-k-30: hsl( 174, 100%, 30% );
+  --palette-l-30: hsl( 122, 39%, 30% );
+  --palette-m-30: hsl( 88, 50%, 30% );
+  --palette-n-30: hsl( 66, 70%, 30% );
+  --palette-o-30: hsl( 54, 100%, 30% );
+  --palette-p-30: hsl( 45, 100%, 30% );
+  --palette-q-30: hsl( 36, 100%, 30% );
+  --palette-r-30: hsl( 14, 100%, 30% );
+  --palette-s-30: hsl( 0, 0%, 30% );
+  --palette-t-30: hsl( 200, 18%, 30% );
+
+  --palette-d-95: hsl( 340, 82%, 95% );
+  --palette-q-95: hsl( 36, 82%, 95% );
+  --palette-t-95: hsl( 200, 18%, 95% );
+
+  --border-b: hsl( 200, 28%, 66% );
+
+  --button-hue: 265deg;
+
+  --selected: hsl( 340, 82%, 52% );
+}
+
+body {
+  margin: inherit;
+  font-size: 1.8rem;
+}
+
+main {
+  min-height: 60rem;
+  max-width: 190rem;
+}
+
+main,
+footer,
+header > div {
+  max-width: 190rem;
+  margin: auto;
+}
+
+
+header,
+main {
+  padding: 2rem;
+}
+
+
+header {
+  background: rgba(86, 61, 123, 0.2 );
+}
+
+header > div {
+  display: flex;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  flex:  1;
+}
+
+b {
+  font-weight: 700;
+}
+
+body > footer {
+  padding: 2rem;
+}
+
+h3 {
+  font-size: 2.4rem;
+}
+
+:is(header,footer) a:link {
+  color: var( --palette-g );
+  padding: .2rem;
+}
+
+:is(header,footer) a:visited {
+  color: var( --palette-e-30 );
+}
+
+:is(header,footer) a:hover {
+  background: var( --palette-p-80  );
+  text-decoration: wavy currentColor underline;
+}
+
+:is(header,footer) a:focus {
+  outline: 3px dotted var( --palette-c );
+}
+
+[aria-label="Breadcrumb"] a:link {
+  color: hsla(264, 33%, 25%, 1 );
+}
+
+[aria-label="Breadcrumb"] a:visited {
+  color: hsla(264, 33%, 25%, 1 );
+}
+
+[aria-label="Breadcrumb"] a:active {
+  color: hsla(264, 33%, 25%, 1 );
+}
+
+[aria-label="Breadcrumb"] a:hover {
+  color: hsla( 310, 100%, 31%, 1 );
+  text-decoration: wavy currentColor underline;
+}
+
+[aria-label="Breadcrumb"] a:focus {
+  color: hsla(264, 33%, 25%, 1 );
+}
+
+[aria-label="Breadcrumb"] ol {
+  align-items: center;
+  gap: 1rem;
+  display: inline-flex;
+  margin: 0;
+  white-space: nowrap;
+  padding-left: 0;
+}
+
+[aria-label="Breadcrumb"] li {
+  font-weight: 600;
+  list-style: none;
+  padding-left: 0;
+  flex: 1;
+}
+
+
+@media ( max-width:  742px ) {
+  header > div,
+  [aria-label="Breadcrumb"] ol {
+    display: initial;
+  }
+}
+
+
+[aria-label="Breadcrumb"] li:not(:last-of-type)::after {
+  content: ' \2192'
+}
+
+[aria-current="page"]:link,
+[aria-current="page"]:visited {
+  text-decoration: none;
+  color: var( --foreground );
+}
+
+.global {
+  font-style: italic;
+  font-size: 1.6rem;
+  text-align: end;
+}
+
+h2 {
+  font-size: 3.6rem;
+  hyphens: auto;
+}
+
+.code,
+code,
+pre {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+@media screen and ( min-width: 540px ) {
+  :not( pre ) > .code,
+  :not( pre ) > code {
+    white-space: nowrap;
+  }
+}
+
+.swatch__tiny {
+  display: inline-block;
+  height: 1rem;
+  width: 1rem;
+}
+
+.two__panels {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr );
+}
+
+button {
+  --button-color: hsl( var( --button-hue), 18.2%, 37.1%  );
+  font: inherit;
+  padding: .5rem 1.5rem;
+  font-weight: 500;
+  background: var( --button-color  );
+  color: #fff;
+  border: 1px solid var( --button-color  );
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+button[disabled] {
+  --button-color-disabled: hsl( var( --button-hue), 18.2%, 87.1%  );
+  background: var( --button-color-disabled  );
+  border: var( --button-color-disabled  );
+  color: #333;
+  cursor: not-allowed;
+}
+
+
+[type=radio],
+[type=checkbox] {
+  opacity: .001;
+  position: absolute;
+}
+
+:is( [type=radio], [type=checkbox] ) + label {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  padding: .2rem;
+  position: relative;
+  white-space: nowrap;
+}
+
+:is( [type=radio], [type=checkbox] ) + label::before {
+  content: ' ';
+  display: inline-block;
+  border: 4px solid #000;
+  border-radius: 100%;
+  height: 3.2rem;
+  margin-right: 1.6rem;
+  width: 3.2rem;
+}
+
+:is( [type=radio], [type=checkbox] ):checked + label::after {
+  transform: scale( 0.5 );
+  content: ' ';
+  display: inline-block;
+  background: var( --selected  );
+  border-radius: 100%;
+  height: 3.2rem;
+  left: .2rem;
+  margin-right: 1.6rem;
+  position: absolute;
+  width: 3.2rem;
+}
+
+form :disabled {
+  cursor: not-allowed;
+}
+
+form :disabled + label::before,
+form :disabled + label::after {
+  filter: saturate( 0 );
+}
+
+
+input:focus + label {
+  outline: 2px dotted var( --palette-c );
+}
+
+[type=checkbox] + label::before,
+[type=checkbox]:checked + label::after {
+  border-radius: 0 !important;
+}
+
+iframe {
+  border: 0;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+main li + li {
+  margin: 1rem 0;
+}
+
+flex li + li {
+  margin: 0;
+}
+
+body:is(.home, .category ) ul li::marker {
+  content: '✦\00a0';
+  padding-left: 2rem;
+}
+
+fieldset {
+  padding: 0;
+  border: 0;
+}
+
+.message:not( [hidden] ) {
+  border: 2px solid #000;
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.warning:not([hidden]) {
+  background-color: var( --palette-d-95 );
+  border-color: var( --palette-d-80 );
+  color: var( --palette-d-30 );
+}
+
+.note:not([hidden]) {
+  background-color: var( --palette-q-95 );
+  border-color: var( --palette-q-80 );
+  color: hsl( 36, 100%, 20% );
+}
+
+summary h3 {
+  display: inline-block;
+  margin: 1rem;
+}
+
+details:nth-child( odd ) summary {
+  background: var( --palette-t-80  );
+  padding: 0 1rem;
+  margin: -2rem -2rem 2rem -2rem;
+}
+
+details {
+  padding: 2rem;
+}
+
+details * + h4 {
+  margin: 3rem 0 1rem 0;
+}
+
+details h4 + * {
+  margin-top: 0;
+}
+
+.image-credit {
+  font-size: 1.2rem;
+  text-align: right;
+  font-style: italic;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Understanding the :root pseudo-class
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+<link rel="stylesheet" href="../../standalone/root.css" />
+
+<style>
+  main > div {
+    display: flex;
+    margin: 4rem auto;
+    gap: 3rem;
+  }
+
+  main > div > * {
+    flex: 1;
+  }
+
+  text {
+    font-family: 'Zilla Slab', 'Inter', monospace;
+    font-size: 10px;
+    lengthAdjust:  spacingAndGlyphs;
+  }
+
+  tspan {
+    font-family: monospace;
+  }
+</style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page">Understanding the <code>:root</code> pseudo-class</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Understanding the <code>:root</code> pseudo-class</h2>
+
+
+
+  <p>The <code>:root</code> pseudo class affects the root element of a document. For <abbr>HTML</abbr> documents, that's the <code>html</code> element. For <abbr>SVG</abbr> documents, it's the <code>svg</code> element.</p>
+<p>In this demo, <code>root.css</code> is linked from both the HTML document and the SVG document included in the <code>iframe</code>. As a result, the root element for both documents have a 10 pixel, dotted magenta border. <em>However</em>, when an SVG document is embedded within an HTML document, it is no longer a root element.</p>
+<div>
+  <iframe src="../../images/badge.svg"></iframe>
+  <svg xmlns="http://www.w3.org/2000/svg" width="778.799" height="778.799" viewBox="0 0 206.057 206.057"><defs><link href="../standalone/root.css" type="text/css" rel="stylesheet" xmlns="http://www.w3.org/1999/xhtml"/></defs><path style="fill:#f60;fill-opacity:.6;stroke-width:.229258" d="m172.04 230.514-33.676-21.26-2.31 39.759-22.978-32.529-17.35 35.848-8.78-38.846-29.747 26.48 6.753-39.249-37.616 13.08 21.26-33.676-39.76-2.31 32.53-22.978-35.849-17.35 38.846-8.78-26.48-29.747 39.25 6.754-13.081-37.617 33.676 21.26 2.31-39.759 22.978 32.529 17.35-35.848 8.78 38.846 29.748-26.48-6.754 39.249 37.616-13.08-21.26 33.676 39.76 2.31-32.53 22.978 35.849 17.35-38.846 8.78 26.48 29.747-39.249-6.754z" transform="translate(-4.517 -46.275)"/><text y="0">This SVG is embedded within the HTML</text><text y="15"> document. <tspan>:root</tspan> styles do not apply.</text></svg>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

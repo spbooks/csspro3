@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using Multiple Mask Images
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    main > div {
+      background-color: hsl(183, 17%, 75%);
+    }
+
+    img {
+        margin: 3rem auto;
+        display: block;
+        width: auto;
+        height: 90vh;
+        mask-repeat: no-repeat;
+        mask-image: url('../../images/circle.svg'), url('../../images/square.svg');
+        -webkit-mask-image: url('../../images/circle.svg'), url('../../images/square.svg');
+    }
+
+
+
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Visual Effects</a>
+      </li>
+      <li><a href="./" aria-current="page">Using Multiple Mask Images</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using Multiple Mask Images</h2>
+
+    <div class="message note">
+      <p>This demo only works when the browser can create an origin. You may need to run a <a href="../../help/local-server/">local server</a> for this demo.</p>
+    </div>
+
+
+  <p>The <code>mask-image</code> property supports multiple mask images, much like its <code>background-image</code> counterpart. This demo uses <a href="../../images/square.svg">square.svg</a> and <a href="../../images/circle.svg">circle.svg</a>.</p>
+<p>You can shape how multiple mask images combine to reveal portions of a layer using the <a href="../../visualeffects/masking-mask-composite/index.html"><code>mask-composite</code></a> property.</p>
+<div>
+  <img src="../../images/dahlia-6154889_1920.jpg" alt="Soft pink Dahlia blooms.">
+</div>
+
+<p><em>Photo by <a href="https://pixabay.com/photos/dahlia-flower-plant-petals-bud-6154889/">dewdrop157</a> from Pixabay.</em></p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  The transform property and stacking context
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+    :root {
+      --img-width: 50rem;
+    }
+
+    #transform {
+      display: block;
+      float: inline-start;
+      height: auto;
+      margin: 0 2.4rem 1.6rem 0;
+      max-width: var( --img-width );
+    }
+
+    .transformed {
+      transform: translateX( 50% );
+    }
+
+    main ul {
+      padding-inline-start: calc( .5rem + var( --img-width ) );
+    }
+
+    </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">The <code>transform</code> property and stacking context</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>The <code>transform</code> property and stacking context</h2>
+
+
+
+  <p><button type="button">Toggle transform</button></p></p>
+<p> <img src="../../images/Buteo_magnirostris_by_Dario_Sanches.jpg" alt="A Roadside Hawk by Dario Sanches" id="transform">
+Adding the transform property to an element &#8212; in this case the image &#8212; gives that element a stack level of 0. According to the rules of <a href="http://dev.w3.org/csswg/css-position/#det-stacking-context">the stacking context</a>, this means a transformed item will be stacked on top of items that do not have a stacking context.</p>
+
+<p>Positioned elements and elements with an <code>opacity</code> of less than 1 may be stacked on top of a transformed element if: 1) the element appears after the transformed element in the HTML source; or 2) if it has a higher <code>z-index</code>.</p>
+<p>Clicking the <i>Toggle transform</i> button toggles a <code>.transformed</code> class for the image. This class sets a translation transform of 50% along the X axis.</p>
+<h3>Further reading</h3>
+<ul>
+<li><a href="http://dev.w3.org/csswg/css-position/#det-stacking-context">CSS Positioned Layout Module Level 3: Detailed stacking context</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context">Understanding CSS z-index: The stacking context</a></li>
+</ul>
+<p><span data-filename="Buteo_magnirostris_by_Dario_Sanches.jpg">Photo</span> by <a href="http://commons.wikimedia.org/wiki/Aves#mediaviewer/File:Buteo_magnirostris.jpg">Dario Sanches</a> used under a <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a> license.</p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+    <script>
+        var transform = document.getElementById('transform'),
+            btn = document.querySelector('button'),
+            clickHandler = function(evt) {
+                transform.classList.toggle('transformed');
+            }
+
+        btn.addEventListener('click', clickHandler);
+    </script>
+</body>
+</html>

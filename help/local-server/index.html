@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Help With Demos
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Help</a>
+      </li>
+      <li><a href="./" aria-current="page">Help With Demos</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Help With Demos</h2>
+
+
+
+  <p>Several of these demos follow the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"><em>Same-Origin Policy</em></a>.</p>
+<p>An <strong>origin</strong> is a string value based on the document's URL. It consists of three parts:</p>
+<ul>
+<li>the <em>protocol</em>, typically <code>http://</code> or <code>https://</code>;</li>
+<li>the <em>host name</em>, which often matches the domain or sub-domain portion of the URL; and</li>
+<li>the <em>port</em> number.</li>
+</ul>
+<p>Under a Same-Origin Policy, images, scripts, fonts, and media files need to:</p>
+<ul>
+<li>share the same origin as the requesting document; or</li>
+<li>be served with an <code>Access-Control-Allow-Origin</code> response header that allows the requesting origin to load the requested URL.</li>
+</ul>
+<p>If the browser can't create an origin for the requesting document, it won't request or load external assets. Most browsers will not create an origin for the requesting when you load a document directly from your file system.</p>
+<p>To fix this, use a local webserver. Some operating systems and programming languages include a web server that's perfect for these purposes.</p>
+<ul>
+<li>
+<p><strong>If you have <a href="https://www.php.net/manual/en/features.commandline.webserver.php">PHP</a> installed</strong>: <code>php -S localhost:8000</code></p>
+</li>
+<li>
+<p><strong>If you have <a href="https://docs.python.org/3/library/http.server.html">Python 3</a> installed</strong>: <code>python -m http.server 8000 --bind 127.0.0.1</code></p>
+</li>
+</ul>
+<p><a href="https://www.mamp.info/en/windows/">MAMP/MAMP Pro</a> and <a href="https://www.apachefriends.org/">XAMPP</a> are other options.</p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

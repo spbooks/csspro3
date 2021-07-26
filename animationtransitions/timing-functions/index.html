@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Transition Timing Functions
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    .ttf {
+      background: #E8FAF6;
+      border: 1px solid #0c9;
+      border-radius: .3rem;
+      height: auto;
+      margin: 1.6rem 0;
+      padding: 3.2rem;
+      position: relative;
+    }
+
+    .ttf:before, .ttf:after {
+      display: block;
+      clear: both;
+    }
+
+    .ttf h3 {
+      margin: -1rem 0 0 0;
+      font-size:-1rem;
+    }
+
+    .ttf div {
+      background: #00CC99;
+      height: 5em;
+      height: 5vw;
+      margin: 1rem 0;
+      position: relative;
+      left: 0;
+      top: 0;
+      transition-duration: 2s;
+      width: 5em;
+      width: 5vw;
+      max-height: 75px;
+      max-width: 75px;
+    }
+    .ttf .moved {
+      left: 70%;
+    }
+    .ttf .linear {
+      transition-timing-function: linear;
+    }
+    .ttf .easein {
+      transition-timing-function: ease-in;
+    }
+    .ttf .easeout {
+      transition-timing-function: ease-out;
+    }
+    .ttf .easeinout {
+      transition-timing-function: ease-in-out;
+    }
+    .ttf .stepstart {
+      transition-timing-function: step-start;
+    }
+    .ttf .stepend {
+      transition-timing-function: step-end;
+    }
+    .ttf .step5start {
+      transition-timing-function: steps(5, start);
+    }
+    .ttf .step5end {
+      transition-timing-function: steps(5, end);
+    }
+    .ttf button {
+      position: absolute;
+      right: 5vw;
+      bottom: 30%;
+    }
+
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transitions &amp; Animations</a>
+      </li>
+      <li><a href="./" aria-current="page">Transition Timing Functions</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Transition Timing Functions</h2>
+
+
+
+  <p>Click each button to trigger the corresponding transition or <button type="button" class="all">run all</button> transitions. Note these examples do not include the <code>cubic-bezier</code> function.</p>
+<section class="ttf">
+    <h3><code>transition-timing-function: step-start</code></h3>
+    <div class="stepstart"></div>
+    <button type="button">Step-start</button>
+</section>
+
+<section class="ttf">
+    <h3><code>transition-timing-function: step-end</code></h3>
+    <div class="stepend"></div>
+    <button type="button">Step-end</button>
+</section>
+
+<section class="ttf">
+    <h3><code>transition-timing-function: steps(5,start)</code></h3>
+    <div class="step5start"></div>
+    <button type="button">step(5,start)</button>
+</section>
+
+<section class="ttf">
+    <h3><code>transition-timing-function: steps(5,end)</code></h3>
+    <div class="step5end"></div>
+    <button type="button">steps(5,end)</button>
+</section>
+
+<section class="ttf">
+    <h3><code>transition-timing-function: ease</code></h3>
+    <div></div>
+    <button type="button">Ease</button>
+</section>
+
+<section class="ttf">
+    <h3><code>transition-timing-function: linear</code></h3>
+    <div class="linear"></div>
+    <button type="button">Linear</button>
+</section>
+
+<section class="ttf">
+    <h3><code>transition-timing-function: ease-in</code></h3>
+    <div class="easein"></div>
+    <button type="button">Ease-In</button>
+</section>
+
+<section class="ttf">
+    <h3><code>transition-timing-function: ease-out</code></h3>
+    <div class="easeout"></div>
+    <button type="button">Ease-Out</button>
+</section>
+
+<section class="ttf">
+    <h3><code>transition-timing-function: ease-in-out</code></h3>
+    <div class="easeinout"></div>
+    <button type="button">Ease-In-Out</button>
+</section>
+
+<p>Click the button to trigger the associated transition or <button type="button" class="all">run all</button> transitions.</p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+    <script>
+    var triggerall, btns;
+
+    triggerall = document.getElementsByClassName('all');
+    btns = document.querySelectorAll('button:not(.all)');
+
+    Array.prototype.map.call(btns,function(b){
+        b.onclick = function(evt) {
+            evt.target.parentNode.querySelector('div').classList.toggle('moved');
+        }
+    });
+
+    Array.prototype.map.call(triggerall,function(b){
+        b.onclick = function(evt) {
+            var movethese = document.querySelectorAll('section > div');
+            Array.prototype.map.call(movethese, function(o) {
+                o.classList.toggle('moved');
+            });
+        }
+    });
+    </script>
+</body>
+</html>

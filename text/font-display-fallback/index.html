@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Loading Fonts With font-display: fallback
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    @charset "UTF-8";
+
+    /* latin-ext */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Mono';
+        font-style: italic;
+        font-weight: 300;
+        src: url(https://fonts.gstatic.com/s/ibmplexmono/v6/-F6sfjptAgt5VM-kVkqdyU8n1ioSflV1jsoQLNg.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Mono';
+        font-style: italic;
+        font-weight: 300;
+        src: url(https://fonts.gstatic.com/s/ibmplexmono/v6/-F6sfjptAgt5VM-kVkqdyU8n1ioSflV1gMoQ.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* latin-ext */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Mono';
+        font-style: normal;
+        font-weight: 300;
+        src: url(https://fonts.gstatic.com/s/ibmplexmono/v6/-F6qfjptAgt5VM-kVkqdyU8n3oQIwl5FgtIU.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Mono';
+        font-style: normal;
+        font-weight: 300;
+        src: url(https://fonts.gstatic.com/s/ibmplexmono/v6/-F6qfjptAgt5VM-kVkqdyU8n3oQIwlBFgg.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* latin-ext */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: italic;
+        font-weight: 100;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYX8KVElMYYaJe8bpLHnCwDKhdTmdJZFUdLTDw.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: italic;
+        font-weight: 100;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYX8KVElMYYaJe8bpLHnCwDKhdTmdJZLUdI.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* latin-ext */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: italic;
+        font-weight: 400;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYX-KVElMYYaJe8bpLHnCwDKhdTuGaZJSdY.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: italic;
+        font-weight: 400;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYX-KVElMYYaJe8bpLHnCwDKhdTuF6ZJ.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* latin-ext */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: italic;
+        font-weight: 700;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYX7KVElMYYaJe8bpLHnCwDKhdTmrINcePfuNmo.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: italic;
+        font-weight: 700;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYX7KVElMYYaJe8bpLHnCwDKhdTmrINcdvfu.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* latin-ext */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: normal;
+        font-weight: 100;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYX-KVElMYYaJe8bpLHnCwDKjbLuGaZJSdY.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: normal;
+        font-weight: 100;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYX-KVElMYYaJe8bpLHnCwDKjbLuF6ZJ.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* latin-ext */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYXgKVElMYYaJe8bpLHnCwDKhd_eFb5N.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYXgKVElMYYaJe8bpLHnCwDKhdHeFQ.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* latin-ext */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: normal;
+        font-weight: 700;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYX9KVElMYYaJe8bpLHnCwDKjWr7AI9sdO_q.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Sans';
+        font-style: normal;
+        font-weight: 700;
+        src: url(https://fonts.gstatic.com/s/ibmplexsans/v8/zYX9KVElMYYaJe8bpLHnCwDKjWr7AIFsdA.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* latin-ext */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Serif';
+        font-style: italic;
+        font-weight: 600;
+        src: url(https://fonts.gstatic.com/s/ibmplexserif/v9/jizGREVNn1dOx-zrZ2X3pZvkTiUa4-o3m1fpjeOg.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Serif';
+        font-style: italic;
+        font-weight: 600;
+        src: url(https://fonts.gstatic.com/s/ibmplexserif/v9/jizGREVNn1dOx-zrZ2X3pZvkTiUa4-o3m1npjQ.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin */
+    @font-face {
+        font-display: fallback;
+        font-family: 'IBM Plex Serif';
+        font-style: normal;
+        font-weight: 600;
+        src: url(https://fonts.gstatic.com/s/ibmplexserif/v9/jizAREVNn1dOx-zrZ2X3pZvkTi3A_yI0q1s.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+
+    div code {
+           font-family: 'IBM Plex Mono';
+    }
+
+    main h3 {
+        font-family: 'IBM Plex Serif';
+        font-size: 4.8rem;
+        line-height: 1.2;
+        width: 50vw;
+        margin: 4rem auto;
+    }
+
+    main > div:not([class]) {
+        font: 2rem / 1.5 'IBM Plex Sans',sans-serif;
+        letter-spacing: .05ch;
+        width: 50vw;
+        margin: auto;
+    }  </style>
+
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Working With Text</a>
+      </li>
+      <li><a href="./" aria-current="page">Loading Fonts With <code>font-display: fallback</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Loading Fonts With <code>font-display: fallback</code></h2>
+
+
+<div class="message note">
+  <p>Use the network throttling feature of your browser's developer tools for the clearest understanding of this and other <code>font-display</code> demos.</p>
+</div>
+  <p><code>font-display: fallback</code> draws text using the fallback font, while waiting for the font face to load. If the font face takes too much time to load, it continues to use the fallback. Otherwise, it swaps the font face once loading completes. (Approximately a 100 millisecond block period, and about a three-second swap period.)</p>
+<!-- See 'partials/font-display-text.html' for demo text -->
+
+
+  <div>
+    <h2>Rumplestiltskin</h2>
+
+    <p>By the side of a wood, in a country a long way off, ran a fine stream of water; and upon the stream there stood a mill. The miller&#8217;s house was close by, and the miller, you must know, had a very beautiful daughter. She was, moreover, very shrewd and clever; and the miller was so proud of her, that he one day told the king of the land, who used to come and hunt in the wood, that his daughter could spin gold out of straw. Now this king was very fond of money; and when he heard the miller&#8217;s boast his greediness was raised, and he sent for the girl to be brought before him. Then he led her to a chamber in his palace where there was a great heap of straw, and gave her a spinning-wheel, and said, &#8220;All this must be spun into gold before morning, as you love your life.&#8221; It was in vain that the poor maiden said that it was only a silly boast of her father, for that she could do no such thing as spin straw into gold: the chamber door was locked, and she was left alone.</p>
+
+    <p>She sat down in one corner of the room, and began to bewail her hard fate; when on a sudden the door opened, and a droll-looking little man hobbled in, and said, &#8220;Good morrow to you, my good lass; what are you weeping for?&#8221; &#8220;Alas!&#8221; said she, &#8220;I must spin this straw into gold, and I know not how.&#8221; &#8220;What will you give me,&#8217; said the hobgoblin, &#8220;to do it for you?&#8221; &#8220;My necklace,&#8221; replied the maiden.</p>
+
+    <p><em>Excerpt from <b>Rumplestiltskin</b> by Jacob Grimm and Wilhelm Grimm based on translations from the Grimms&#8217; Kinder und Hausm&auml;rchen by Edgar Taylor and Marian Edwardes.</em></p>
+
+  <!-- https://www.gutenberg.org/files/2591/2591-h/2591-h.htm#link2H_4_0027 -->
+  </div>  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

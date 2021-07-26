@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  auto-fit Versus auto-fill
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+  <link rel="stylesheet" href="../../theme/css/grid-base.css" id="Grid_CSS">
+
+
+  <style>
+    .demo__grid {
+      display: grid;
+      width: 100rem;
+    }
+
+    .demo__grid > :first-child {
+      background: #FF5722;
+    }
+
+    .demo__grid > :nth-child(2) {
+      background: #9C27B0;
+    }
+
+    .demo__grid > :nth-child(3) {
+      background: #00BCD4;
+    }
+
+    .demo__grid > :nth-child(4) {
+      background: #FFEB3B;
+    }
+
+    .demo__grid > :nth-child(5) {
+      background: #8BC34A;
+    }
+
+    .demo__grid > :nth-child(6) {
+      background: #E91E63;
+    }
+
+    .demo__grid > :nth-child(7) {
+      background: #009688;
+    }
+
+    .demo__grid > :nth-child(8) {
+      background: #FFC107;
+    }
+
+    .demo__grid > :nth-child(9) {
+      background: #3F51B5;
+    }
+
+    .demo__grid > :nth-child(10) {
+      background: #F44336;
+    }
+
+    .demo__grid > :nth-child(11) {
+      background: #7C4DFF;
+    }
+
+    .demo__grid > * {
+      padding: 1rem;
+    }
+
+    .text__light {
+      color: #fffd;
+    }
+
+    .demo__grid h2 {
+      font: inherit;
+    }
+    .demo__grid p {
+      font-size: 1.6rem;
+    }
+
+    .demo__grid__autofill {
+      grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    }
+    .demo__grid__autofit {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+
+
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">CSS Layout</a>
+      </li>
+      <li><a href="./" aria-current="page"><code>auto-fit</code> Versus <code>auto-fill</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2><code>auto-fit</code> Versus <code>auto-fill</code></h2>
+
+
+
+  <p>The first grid in this example uses <code>grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr))</code> while the second uses <code>grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr))</code>. Use Firefox&apos; Developer Tools in order to view this demo. Its grid inspection tools are currently the state of the art.</p>
+<ul>
+<li><code>auto-fit</code> fits as many grid items as it can within a track line, and collapses empty tracks.</li>
+<li><code>auto-fill</code> fits as many grid items as it can within a track line, but <em>does not</em> collapse empty tracks.</li>
+</ul>
+<p><b>Related specification:</b> <a href="https://www.w3.org/TR/css-grid-1/">CSS Grid Layout Module Level 1</a>.</p>
+<h3>Auto-fill</h3>
+<div class="demo__grid demo__grid__autofill">
+  <div>Grid item A</div>
+  <div class="text__light">Grid item B</div>
+  <div>Grid item C</div>
+  <div>Grid item D</div>
+  <div>Grid item E</div>
+</div>
+
+<h3>Auto-fit</h3>
+<div class="demo__grid demo__grid__autofit">
+  <div>Grid item A</div>
+  <div class="text__light">Grid item B</div>
+  <div>Grid item C</div>
+  <div>Grid item D</div>
+  <div>Grid item E</div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

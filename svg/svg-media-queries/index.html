@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using Media Queries With SVG
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    .hexlogodemo {
+      background-color: #CACDCE;
+      display: grid;
+      grid-template-columns: repeat( 2, 1fr );
+      gap: 2rem;
+      height: 60rem;
+      align-items: center;
+    }
+
+    iframe {
+      display: block;
+      text-align: center;
+      margin: 2rem auto;
+    }
+
+    [id=hexlogocontainer] {
+      height: 400px;
+      width: 400px;
+    }
+
+    [id=hexlogocontainer-large] {
+      height: 188px;
+      width: 600px;
+    }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Using CSS with SVG</a>
+      </li>
+      <li><a href="./" aria-current="page">Using Media Queries With SVG</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using Media Queries With SVG</h2>
+
+
+
+  <p>Media queries are one of the CSS features that SVG also supports. Media queries work best with SVG when using pixel units instead of <code>rem</code> or <code>em</code>. You'll need to use JavaScript to update the <code>viewBox</code> attribute. <a href="../../images/svgmq.svg">View the file</a></p>
+<div class="hexlogodemo">
+  <div>
+    <iframe src="../../images/svgmq.svg" id="hexlogocontainer" allow-scripts></iframe>
+  </div>
+
+  <div>
+    <iframe src="../../images/svgmq.svg" id="hexlogocontainer-large" allow-scripts></iframe>
+  </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  
+</body>
+</html>

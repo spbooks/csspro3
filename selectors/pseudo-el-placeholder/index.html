@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using the ::placeholder pseudo-element
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+
+    form {
+      padding: 1rem;
+    }
+
+    input:is([type=email], [type=number] ) {
+      display: block;
+      font: inherit;
+      font-size: 2.2rem;
+      width: 100%;
+      border: 1px solid #333;
+      padding: 1rem
+    }
+
+    ::placeholder {
+      color: hsla( 240, 100%, 50%, 1 );
+      opacity: .8; /* Firefox makes the opacity very light*/
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input:not(:placeholder-shown):invalid {
+      background: pink;
+    }
+
+    input:not(:placeholder-shown):in-range {
+      background: lightblue;
+    }
+
+    input:out-of-range {
+      background: #fc0;
+    }
+  </style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page">Using the <code>::placeholder</code> pseudo-element</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using the <code>::placeholder</code> pseudo-element</h2>
+
+
+
+  <p>Note that placeholder text can <a href="https://www.smashingmagazine.com/2018/06/placeholder-attribute/">cause usability issues</a> for users. Consider using descriptive text and <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute"><code>aria-describedby</code></a> instead. </p>
+<p>Placeholder text also is not a replacement for the <code>label</code> element. Each form control should have an associated label.</p>
+<form>
+  <p>
+    <label for="email">Email address</label>
+    <input type="email" id="email" placeholder="xyz@example.com" />
+  </p>
+
+  <p>
+    <label for="numero">Desired salary</label>
+    <input type="number" id="numero" min="1" max="100000" placeholder="100000" />
+  </p>
+</form>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

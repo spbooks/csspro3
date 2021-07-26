@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Listening for Media Changes
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  .mqmatches main {
+    background: #f44336;
+    border: 10px dashed;
+  }
+</style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Using CSS Conditionally</a>
+      </li>
+      <li><a href="./" aria-current="page">Listening for Media Changes</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Listening for Media Changes</h2>
+
+
+
+  <p>Change the <b>browser window's orientation</b> <em>OR</em> <b>resize the browser window</b> so that its aspect ratio (<em>width</em> &div; <em>height</em>) is at least 1.</p>
+<p>This will trigger a media query event. That event will, in turn, toggle a class name for the <code>body</code> element, and cause the background color to change.</p>
+<p>View source to learn how it works.</p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script type="text/javascript">
+    var mq25em = matchMedia('(min-aspect-ratio: 1/1)');
+
+    const onResizeReload = ( mq ) => {
+        /*
+        If the browser condition changes, and the media
+        query matches, mq.matches return true
+        */
+        if ( mq.matches ) {
+            document.body.classList.add('mqmatches');
+        } else {
+            document.body.classList.remove('mqmatches');
+        }
+
+        if (console && mq.media) {
+            console.log( mq.media + ': '+ mq.matches );
+        }
+    }
+
+    mq25em.addEventListener( 'change', onResizeReload );
+
+</script>
+</body>
+</html>

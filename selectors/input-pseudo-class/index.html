@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Input pseudo-classes
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    input,
+    select,
+    option {
+      font: inherit;
+    }
+
+    label {
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    input:not( :is( [type=checkbox], [type=radio] ) ),
+    select {
+      border-radius: 2px !important;
+      display: block;
+      padding: .5rem;
+      width: 100%;
+    }
+
+    select {
+      background: #fff;
+    }
+
+    fieldset {
+      border: 0;
+      padding: 0;
+      width: 50%;
+    }
+
+    legend {
+      font-weight: 800;
+      margin: 0;
+    }
+
+    input:required,
+    select:required {
+      border: 2px solid #ffc107;
+    }
+
+    input:not(:placeholder-shown):invalid,
+    select:invalid {
+      border: 2px solid #f44336;
+      box-shadow: none;
+    }
+
+    select:valid,
+    input:valid {
+      border: 2px solid #4caf50 !important;
+    }
+
+    input:disabled,
+    select:disabled {
+      border: 2px solid #ccc;
+    }
+
+    :out-of-range {
+      background: #ffeb3b;
+    }
+
+    :in-range {
+      background: #ffffff;
+    }
+
+    button:disabled {
+      opacity: .5;
+    }
+
+    button:disabled:hover {
+      background: #dedede;
+    }
+
+    .columns2 {
+      display: flex;
+    }
+
+    main ul {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    [type="radio"] + label::before {
+      border-width: 2px;
+    }
+  </style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page">Input pseudo-classes</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Input pseudo-classes</h2>
+
+
+
+  <p>This demo illustrates how <code>:disabled</code>, <code>:in-range</code>, <code>:out-of-range</code>, <code>:invalid</code>, <code>:required</code>, and <code>:placeholder-shown</code> work with form controls.</p>
+<form>
+  <p>
+  <label for="name">Name:</label>
+  <input id="name" name="name" placeholder="example: Jane Doe" required="" type="text">
+  </p>
+
+  <p>
+    <label for="email">E-mail:</label>
+    <input id="email" name="email" placeholder="example: jane.doe@example.com" type="email">
+  </p>
+
+  <p>
+    <label for="password">Password</label>
+    <input disabled="disabled" id="password" name="password" placeholder="••••••••" type="password">
+  </p>
+
+  <p>
+    <label for="jobtype">I am:</label>
+    <select id="jobtype">
+      <option value="">— Select —</option>
+      <option value="1">Employed full-time</option>
+      <option value="2">Employed part-time</option>
+      <option value="3">Self-employed</option>
+      <option value="5">Unemployed</option>
+    </select>
+  </p>
+
+  <fieldset>
+    <legend>Do you need a special meal?</legend>
+    <ul>
+      <li>
+         <input id="kosher" name="specialmeal" required="" type="radio">
+         <label for="kosher">Kosher</label>
+      </li>
+      <li>
+         <input id="halal" name="specialmeal" required="" type="radio">
+         <label for="halal">Halal</label>
+       </li>
+      <li>
+         <input id="vegetarian" name="specialmeal" required="" type="radio">
+         <label for="vegetarian">Vegetarian</label>
+       </li>
+      <li>
+         <input id="vegan" name="specialmeal" required="" type="radio">
+         <label for="vegan">Vegan</label>
+       </li>
+      <li>
+         <input id="nogluten" name="specialmeal" required="" type="radio">
+         <label for="nogluten">Gluten-free</label>
+       </li>
+    </ul>
+  </fieldset>
+
+  <p>
+    <label for="picknum">Enter a number</label> (Only numbers between 10 and 50 will be in range.)
+    <input id="picknum" max="50" min="10" name="picknum" step="1" type="number" value="0">
+  </p>
+
+  <p>
+    <label for="month">What is your favorite date in 2024 that falls during a month that ends in <q>er</q>?</label>
+    <input id="month" max="2024-12-31" min="2024-09-01" name="month" type="date" aria-describedby="#month-note">
+    <span id="month-note" class="note"><strong>NOTE: </strong>This control only works in browsers that support <code>&lt;input type="date"&gt;</code>.</span>
+  </p>
+
+  <p><button type="submit">Register</button></p>
+</form>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

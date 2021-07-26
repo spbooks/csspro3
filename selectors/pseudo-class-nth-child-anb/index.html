@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using :nth-child( An+B ) notation
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    [id=nth-form] {
+      display: grid;
+      grid-template-areas: "a a a"
+                           "b c d";
+      gap: 1rem;
+      margin: 2rem 0;
+      border-radius: .2rem;
+      background: rgba(96, 125, 139, 0.1);
+      border: 1px solid rgba(96, 125, 139, 0.3);
+      padding: 1rem;
+    }
+
+    input {
+        border: 1px solid #aaa;
+        border-radius: 2px;
+        flex: 1;
+        padding: 1.2rem;
+    }
+
+    output {
+      grid-area: a;
+      font-size: 3.6rem;
+      text-align: center;
+      background: rgba(96, 125, 139, 0.1);
+      border: 1px solid rgba(96, 125, 139, 0.3);
+    }
+
+    [id=nth-form] div {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    [id=nth-form] div:first-of-type {
+      grid-area: b;
+    }
+
+    [id=nth-form] div:last-of-type {
+      grid-area: c;
+    }
+
+    [id=nth-form] button:first-of-type {
+      grid-area: d;
+    }
+
+    [id=nth-wrap] {
+      display: grid;
+      margin: 3.2rem auto;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2rem;
+    }
+
+    .nth-item {
+      transition: 250ms background-color;
+      background: #673ab7;
+      color: #fff;
+      font-size: 2rem;
+      padding: .5rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .matches {
+      background: #070;
+      border-radius: 1000rem;
+    }
+
+  </style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page">Using <code>:nth-child( An+B )</code> notation</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using <code>:nth-child( An+B )</code> notation</h2>
+
+
+
+  <p>Adjust the step and offset values to understand how the <a href="http://dev.w3.org/csswg/css-syntax/#anb-microsyntax"><em>An+B</em> microsyntax</a> works.</p>
+<form data-template=":nth-child( 0 )" id="nth-form">
+    <output for="step offset" class="code" aria-live="polite">:nth-child( 0 )</output>
+    <div>
+        <label for="step">Step</label>
+        <input id="step" name="step" step="1" type="number" value="0">
+    </div>
+
+    <div>
+        <label for="offset">Offset</label>
+        <input id="offset" name="offset" step="1" type="number" value="0">
+    </div>
+
+    <button type="reset">Reset</button>
+</form>
+
+<div id="nth-wrap">
+    <div class="nth-item">1</div>
+    <div class="nth-item">2</div>
+    <div class="nth-item">3</div>
+    <div class="nth-item">4</div>
+    <div class="nth-item">5</div>
+    <div class="nth-item">6</div>
+    <div class="nth-item">7</div>
+    <div class="nth-item">8</div>
+    <div class="nth-item">9</div>
+    <div class="nth-item">10</div>
+    <div class="nth-item">11</div>
+    <div class="nth-item">12</div>
+    <div class="nth-item">13</div>
+    <div class="nth-item">14</div>
+    <div class="nth-item">15</div>
+    <div class="nth-item">16</div>
+    <div class="nth-item">17</div>
+    <div class="nth-item">18</div>
+    <div class="nth-item">19</div>
+    <div class="nth-item">20</div>
+    <div class="nth-item">21</div>
+    <div class="nth-item">22</div>
+    <div class="nth-item">23</div>
+    <div class="nth-item">24</div>
+    <div class="nth-item">25</div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    const form = document.forms[0];
+    const output = document.querySelector('output');
+    const className = 'matches';
+
+    const resetMatches = () => {
+      const matches = document.querySelectorAll( '[id=nth-wrap] .matches' );
+
+      matches.forEach( removeClass );
+    }
+
+    const addClass = ( el ) => {
+      el.classList.add( className );
+    }
+
+    const removeClass = ( el ) => {
+      el.classList.remove( className );
+    }
+
+    const makeSelector = ( step, offset ) => {
+      let ofst = `+${ offset }`;
+      let stp = `${ step }n`;
+
+      if ( +offset === 0 ) {
+        ofst = '';
+      }
+
+      if ( offset < 0 ) {
+        ofst = offset;
+      }
+
+      if ( +step === 0 ) {
+        ofst = `${ offset }`;
+        stp = '';
+      }
+
+      return `:nth-child( ${stp}${ofst} )`;
+    };
+
+    const updateOutput = ( string ) => {
+      const selector = document.createTextNode( string );
+      output.firstChild.replaceWith( selector );
+    }
+
+    const onInput = ( domEvent ) => {
+      if( domEvent.target.nodeName !== 'INPUT' ) return;
+
+      resetMatches();
+
+      const step = form.step.value;
+      const offset = form.offset.value;
+
+      const nthchild = makeSelector( step, offset );
+      updateOutput( nthchild );
+
+      /**
+       * We are mimicking the effect of the selector by
+       * adding a `.matches` class to every matched element.
+       */
+      const matches = document.querySelectorAll( `[id=nth-wrap] ${nthchild }` );
+      matches.forEach( addClass );
+
+    }
+
+    const onReset = ( domEvent ) => {
+      const tpl = form.dataset.template;
+      updateOutput( tpl );
+      resetMatches();
+    }
+
+    form.addEventListener( 'input', onInput );
+    form.addEventListener( 'reset', onReset );
+
+    /* For Firefox' benefit */
+    window.addEventListener( 'load', () => {
+      form.reset();
+    });
+
+  </script>
+</body>
+</html>

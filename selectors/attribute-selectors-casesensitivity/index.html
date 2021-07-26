@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Attribute Selectors: Case Sensitivity
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+
+  p[id] {
+    font-size: 3.6rem;
+    padding: 1rem;
+  }
+
+  [id=mixedcaseidexample i] {
+    background: hsl( 240, 100%, 90% );
+    color: hsl( 240, 100%, 20% );
+  }
+
+  [id=mixedcaseidexample s] {
+    background: hsl( 12, 100%, 90% );
+    border: 2px solid hsl(12, 100%, 50%);
+  }
+
+  </style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page">Attribute Selectors: Case Sensitivity</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Attribute Selectors: Case Sensitivity</h2>
+
+
+
+  <p>It's possible to enforce case sensitive matching for attribute selectors using the <code>s</code> flag. Case <em>insensitive</em> matching can also be enforced using the <code>i</code> flag.</p>
+<p>Use your browser's inspector to understand what's happening in this demo.</p>
+<p id="MixedCaseIDExample">
+  The identifier attribute value for this element mixes uppercase and lowercase letters.
+</p>
+
+<p id="mixedcaseidexample">
+  The identifier attribute value for this element uses lowercase letters.
+</p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using ::before and ::after to create decorated headings
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400;1,800&display=swap" rel="stylesheet">
+
+  <style>
+
+    article {
+        font-family: 'EB Garamond', serif;
+        font-size: 3rem;
+        background-color: hsl(36, 100%, 95%);
+    }
+
+    article > h1 {
+        font-size: 6rem;
+        font-variation-settings: "wght" 800;
+        font-style: oblique 45deg;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 3rem;
+        color: hsl(120, 100%, 10%)
+    }
+
+    article h1,
+    article a {
+        color: hsl(120, 100%, 10%)
+    }
+
+    article a {
+        padding: 2px;
+    }
+
+    article a:hover {
+        color: hsl(120, 100%, 5%);
+        background-color: hsl(90, 100%, 80%);
+    }
+
+    article h1::before,
+    article h1::after {
+        content: '\00a0';
+        /* https://openclipart.org/detail/103675/decoration094 */
+        background: url('../../images/Vintage-Flourish-Decoration.svg') repeat-x center / 50% auto;
+        color: hsl(120, 100%, 25%);
+    }
+
+    article h1,
+    article q {
+        font-style: oblique 45deg;
+    }
+
+    article > * {
+        margin: auto;
+        padding: 2rem;
+        width: 100rem;
+    }
+
+    </style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page">Using <code>::before</code> and <code>::after</code> to create decorated headings</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using <code>::before</code> and <code>::after</code> to create decorated headings</h2>
+
+
+
+  <article>
+  <h1>Little Red Riding Hood</h1>
+
+  <p><q>Little Red Riding Hood</q> is a European fairy tale about a young girl and a Big Bad Wolf. Its origins can be traced back to the 17th century to several European folk tales, including one from Italy called <i>The False Grandmother</i>. The two best known versions were written by Charles Perrault and the Brothers Grimm.</p>
+
+  <p>The story has been changed considerably in various retellings and subjected to numerous modern adaptations and readings. Other names for the story are: <q>Little Red Cap</q> or simply <q>Red Riding Hood</q>. It is number 333 in the Aarne–Thompson classification system for folktales.
+
+  <p><a href="https://en.wikipedia.org/wiki/Little_Red_Riding_Hood">Read more on Wikipedia</a></p>
+</article>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

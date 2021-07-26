@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Resizing Mask Images with mask-size
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    main div {
+      background-color: hsl(100.7, 25%, 22%);
+    }
+
+    form {
+      display: grid;
+      grid-template-areas: 'a a b b c c'
+                           'd d d d d d';
+      align-items: center;
+      font-size: 2rem;
+      justify-content: space-between;
+      gap:  3.6rem;
+    }
+
+    form p {
+      margin: 0;
+    }
+
+    form p:first-of-type {
+      grid-area: a;
+    }
+
+    form p:last-of-type {
+      grid-area: b;
+    }
+
+    button {
+      grid-area: c;
+    }
+
+    output {
+      grid-area: d;
+      font-size: 3.2rem;
+      font-weight: bold;
+      margin: 0 0 3rem;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    select {
+      padding:  .5rem;
+    }
+
+    option {
+      font-size:  2rem;
+    }
+
+    form > * {
+      flex: 1;
+    }
+
+    button {
+      flex: 0 0 15rem;
+    }
+
+    img {
+      height: 95vh;
+      margin: auto;
+      display: block;
+      width: auto;
+
+      /**
+       * Masking properties still require a prefix in Chromium and 
+       * WebKit-based browsers.
+       */
+
+      -webkit-mask-image: url('../../images/star.png');
+              mask-image: url('../../images/star.png');
+
+      -webkit-mask-repeat: round;
+              mask-repeat: round;
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Visual Effects</a>
+      </li>
+      <li><a href="./" aria-current="page">Resizing Mask Images with <code>mask-size</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Resizing Mask Images with <code>mask-size</code></h2>
+
+    <div class="message note">
+      <p>This demo only works when the browser can create an origin. You may need to run a <a href="../../help/local-server/">local server</a> for this demo.</p>
+    </div>
+
+
+  <p>Mask images, similarly to background images, can be resized using the <code>mask-size</code> property. It accepts the same values as <code>background-size</code>.</p>
+<p>In this demo, the value of <code>mask-repeat</code> is <code>round</code>.</p>
+<form>
+  <p>
+    <label for="maskSizeX">x-value:</label>
+    <input type="text" id="maskSizeX" value="auto">
+  </p>
+
+  <p>
+    <label for="maskSizeY">y-value:</label>
+    <input type="text" id="maskSizeY" value="auto">
+
+  </p>
+  <button type="reset">Reset</button>
+
+  <output class="code">mask-size: auto</output>
+
+</form>
+
+<div>
+  <img src="../../images/aaron-burden-2IzoIHBgYAo-unsplash.jpg" alt="A tall sunflower in a field of sunflowers against a blue sky.">
+</div>
+
+<p><em>Sunflower photo by <a href="https://unsplash.com/photos/2IzoIHBgYAo">Aaron Burden</a> from Unsplash.</em></p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    ((win, doc) => {
+      const form = document.forms[0];
+      const maskTarget = document.querySelector( 'main img' );
+      const indicator = document.querySelector( 'output' );
+
+      const prefixProp = ( css = false ) => {
+        let prop     = 'maskSize';
+
+        if( css ) {
+          prop = 'mask-size';
+        }
+
+        if( !CSS.supports('mask-size: auto') ) {
+            prop = css ? '-webkit-mask-size' : 'webkitMaskSize';
+        }
+
+        return prop;
+      }
+
+      const updateOutput = ( x, y ) => {
+        // If x and y are the same, use x
+        const value = ( x == y ) ? x : `${ x } ${ y }`;
+
+        const declaration = `${ prefixProp( true ) }: ${ value }`;
+        const text = doc.createTextNode( declaration );
+        indicator.firstChild.replaceWith( text );
+      }
+
+      const onInput = ( domEvent ) => {
+        const x = form.elements.maskSizeX.value || '';
+        const y = form.elements.maskSizeY.value || '';
+
+        const propName = prefixProp();
+
+        updateOutput( x, y );
+
+        maskTarget.style[ propName ] = `${ x } ${ y }`;
+      }
+
+      const onReset = ( domEvent ) => {
+        maskTarget.removeAttribute( 'style' );
+
+        const x = form.elements.maskSizeX.value || '';
+        const y = form.elements.maskSizeY.value || '';
+
+        updateOutput( x, y );
+      }
+
+      const onLoad = () => {
+        form.reset();
+        const x = form.elements.maskSizeX.value;
+        const y = form.elements.maskSizeY.value;
+
+        updateOutput( x, y );
+      }
+
+      form.addEventListener( 'input', onInput );
+      form.addEventListener( 'reset', onReset );
+
+      window.addEventListener( 'load', onLoad );
+    })( window, document );
+  </script>
+</body>
+</html>

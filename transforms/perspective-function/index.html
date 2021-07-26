@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Perspective function demo
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+    .flex {
+      gap: 2rem;
+      align-items: center;
+    }
+
+    form {
+      position: relative;
+      z-index: 3;
+    }
+
+    [id=output] {
+      background: #eee;
+      display: inline-block;
+      font-weight: bold;
+      font-size: 3.6rem;
+      padding: 0 1rem;
+    }
+
+    [type=range] {
+      flex: 1;
+    }
+
+    .perpfunc {
+      background: #673ab7;
+      width: 300px;
+      height: 300px;
+      margin: auto;
+    }
+    </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">Perspective function demo</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Perspective function demo</h2>
+
+
+
+  <p>This function controls the amount of foreshortening that occurs when an object is tilted towards the viewer. The lower the value, the more severe the foreshortening. The ends of objects that are closer to the viewer will appear larger than those further away from the viewer.</p>
+<form>
+    <label for="perp"><code>perspective</code> value</label>
+    <p class="flex">
+        <b>0</b>
+        <input type="range" id="perp" name="perp" min="0" max="1000" value="500" step="1" aria-describedby="output">
+        <b>1000</b>
+        <button type="reset">Reset</button>
+    </p>
+    <p id="output"><code>transform:</code> <code></code></p>
+</form>
+
+<div id="perspective">
+    <div class="perpfunc"></div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+    <script>
+    (( win ) => {
+        const form = document.querySelector( 'form' );
+        const perspective = document.getElementById( 'perspective' );
+
+        const updateProperty = ( domEvent ) => {
+            let pixels = form.querySelector('[type=range]');
+            let value;
+            let propValue;
+
+            if( domEvent.type === 'input' ) {
+                value = `${ pixels.value }px`;
+            } else {
+                value = `${ pixels.getAttribute('value') }px`
+            }
+
+            propValue = `perspective( ${ value } ) rotateY( 35deg )`;
+
+            perspective.style.transform = propValue;
+
+            updateOutput( propValue );
+        }
+
+        const updateOutput = ( value ) => {
+            const persp = document.querySelector( '[id=output] code:last-child' );
+            persp.innerHTML = value;
+        }
+
+        form.addEventListener( 'input', updateProperty );
+        form.addEventListener( 'reset', updateProperty );
+
+        win.addEventListener( 'load', updateProperty );
+
+    })( window )
+
+    </script>
+</body>
+</html>

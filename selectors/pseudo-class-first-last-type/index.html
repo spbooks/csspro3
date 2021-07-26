@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  :first-of-type / :last-of-type
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+
+  [id=nth-wrap] {
+      display: grid;
+      margin: 3.2rem auto;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2rem;
+    }
+
+    .nth-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 250ms background-color;
+      background: #673ab7;
+      color: #fff;
+      font-size: 2rem;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    p.nth-item {
+      border-radius: 3rem;
+    }
+
+    .matches {
+      background: #070;
+      border-radius: 1000rem;
+      font-size:  4rem;
+    }
+
+    [id=nth-wrap] :first-of-type,
+    [id=nth-wrap] :last-of-type {
+      background: #cddc39;
+      color: #121212;
+      font-weight: bold;
+      text-decoration: underline 1px wavy;
+    }
+
+</style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page"><code>:first-of-type</code> / <code>:last-of-type</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2><code>:first-of-type</code> / <code>:last-of-type</code></h2>
+
+
+
+  <p>When used in combination with the universal selector, <code>:first-of-type</code> / <code>:last-of-type</code> match the first (or last) <em>element</em> of each type.</p>
+<div id="nth-wrap" class="first-last">
+  <div class="nth-item">1</div>
+  <p class="nth-item">2</p>
+  <div class="nth-item">3</div>
+  <p class="nth-item">4</p>
+  <p class="nth-item">5</p>
+  <div class="nth-item">6</div>
+  <p class="nth-item">7</p>
+  <p class="nth-item">8</p>
+  <div class="nth-item">9</div>
+  <p class="nth-item">10</p>
+  <div class="nth-item">11</div>
+  <p class="nth-item">12</p>
+  <p class="nth-item">13</p>
+  <div class="nth-item">14</div>
+  <p class="nth-item">15</p>
+  <div class="nth-item">16</div>
+  <p class="nth-item">17</p>
+  <p class="nth-item">18</p>
+  <div class="nth-item">19</div>
+  <div class="nth-item">20</div>
+  <div class="nth-item">21</div>
+  <div class="nth-item">22</div>
+  <div class="nth-item">23</div>
+  <div class="nth-item">24</div>
+  <div class="nth-item">25</div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

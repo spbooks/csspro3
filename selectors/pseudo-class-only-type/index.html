@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  :only-of-type
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+
+  [id=nth-wrap] {
+      display: grid;
+      margin: 3.2rem auto;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2rem;
+    }
+
+    .nth-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 250ms background-color;
+      background: #673ab7;
+      color: #fff;
+      font-size: 2rem;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    [id=nth-wrap] :only-of-type {
+      background: #cddc39;
+      color: #121212;
+      font-weight: bold;
+      text-decoration: underline 1px wavy;
+      border-radius: 100rem;
+    }
+
+</style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page"><code>:only-of-type</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2><code>:only-of-type</code></h2>
+
+
+
+  <p>The <code>:only-of-type</code> pseudo-class matches an element if it's the only one of its type. In this case, the highlighted element (element 11) is a <code>p</code> element. Its siblings are <code>div</code> elements.</p>
+<div id="nth-wrap">
+  <div class="nth-item">1</div>
+  <div class="nth-item">2</div>
+  <div class="nth-item">3</div>
+  <div class="nth-item">4</div>
+  <div class="nth-item">5</div>
+  <div class="nth-item">6</div>
+  <div class="nth-item">7</div>
+  <div class="nth-item">8</div>
+  <div class="nth-item">9</div>
+  <div class="nth-item">10</div>
+  <p class="nth-item">11</p>
+  <div class="nth-item">12</div>
+  <div class="nth-item">13</div>
+  <div class="nth-item">14</div>
+  <div class="nth-item">15</div>
+  <div class="nth-item">16</div>
+  <div class="nth-item">17</div>
+  <div class="nth-item">18</div>
+  <div class="nth-item">19</div>
+  <div class="nth-item">20</div>
+  <div class="nth-item">21</div>
+  <div class="nth-item">22</div>
+  <div class="nth-item">23</div>
+  <div class="nth-item">24</div>
+  <div class="nth-item">25</div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    const form = document.forms[0];
+    const output = document.querySelector('output');
+    const className = 'matches';
+
+    const resetMatches = () => {
+      const matches = document.querySelectorAll( '[id=nth-wrap] .matches' );
+
+      matches.forEach( removeClass );
+    }
+
+    const addClass = ( el ) => {
+      el.classList.add( className );
+    }
+
+    const removeClass = ( el ) => {
+      el.classList.remove( className );
+    }
+
+    const makeSelector = ( step, offset ) => {
+      let ofst = `+${ offset }`;
+      let stp = `${ step }n`;
+
+      if ( +offset === 0 ) {
+        ofst = '';
+      }
+
+      if ( offset < 0 ) {
+        ofst = offset;
+      }
+
+      if ( +step === 0 ) {
+        ofst = `${ offset }`;
+        stp = '';
+      }
+
+      return `p:nth-of-type( ${stp}${ofst} )`;
+    };
+
+    const updateOutput = ( string ) => {
+      const selector = document.createTextNode( string );
+      output.firstChild.replaceWith( selector );
+    }
+
+    const onInput = ( domEvent ) => {
+      if( domEvent.target.nodeName !== 'INPUT' ) return;
+
+      resetMatches();
+
+      const step = form.step.value;
+      const offset = form.offset.value;
+
+      const nthtype = makeSelector( step, offset );
+      updateOutput( nthtype );
+
+      /**
+       * We are mimicking the effect of the selector by
+       * adding a `.matches` class to every matched element.
+       */
+      const matches = document.querySelectorAll( `[id=nth-wrap] ${nthtype }` );
+      matches.forEach( addClass );
+
+    }
+
+    const onReset = ( domEvent ) => {
+      const tpl = form.dataset.template;
+      updateOutput( tpl );
+      resetMatches();
+    }
+
+    form.addEventListener( 'input', onInput );
+    form.addEventListener( 'reset', onReset );
+
+    /* For Firefox' benefit */
+    window.addEventListener( 'load', () => {
+      form.reset();
+    });
+
+  </script>
+</body>
+</html>

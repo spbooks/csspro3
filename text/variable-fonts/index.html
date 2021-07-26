@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using Variable Fonts
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+<style>
+  @font-face {
+      font-family: 'Amstelvar';
+      src: url('../../fonts/amstelvar/Amstelvar-Roman-blended-VF.ttf') format('truetype-variations');
+      /* Future-proof format syntax. See http://clagnut.com/blog/2391 */
+      src: url('../../fonts/amstelvar/Amstelvar-Roman-blended-VF.ttf') format('truetype', supports variations);
+      font-weight: 100 900;
+  }
+
+  @font-face {
+      font-family: 'AmstelvarItal';
+      src: url('../../fonts/amstelvar/Amstelvar-Italic-VF.ttf') format('truetype-variations');
+      /* Future-proof format syntax. See http://clagnut.com/blog/2391 */
+      src: url('../../fonts/amstelvar/Amstelvar-Italic-VF.ttf') format('truetype', supports variations);
+      font-style: italic;
+      font-weight: 100 900;
+  }
+
+  .demo__wrapper {
+    font-family: 'Amstelvar';
+    font-weight: 400;
+  }
+  h1 {
+    font-family: inherit;
+  }
+  .demo__wrapper * {
+    font-family: inherit;
+    font-size: 2rem;
+  }
+
+  .demo__wrapper em {
+    font-weight: 450;
+  }
+
+ .demo__wrapper i {
+    font-style: italic;
+    font-family: 'AmstelvarItal';
+  }
+
+  .amstelvar__weights :first-child {
+    font-weight: 100;
+  }
+
+  .demo__wrapper b {
+    font-weight: 500;
+  }
+
+  .amstelvar__weights :last-child {
+    font-weight: 900;
+  }
+
+  .amstelvar__weights :nth-child(2) {
+    font-weight: 200;
+  }
+
+  .amstelvar__weights :nth-child(3) {
+    font-weight: 300;
+  }
+  .amstelvar__weights :nth-child(4) {
+    font-weight: 350;
+  }
+  .amstelvar__weights :nth-child(5) {
+    font-weight: 400;
+  }
+  .amstelvar__weights :nth-child(6) {
+    font-weight: 500;
+  }
+  .amstelvar__weights :nth-child(7) {
+    font-weight: 528;
+  }
+  .amstelvar__weights :nth-child(8) {
+    font-weight: 600;
+  }
+  .amstelvar__weights :nth-child(9) {
+    font-weight: 700;
+  }
+ .amstelvar__weights :nth-child(10) {
+    font-weight: 800;
+  }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Working With Text</a>
+      </li>
+      <li><a href="./" aria-current="page">Using Variable Fonts</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using Variable Fonts</h2>
+
+
+
+  <p>A basic, self-contained example that uses higher-level variable font-related properties.</p>
+<div class="demo__wrapper">
+  <p>This example uses <a href="https://github.com/TypeNetwork/Amstelvar">Amstelvar</a>, a <q>a parametric variable font by David Berlow.</q> This particular example is a simple one, but perhaps a little profound.</p>
+
+  <p>Unlike the <a href="font-face.html">basic example</a>, which uses a separate file for each variation in font weight or style, this example uses <em>one</em> file for every weight.</p>
+
+  <ul class="amstelvar__weights">
+    <li>This line has a font weight of 100</li>
+    <li>This line has a font weight of 200</li>
+    <li>This line has a font weight of 300</li>
+    <li>This line has a font weight of 350</li>
+    <li>This line has a font weight of 400</li>
+    <li>This line has a font weight of 500</li>
+    <li>This line has a font weight of 528</li>
+    <li>This line has a font weight of 600</li>
+    <li>This line has a font weight of 700</li>
+    <li>This line has a font weight of 800</li>
+    <li>This line has a font weight of 900</li>
+  </ul>
+
+  <p>Notice that variable fonts mean that we are no longer locked into font-weight increments of 100. We can use any value that falls within the range that the font file supports.</p>
+
+  <p>Amstelvar does still require a separate file for <i>italicized</i> text. That's a limitation of Amstelvar, not of variable fonts.</p>
+
+  <p><b>Related specification:</b> <a href="https://www.w3.org/TR/css-fonts-4/" class="amstelvarital">CSS Fonts Module Level 4</a></p>
+
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

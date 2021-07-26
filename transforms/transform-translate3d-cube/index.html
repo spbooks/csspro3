@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Translating Depth With translate3d()
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  form {
+    background: rgba(255, 255, 255, .6);
+    gap: 5rem;
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  form > div {
+    flex: 1;
+  }
+
+  form .flex {
+    gap: 2rem;
+    flex: 1;
+  }
+
+  .dice {
+    transform-style: preserve-3d;
+    height: 20rem;
+    position: relative;
+    margin: auto;
+    width: 20rem;
+    pointer-events: none;
+  }
+
+  .dice div {
+    background: rgba(221, 0, 0, 0.8);
+    border: .1rem solid #ccc;
+    border-radius: .4rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  /**
+   * Same here. Firefox calculates this transform slightly differently.
+   * As a result, we need to adjust this translation by 10pixels using
+   * a -moz- prefix.
+   */
+
+  .dice div:first-child {
+    background: rgba(103, 58, 183, 0.8);
+         transform: rotate(0deg) translateZ(-100px);
+    -moz-transform: rotate(0deg) translateZ(-110px);
+  }
+
+  .dice div:nth-child(2) {
+    background: rgba(0, 150, 136, 0.8);
+         transform: rotateX(-90deg) translateZ(100px);
+    -moz-transform: rotateX(-90deg) translateZ(110px);
+  }
+
+  .dice div:nth-child(3) {
+    background: rgba(255, 193, 7, 0.8);
+         transform: rotateY(-90deg) translateZ(100px);
+    -moz-transform: rotateY(-90deg) translateZ(110px);
+  }
+
+  .dice div:nth-child(4) {
+    background: rgba(233, 30, 99, 0.8);
+         transform: rotateY(90deg) translateZ(100px);
+    -moz-transform: rotateY(90deg) translateZ(110px);
+  }
+
+  .dice div:nth-child(5) {
+    background: rgba(0, 150, 136, 0.8);
+         transform: rotateX(90deg) translateZ(100px);
+    -moz-transform: rotateX(90deg) translateZ(110px);
+  }
+
+  .dice div:last-child {
+    background: rgba(139, 195, 74, 0.8);
+         transform: rotate(180deg) translateZ(100px);
+    -moz-transform: rotate(180deg) translateZ(110px);
+  }
+
+  .dice circle {
+    fill: rgba(255, 255, 255, 0.8);
+  }
+
+  #translate {
+    font-size: 1.6rem;
+    height: 24rem;
+    margin: 4.8rem auto;
+    padding: 1.6rem;
+    perspective: 40rem;
+    perspective-origin: 125% 125%;
+    pointer-events: none;
+    transform-style: preserve-3d;
+    width: 24rem;
+   
+  }
+
+  #output {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  [type=range] {
+    flex: 1;
+  }
+
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">Translating Depth With <code>translate3d()</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Translating Depth With <code>translate3d()</code></h2>
+
+
+
+  <h3><code id="output" aria-live="polite">transform: translate3d( 0, 0, 0 )</code></h3>
+
+<form class="flex">
+    <div>
+        <label for="x">X direction</label>
+        <span class="flex">
+            <b>-500px</b>
+            <input type="range" id="x" name="x" min="-500" max="500" value="0" aria-valuemin="-500" aria-valuemax="500" value="0" aria-valuenow="0" step="5">
+            <b>500px</b>
+        </span>
+    </div>
+
+    <div>
+        <label for="y">Y direction</label>
+        <span class="flex">
+            <b>-500px</b>
+            <input type="range" id="y" name="y" min="-500" max="500" aria-valuemin="-500" aria-valuemax="500" value="0" aria-valuenow="0" step="5">
+            <b>500px</b>
+        </span>
+    </div>
+
+    <div>
+        <label for="z">Z direction</label>
+        <span class="flex">
+            <b>-500px</b>
+            <input type="range" id="z" name="z" min="-500" max="500" aria-valuemin="-500" aria-valuemax="500" value="0" aria-valuenow="0" step="5">
+            <b>500px</b>
+        </span>
+    </div>
+    <p> <button type="reset">Reset</button></p>
+</form>
+
+<div id="translate">
+    <div class="dice backface">
+        <div class="d1">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+
+         <div class="d2">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            </svg>
+         </div>
+
+
+         <div class="d3">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+         </div>
+
+         <div class="d4">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            </svg>
+        </div>
+
+
+        <div class="d5">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <circle cx="50" cy="50" r="25"/>
+            <circle cx="149.9" cy="149.9" r="25"/>
+            <circle cx="149.9" cy="50" r="25"/>
+            <circle cx="50" cy="149.9" r="25"/>
+            <circle cx="100" cy="100" r="25"/>
+            </svg>
+        </div>
+
+        <div class="d6">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                <circle cx="50" cy="40" r="25"/>
+                <circle cx="149.9" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="40" r="25"/>
+                <circle cx="50" cy="159.9" r="25"/>
+                <circle cx="149.9" cy="100" r="25"/>
+                <circle cx="50" cy="100" r="25"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+    <script>
+        (( win ) => {
+            const dice = document.querySelector('.dice');
+            const form = document.querySelector('form');
+
+            const onInput = ( domEvent = null ) => {
+                const propValue = `transform: translate3d( ${form.x.value}px, ${form.y.value}px, ${form.z.value}px );`;
+
+                dice.style = propValue;
+
+                if( domEvent && domEvent.hasOwnProperty( 'target' ) ) {
+                    domEvent.target.setAttribute('aria-valuenow', domEvent.target.value);
+                }
+
+                updateText( propValue );
+            }
+
+            const updateText = ( text ) => {
+                const output = document.querySelector('#output');
+                output.firstChild.replaceWith( text );
+            }
+
+            const onReset = () => {
+                const z = form.querySelector('[id=z]');
+
+                form.x.value = 0;
+                form.y.value = 0;
+                form.z.value = 0;
+
+                form.x.setAttribute('aria-valuenow', 0);
+                form.y.setAttribute('aria-valuenow', 0);
+                form.z.setAttribute('aria-valuenow', 0);
+
+                const inp = new Event('input', { bubbles: true });
+                form.x.dispatchEvent( inp );
+                form.y.dispatchEvent( inp );
+                form.z.dispatchEvent( inp );
+            }
+
+            form.addEventListener( 'input', onInput );
+            form.addEventListener( 'reset', onReset );
+            win.addEventListener( 'load', onInput );
+
+        })( window );
+    </script>
+</body>
+</html>

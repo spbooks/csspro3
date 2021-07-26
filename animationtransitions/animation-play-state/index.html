@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Pausing Animations With animation-play-state
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  html, body {
+    height: 100%;
+  }
+
+  .square {
+    position: relative;
+  }
+
+  .svgwrap {
+    height: 30rem;
+    margin: 10rem;
+    width: 100%;
+    max-width: 30rem;
+  }
+  .svgwrap img {
+    width: 100%;
+    display: block;
+  }
+
+  @-webkit-keyframes wobble {
+    from {
+      
+    }
+    50% {
+      
+    }
+    to {
+      
+    }
+  }
+  @keyframes wobble {
+    from {
+      transform: skewY(15deg);
+    }
+    to {
+      transform: skewY(-45deg);
+    }
+  }
+  .wobble {
+    
+    animation: wobble 3s ease-in infinite forwards alternate;
+    
+    animation-play-state: paused;
+  }
+
+  .running {
+    
+    animation-play-state: running;
+  }
+
+  .half {
+    
+    align-self: flex-start;
+  }
+
+  .finite {
+    
+    animation-iteration-count: 5;
+  }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transitions &amp; Animations</a>
+      </li>
+      <li><a href="./" aria-current="page">Pausing Animations With <code>animation-play-state</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Pausing Animations With <code>animation-play-state</code></h2>
+
+
+
+  <p>Click the button below to toggle between the <code>running</code> and <code>paused</code> states.</p>
+<section class="animate">
+    <p>
+        <button type="button" class="trigger">Toggle play state</button>
+    </p>
+
+    <div class="svgwrap wobble">
+        <img src="../../images/csscircle.svg">
+    </div>         
+</section>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script>
+	document.querySelector('.animate').addEventListener('click', function(e){
+		if( e.target.nodeName == 'BUTTON' ){
+			e.currentTarget.getElementsByClassName('wobble')[0].classList.toggle('running');
+		}
+	})
+</script>
+</body>
+</html>

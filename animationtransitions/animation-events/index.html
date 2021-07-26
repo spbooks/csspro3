@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Detecting When Animations Start, End, or Repeat
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  .animation__events {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  form {
+    margin: 5rem 0;
+  }
+  .svgwrap {
+    width: 70%;
+  }
+
+  .svgwrap img {
+    width: 100%;
+    display: block;
+  }
+
+  @keyframes wobble {
+    from {
+      transform: skewY(15deg);
+    }
+    to {
+      transform: skewY(-45deg);
+    }
+  }
+
+  .wobble {
+    animation: wobble 1s ease-in infinite forwards alternate;
+    animation-play-state: paused;
+  }
+
+  .running {
+    animation-play-state: running;
+  }
+
+  .finite {
+    animation-iteration-count: 5;
+  }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transitions &amp; Animations</a>
+      </li>
+      <li><a href="./" aria-current="page">Detecting When Animations Start, End, or Repeat</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Detecting When Animations Start, End, or Repeat</h2>
+
+
+
+  <p><em>NOTE: The animations below may cause dizziness for some viewers. If you are one of those people, please don't use this demo.</em></p>
+<p>Click the button below to start the animation. The animation will run 5 times. Whenever an event fires, the <em>Event list</em> panel will update with the name of the animation that ended (wobble), and the event type.</p>
+<form>
+    <p>
+        <button type="button" id="start" class="trigger">Start animation</button>
+        <button type="reset" class="trigger">Stop / Reset</button>
+    </p>
+</form>
+
+<div class="animation__events">
+    <section class="animate">
+        <div class="svgwrap">
+            <img src="../../images/csscircle.svg">
+        </div>         
+    </section>
+
+    <section id="event-output">
+        <h2>Event list</h2>
+        <pre id="output"></pre>
+    </section>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+	<script>
+		var wobble, output, start, removeClasses, addClasses, updateEventList, eventlist;
+
+		wobble = document.querySelector('.svgwrap');
+		output = document.getElementById('output');
+		start  = document.querySelector('button');
+
+		removeClasses = function(){
+			wobble.classList.remove( 'running', 'finite', 'wobble' );
+			start.removeAttribute( 'disabled' );
+		}
+
+		addClasses = function(){
+			wobble.classList.add( 'running','finite','wobble' );
+		}
+
+		updateEventList = function(evt) {
+			var txt = document.createTextNode( evt.animationName +': ' + evt.type + '\n' );
+			output.appendChild(txt);
+		}
+
+		eventlist = ['animationstart', 'animationend', 'animationiteration'];
+
+		eventlist.map(function(el) {
+			wobble.addEventListener(el, updateEventList, true);
+		});
+
+		wobble.addEventListener( 'animationend', ( event ) => {
+			start.setAttribute( 'disabled', '' );
+		});
+
+		document.querySelector('.animate').addEventListener('click', function(e){
+			if(e.target.type === 'reset'){
+				removeClasses();
+				output.innerHTML = '';
+			}
+
+			if( e.target.id === 'start') {
+				addClasses();
+			}
+		}, true );
+	</script>
+</body>
+</html>

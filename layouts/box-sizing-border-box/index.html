@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using the box-sizing property
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+  <link rel="stylesheet" href="../../theme/css/grid-base.css" id="Grid_CSS">
+
+
+  <style>
+  [id=change-box-sizing] {
+    display: flex;
+    gap: 2rem;
+    margin: 1em 0;
+  }
+
+  [id=change-box-sizing] p {
+    flex: 0 1 auto;
+    padding: .5rem 0;
+    justify-items: start;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  .box-sizing-wrapper {
+    background: #9e9e9e;
+    margin: auto;
+  }
+
+  article,
+  aside {
+    background: #FFEB3B;
+    box-sizing: inherit;
+    border: 10px solid #9C27B0;
+    float: left;
+    padding: 10px;
+  }
+
+  .box-sizing-wrapper::after {
+    content: ' ';
+    display: table;
+    clear: both;
+  }
+  .box-sizing-wrapper p {
+    margin: auto;
+  }
+
+  .primary {
+    width: 60%;
+  }
+
+  .secondary {
+    width: 40%;
+  }
+
+  [disabled] {
+    opacity: .5;
+  }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">CSS Layout</a>
+      </li>
+      <li><a href="./" aria-current="page">Using the <code>box-sizing</code> property</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using the <code>box-sizing</code> property</h2>
+
+
+
+  <p>Select a value to see its effect on the layout below. Both of the yellow boxes have an initial <code>box-sizing</code> value of <code>content-box</code>. The first box has a <code>width</code> value of 60%. The second has a <code>width</code> value of 40%.</p>
+<p><strong>Related specification:</strong> <a href="https://drafts.csswg.org/css-sizing-3/">CSS Intrinsic &amp; Extrinsic Sizing Module Level 3</a>.</p>
+<form id="change-box-sizing">
+    <p>
+        <input type="radio" name="box-sizing" id="border-box" value="border-box" checked>
+        <label for="border-box"><code>border-box</code></label>
+    </p>
+
+    <p>
+        <input type="radio" name="box-sizing" id="content-box" value="content-box">
+        <label for="content-box"><code>content-box</code></label>
+    </p>
+</form>
+
+<div class="box-sizing-wrapper">
+    <article class="primary">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </article>
+
+    <aside class="secondary">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </aside>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script>
+    const cbs = document.getElementById('change-box-sizing');
+
+
+    const setProperty = ( value ) => {
+        const wrapper = document.querySelector('.box-sizing-wrapper');
+        wrapper.style.boxSizing = value;
+    };
+
+    const updateProperty = ( domEvent ) => {
+        const boxSizingValue = domEvent.target.value;
+
+        if( boxSizingValue ) {
+            setProperty( boxSizingValue );
+        }
+    };
+
+    const setUp = ( domEvent ) => {
+        const initial = document.querySelector(':checked');
+        cbs.reset();
+        setProperty( initial.value );
+    };
+
+    cbs.addEventListener('change', updateProperty);
+    window.addEventListener('load', setUp);
+
+</script>
+</body>
+</html>

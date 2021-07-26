@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using the perspective() function
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  .flex {
+    gap: 2rem;
+    align-items: center;
+  }
+
+  #rotate,
+  #scale {
+    font-size: 1.6rem;
+    height: 15vw;
+    margin: 4em auto;
+    padding: 1.6rem;
+    padding: 1vw;
+    width: 15em;
+    width: 15vw;
+    pointer-events: none;
+
+    transform-style: preserve-3d;
+  }
+
+  #output {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  [type=range] {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .dimen {
+    perspective: 20rem;
+  }
+
+  .mono {
+    font-family: monospace;
+  }
+
+  .unit {
+    font-weight: normal;
+  }
+
+  .animate {
+    transition: 2s;
+  }
+
+  .r900 {
+    transform: rotate( 900deg );
+  }
+</style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">Using the <code>perspective()</code> function</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using the <code>perspective()</code> function</h2>
+
+
+
+  <h3>
+    <code id="output" >transform: perspective( 0px ) rotate3d( 1,1,1,-45deg )</code>
+</h3>
+
+<p>Adjust the slider to change the value of the perspective function the object below.</p>
+<form class="flex">
+    <label for="factor"><code>perspective()</code> value</label>
+    <b>0</b>
+    <input type="range" id="factor" name="factor" min="0" max="800" value="100" step="10">
+    <b>800</b>
+    <button type="reset">Reset</button>
+</form>
+
+<p><img id="scale" src="../../images/csscircle.svg" alt="Circle with CSS written in the center."></p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script>
+    var rulestr = '#scale{transform: perspective(%spx) rotate3d(1,1,1,-45deg)';
+    var css = document.styleSheets[document.styleSheets.length-1], 
+    cssRulesInitLength = css.cssRules.length,
+    factor = document.getElementById('factor');
+
+    const form = document.querySelector('form');
+    
+    form.addEventListener('reset', ( domEvent ) => {
+
+    });
+
+    factor.addEventListener('input', ( domEvent ) => {
+        var val = domEvent.target.value,
+        rule = rulestr.replace(/\%s/g, val),
+        txt = document.createTextNode(val),
+        output = document.querySelectorAll('#output span');
+
+
+        /* Update last rule */
+        if(css.cssRules.length > cssRulesInitLength ){
+            css.deleteRule(css.cssRules.length - 1);
+        }
+        css.insertRule(rule, css.cssRules.length);
+
+        /*
+        Update degree value. Using an array because scale accepts
+        two arguments and we need to update both.
+        */
+        Array.prototype.map.call(output, function(op){
+            var t = txt.cloneNode();
+            if(op.firstChild){
+                op.replaceChild(t, op.firstChild);
+            } else {
+                op.appendChild(t);
+            }
+        });
+    },true);
+
+
+</script>
+</body>
+</html>

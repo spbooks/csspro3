@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Understanding the ::marker pseudo-element
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+    :is( li,summary )::before {
+      content: '\00a0';
+    }
+
+    summary {
+      cursor: pointer;
+      font-size: 2.4rem;
+      font-weight: bold;
+    }
+
+    summary::-webkit-details-marker {
+      color: red;
+      content: '👕';
+      direction: 'rtl';
+      white-space: pre-wrap;
+    }
+
+    summary::marker {
+      content: '👉';
+    }
+
+    details {
+      padding: 2rem;
+    }
+
+    [open] {
+      border: 2px solid #333;
+      background: whitesmoke
+    }
+
+    [open] ::marker {
+      content: '👇';
+    }
+
+    ul ::marker {
+      content: '\2192';
+      transition: all 1s linear;
+      color: red;
+      font-weight: bold;
+      word-wrap: break-word;
+      text-align: right;
+    }
+
+    /* Prevent this from affecting all OL elements */
+    main ol ::marker {
+      font-size: 4rem;
+      color: blue;
+      transition: color linear 300ms;
+    }
+
+    main ol :hover::marker {
+      color: magenta;
+    }
+
+    ul ::marker {
+      font-size: 3rem;
+    }
+
+    ul ::marker {
+      font-size: 3rem;
+    }
+
+    ul ::marker {
+      font-size: 3rem;
+    }
+
+    li + li {
+      margin: 1rem 0;
+      vertical-align: top;
+    }
+
+    ul li::marker {
+      content: '❌';
+    }
+
+    ul li::before {
+      content: '\00a0'; 
+      display: inline-block;
+      padding: 0 10px;
+    }
+  </style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page">Understanding the <code>::marker</code> pseudo-element</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Understanding the <code>::marker</code> pseudo-element</h2>
+
+
+
+  <p>
+  The <code>::marker</code> pseudo-element matches the bullet or numbers
+  of list items, and the toggle indicator of <code>summary</code> elements.
+</p>
+
+<details open>
+  <summary>This is an opened summary</summary>
+  <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in purus erat. Integer nisl justo, commodo ac mauris et, auctor ullamcorper dolor. Proin blandit nunc vitae sodales malesuada. Cras est nulla, dapibus vel pulvinar rutrum, dictum a felis. Nam fringilla erat id ipsum ultricies eleifend. Sed sit amet dui nec massa luctus semper ac nec purus. Maecenas tempor neque id lacinia convallis. Morbi volutpat arcu a nunc ultrices, in feugiat est blandit. Aenean condimentum vestibulum leo, eu bibendum lectus commodo sed. Pellentesque vulputate dui id neque interdum scelerisque.</p>
+</details>
+
+<ul>
+  <li>Vivamus et massa vehicula, efficitur tortor sit amet, rutrum neque.</li>
+  <li>Vestibulum ac ultrices felis.</li>
+  <li>Ut gravida convallis elit sit amet aliquet.</li>
+  <li>Vivamus finibus nisl id odio hendrerit, ut elementum libero gravida.</li>
+  <li>Nullam sit amet diam et massa ultrices finibus.</li>
+</ul>
+
+<ol>
+  <li>Vivamus et massa vehicula, efficitur tortor sit amet, rutrum neque.</li>
+  <li>Vestibulum ac ultrices felis.</li>
+  <li>Ut gravida convallis elit sit amet aliquet.</li>
+  <li>Vivamus finibus nisl id odio hendrerit, ut elementum libero gravida.</li>
+</ol>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

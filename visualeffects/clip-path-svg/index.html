@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using clip-path with SVG and url()
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+
+  main > div {
+    background: #333;
+    background-size: 100vw 100vh;
+  }
+
+  main > div p {
+    display: inherit;
+    justify-content: center;
+  }
+
+  svg {
+    height: auto;
+    width: 8px;
+    outline:  2px dashed #0c0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  img {
+    display: block;
+    height: 95vh;
+    margin: 2rem auto;
+    width: auto;
+
+    /* Creates a star-shaped clipping area */
+    clip-path: url(#star);
+  }
+
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Visual Effects</a>
+      </li>
+      <li><a href="./" aria-current="page">Using <code>clip-path</code> with SVG and <code>url()</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using <code>clip-path</code> with SVG and <code>url()</code></h2>
+
+
+
+  <div>
+    <p><img src="../../images/milk-5267300_1920.jpg"></p>
+</div>
+
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+    <clipPath id="star">
+    <path
+        transform="translate(200, 0) scale(1.8)"
+        style="fill: #000;"
+        d="M 328.05692,385.18211 203.81502,322.90671 82.079398,389.94936 102.91396,252.54413 1.5342416,157.48399 138.65261,134.83828 197.73212,9.0452444 261.64137,132.45466 l 137.89287,17.31576 -97.62028,98.91692 z" />
+    </clipPath>
+</svg></p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

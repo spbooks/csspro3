@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Using Custom Properties With React Components
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+    .react__example {
+      background: #ddd;
+      padding: 1rem 2rem 2rem;
+    }
+
+    .field__button__group {
+      display: block;
+      font-family: 'NotoSansBold', sans-serif;
+      font-weight: bold;
+    }
+
+    .field__button__group > div {
+      display: flex;
+      margin-top: .5rem;
+    }
+
+    .field__button__group input {
+      border: none;
+      border-right-width: 0;
+      border-radius: .5rem 0 0 .5rem;
+      font-size: inherit;
+      padding: 0 .5rem;
+      flex: 1;
+    }
+
+    .field__button__group input:focus {
+      background: hsl(54, 100%, 90%);
+    }
+
+    .field__button__group button {
+      background: var(--button-bg-color, #333);
+      border: 1px solid var(--button-bg-color, #333);
+      border-radius: 0 .5rem .5rem 0;
+      color: var(--button-fg-color, #fff);
+      padding: 1rem 2rem;
+      font: inherit;
+    }
+
+    [id=property-value-status] {
+      color: red;
+    }
+
+    form {
+      margin: 4rem 0;
+      border: solid #ccc;
+      border-width: 2px 0;
+      padding: 0 2rem;
+    }
+
+    form p {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    form input,
+    form button {
+      font-size: 2rem;
+      display: block;
+      height: 100%;
+    }
+
+
+    form input {
+      padding: .5rem 1rem;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    form button {
+      font: inherit;
+      background-color: hsl(265, 18.2%, 30%);
+      padding: .5rem 2rem;
+      border: 1px solid hsl(265, 18.2%, 30%);
+      color: #fff;
+      font-weight: 500;
+      border-radius: .5rem;
+    }
+    </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Custom Properties</a>
+      </li>
+      <li><a href="./" aria-current="page">Using Custom Properties With React Components</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Using Custom Properties With React Components</h2>
+
+
+
+  <p>This example uses JavaScript to set the value of <code>--button-bg-color</code> property. It sets the <code>style</code> property of the <code>:root</code> element.</p>
+<p>Although this example uses <a href="https://reactjs.org/">ReactJS</a>, the concept &mdash; setting the custom property via the style attribute &mdash; also works with other component-based frameworks.</p>
+<form>
+    <p>
+        <label for="property-value">Set <code>--button-bg-color</code> value</label>
+        <span>
+          <input type="text" id="property-value" name="property-value">
+          <b id="property-value-status" hidden>Please enter a valid color value</b>
+        </span>
+
+        <button type="reset">Reset</button>
+    </p>
+</form>
+
+<div class="react__example"></div>
+<!--
+  The example in the book uses JSX <https://facebook.github.io/jsx/>.
+  Here I've used Vanilla JavaScript to avoid setting up a build process.
+-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js" referrerpolicy="no-referrer"></script>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+<script>
+/*
+  React.createElement accepts three arguments:
+  - type: the type of element to create, either a tag name or a React
+    component.
+  - props: a dictionary of key-value pairs. These become HTML attributes
+    if we're creating an HTML element.
+  - children: one or more child nodes. Can be text, elements, or an
+    array
+
+  https://reactjs.org/docs/react-api.html#createelement
+*/
+
+class FieldButtonGroupWrapper extends React.Component {
+  render() {
+    const buttonStyle = {
+    '--button-bg-color': this.props.buttonBgColor,
+    '--button-fg-color': this.props.buttonFgColor,
+    };
+
+    return React.createElement(
+      'div',
+      null,
+      React.createElement('input', {
+        type: this.props.inputType,
+        id: this.props.id
+      }, null),
+      React.createElement('button',
+        {
+          type: 'submit',
+          style: buttonStyle
+        }, this.props.buttonText)
+    );
+  }
+}
+
+class FieldButtonGroup extends React.Component {
+  render() {
+    return React.createElement(
+      'div',
+      {
+        className: this.props.cssClass
+      },
+      React.createElement('label', {id: this.props.id}, this.props.labelText),
+      React.createElement(FieldButtonGroupWrapper, {
+        id: this.props.id,
+        buttonBgColor: this.props.buttonBgColor,
+        buttonFgColor: this.props.buttonFgColor,
+        buttonText: 'Example button text',
+        inputType: this.props.inputType
+      })
+    );
+  }
+}
+
+ReactDOM.render(
+  React.createElement(FieldButtonGroup,
+  { 
+    cssClass: 'field__button__group',
+    id: 'example_form_input',
+    buttonFgColor: 'rgb(255, 255, 255)',
+    buttonText: 'Button Text',
+    labelText: 'Example label text',
+    inputType: 'text'
+  }, null),
+  document.querySelector('.react__example')
+);
+
+(function( win ) {
+    const form = document.querySelector('form');
+
+    const showError = () => {
+      document.querySelector( 'property-value-status' ).removeAttribute('hidden')
+    }
+    const onSubmit = ( domEvent ) => {
+      domEvent.preventDefault();
+    }
+
+    const onInput = ( domEvent ) => {
+      const rootEl = document.querySelector( ':root' );
+      const prop   = '--button-bg-color';
+
+      if( CSS.supports(`background: ${ domEvent.target.value }`) ) {
+        rootEl.style.setProperty( prop, domEvent.target.value );
+      }
+
+      if( !domEvent.target.value ) {
+        rootEl.style.removeProperty( prop );
+      } 
+    };
+
+    form.addEventListener( 'input', onInput );
+    form.addEventListener( 'submit', onSubmit );
+    form.addEventListener( 'reset', onInput );
+
+    window.addEventListener( 'load', () => { form.reset(); });
+    window.addEventListener( 'load', () => {
+      document.querySelector( '#property-value' ).focus();
+    });
+
+})( window );
+
+</script>
+</body>
+</html>

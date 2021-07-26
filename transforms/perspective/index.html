@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  How the perspective property works
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+    <style>
+    main {
+      height: 80rem;
+    }
+
+    [type=range] {
+      flex: 1;
+    }
+
+    [id=output] {
+      background: #eee;
+      display: inline-block;
+      font-weight: bold;
+      font-size: 3.6rem;
+      padding: 0 1rem;
+    }
+
+    /*
+    See formulas described here: 
+    http://desandro.github.io/3dtransforms/docs/carousel.html
+    */
+    .carousel {
+      font-size: 15rem;
+      font-family: inherit;
+      perspective-origin: 50% -30rem;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .wrapper {
+      position: relative;
+      width: 50rem;
+      margin: auto;
+      transform-style: preserve-3d;
+    }
+
+    .perp {
+      color: #212121;
+      position: absolute;
+      pointer-events: none;
+      width: 20rem;
+      height: 20rem;
+      text-align: center;
+      top: -5rem;
+      left: 0;
+    }
+
+    .perp:first-child {
+      transform: rotateY(60deg) translateZ(190.98593px);
+      background: rgba(63, 81, 181, 0.8);
+    }
+
+    .perp:nth-child(2) {
+      transform: rotateY(360deg) translateZ(190.98593px);
+      background: rgba(0, 188, 212, 0.8);
+    }
+
+    .perp:nth-child(3) {
+      transform: rotateY(300deg) translateZ(190.98593px);
+      background: rgba(255, 235, 59, 0.8);
+    }
+ 
+    .perp:nth-child(4) {
+      transform: rotateY(240deg) translateZ(190.98593px);
+      background: rgba(244, 67, 54, 0.8);
+    }
+ 
+    .perp:nth-child(5) {
+      transform: rotateY(180deg) translateZ(190.98593px);
+      background: rgba(233, 30, 99, 0.8);
+    }
+ 
+    .perp:nth-child(6) {
+        transform: rotateY(120deg) translateZ(190.98593px);
+      background: rgba(139, 195, 74, 0.8);
+    }
+
+    .flex {
+      align-items: center;
+      gap: 1rem;
+    }
+
+    </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Transforms</a>
+      </li>
+      <li><a href="./" aria-current="page">How the <code>perspective</code> property works</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>How the <code>perspective</code> property works</h2>
+
+
+
+  <p>Adjust the slider to adjust the perspective of the stage.</p>
+<form>
+    <label for="psp"><code>perspective</code> value</label>
+    <div class="flex">
+        <b>0</b>
+        <input type="range" id="psp" name="psp" min="0" max="2000" value="100" aria-describedby="output">
+        <b>2000px</b>
+        <button type="reset">Reset</button>
+    </div>
+    <p id="output"><code>perspective:</code> <code>0px</code></p>
+</form>
+
+<div id="perspective" class="carousel">
+    <div class="wrapper">
+        <figure class="perp">a</figure>
+        <figure class="perp">b</figure>
+        <figure class="perp">c</figure>
+        <figure class="perp">d</figure>
+        <figure class="perp">e</figure>
+        <figure class="perp">f</figure>
+    </div>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+    <script>
+    (( win ) => {
+        const form = document.querySelector( 'form' );
+        const perspective = document.getElementById( 'perspective' );
+
+        const updateProperty = ( domEvent ) => {
+            let pixels = form.querySelector('[type=range]');
+            let value;
+
+            if( domEvent.type === 'input' ) {
+                value = `${ pixels.value }px`;
+            } else {
+                value = `${ pixels.getAttribute('value') }px`
+            }
+
+            perspective.style.perspective = value;
+
+            updateOutput( value );
+        }
+
+        const updateOutput = ( value ) => {
+            const persp = document.querySelector('[id=output] code:last-child');
+            persp.innerHTML = value;
+        }
+
+        form.addEventListener( 'input', updateProperty );
+        form.addEventListener( 'reset', updateProperty );
+
+        win.addEventListener( 'load', updateProperty );
+
+    })( window )
+
+    </script>
+</body>
+</html>

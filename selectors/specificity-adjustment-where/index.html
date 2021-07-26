@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  :where(), the Specificity-Adjustment Selector
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+
+
+  <style>
+  code {
+    color: #555;
+    background: #eee;
+    padding: .1rem;
+  }
+
+  [id=demo] nav {
+    background-color: hsl(54, 100%, 80%);
+    border-bottom: 3px solid hsl(54, 100%, 40%) !important;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: auto -2rem;
+  }
+
+  [id=demo] nav div {
+    display: flex;
+    gap: 1rem;
+  }
+
+  /**
+   * Has a specificity of 0,2,1. This rule SHOULD
+   * take precendence but :where adjusts its specificity so
+   * that it does not.
+   * 
+   * Remove :where() from the selector to compare the before
+   * and after.
+   */
+  [id=demo] a:where( :not( :hover ) ) { 
+    text-decoration: underline 2px;
+  }
+
+  /**
+   * Rule has a specificity of 0,1,2. It should not take 
+   * precedence. However, the use of `:where()` means that 
+   * it does.
+   */
+  [id=demo] nav a {
+      text-decoration: red wavy underline 1.5px;
+  }
+  </style>
+
+</head>
+
+<body class="selectors">
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">Selectors</a>
+      </li>
+      <li><a href="./" aria-current="page"><code>:where()</code>, the Specificity-Adjustment Selector</a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2><code>:where()</code>, the Specificity-Adjustment Selector</h2>
+
+
+
+  <div id="demo">
+<nav>
+      <b>CSS Master</b>
+      <div>
+          <a href="/">Home</a>
+          <a href="/selectors">Selector demos</a>
+          <a href="https://tiffanybbrown.com/">Author blog</a>
+          <a href="https://sitepoint.com/">Publisher site</a>
+      </nav>
+</div>
+</nav>
+<p>In this demo, the selector used to style the navigation links above (<code>[id=demo] nav a</code>) has a lower specificity than the selector used to match all links (<code>[id=demo] a:not( :hover )</code>). Here's an example of a <a href="#demo">jump link</a> that matches the latter selector.</p>
+<p><em>However</em>, adding <code>:where()</code> to our selector changes things: <code>[id=demo] a:where( :not( :hover ) )</code>. Its specificity score remains the same, but <code>:where()</code> makes it so that the declarations attached to the less-specific selector get applied. It's like saying <q>apply this style to <code>&lt;a&gt;</code> elements only where they don’t have a hover state</q>.</p>
+</div>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+
+</body>
+</html>

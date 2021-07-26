@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=yes">
+  <meta name="description" content="Downloadable code examples for CSS Master, 3rd edition.">
+
+  <title>  Adjusting shapes with shape-image-threshold
+ CSS Master (third edition)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Inconsolata&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,700;1,700&family=IBM+Plex+Mono&display=swap">
+  <link rel="stylesheet" href="/theme/css/global.css">
+
+  <link rel="stylesheet" href="../../theme/css/grid-base.css" id="Grid_CSS">
+
+
+  <style>
+    main {
+        background-color: blanchedalmond;
+        margin: 0;
+        padding: 0 2rem;
+        height: 70rem;
+    }
+
+    main h2 {
+      margin: 0;
+      padding: 2rem 0 0;
+    }
+
+    main h3 {
+      font-size: 4rem;
+      font-style: italic;
+      margin-bottom: 0;
+    }
+
+    main {
+      --gradient: linear-gradient( -45deg, hsl( 240, 86%, 25% ) 0%, hsla( 213, 100%, 50%, 0.8 ) 22%, hsla( 183, 100%, 50%, 0 ) 53% );
+    }
+
+    main p {
+      /**
+       * This property stretches lines of text and spaces so that it
+       * wraps more tightly to the shape.
+       */
+      text-align: justify;
+      font-size: 1.8rem;
+    }
+
+    main::before {
+        content: ' ';
+        display: block;
+        float: right;
+        height: 100%;
+        width: 50%;
+        background-size: cover;
+        margin-inline-end: -2rem;
+        background-image: var( --gradient );
+        shape-outside:    var( --gradient );
+
+        /**
+         * We can't set add declarations directly to a 
+         * pseudo-element using DOM Scripting, but we can make it
+         * inherit declarations from its parent.
+         */
+        shape-image-threshold: inherit;
+    }
+
+    form {
+      display: flex;
+      align-items: center;
+      gap:  2;
+      justify-content: space-between;
+    }
+
+    form p {
+      margin: 0;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    [type=number] {
+      font: inherit;
+      display: block;
+    }
+
+    .shape-shown::before {
+       background-image: none;
+    }
+  </style>
+
+</head>
+
+<body >
+  <header id="top">
+    <div>
+      <h1><i>CSS Master</i> Code Examples</h1>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li>
+          <a href="../">CSS Layout</a>
+      </li>
+      <li><a href="./" aria-current="page">Adjusting shapes with <code>shape-image-threshold</code></a></li>
+    </ol>
+  </nav>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <main>
+  <h2>Adjusting shapes with <code>shape-image-threshold</code></h2>
+
+
+
+  <form>
+  <p>
+    <input type="checkbox" id="showShape" checked>
+    <label for="showShape">Toggle gradient</label>
+  </p>
+
+  <p>
+    <label for="shapeImageThreshold"><code>shape-image-threshold</code></label>
+    <input type="number" id="shapeImageThreshold" min="0.0" max="1.0" step=".1" value="0.4">
+  </p>
+
+  <button type="reset">Reset</button>
+</form>
+
+<h3>Beautiful Surf, Part 2</h3>
+<p>CSS Gradients are also images. That means we can use them with <code>shape-outside</code>.</p>
+<p>In this demo, the background image of <code>main::before</code> is a linear gradient, at a -45 degree angle. The image for <code>shape-outside</code> also uses a linear gradient that's positioned at the same angle.</p>
+<p>Compare where the text in this demo wraps, compared to that in the <a href="../../layouts/shape-images-gradients/index.html">previous demo</a>. Notice that the text extends further into the gradient shape. That's because the value of <code>shape-image-threshold</code> is <code>0.4</code>. (Unless you've changed it using the form controls above.)</p>
+<p>The <code>shape-image-threshold</code> property represents an alpha value between 0 and 1, inclusive. Portions of the image with an alpha level exceeding the threshold value are included in the shape.</p>
+<p>Remember that the gradients of <code>shape-image</code> and the <code>background-image</code> function independently of each other. They do use the same <code>linear-gradient</code> value, however. Showing or hiding the gradient doesn't change how and where the text wraps.</p>
+
+
+  </main>
+
+  <!-- Global site footer -->
+  <footer class="global">
+    <p>Examples from <i>CSS Master</i> (3rd edition) written by Tiffany B. Brown and published by SitePoint, Ltd. &copy; 2015 &ndash; 2021.</p>
+  </footer>
+
+  <script src="/theme/js/escapereset.js"></script>
+
+  <script>
+    ( ( win, doc ) => {
+      const form = doc.forms[0];
+
+      const toggleShape = () => {
+        const shaped = doc.querySelector( 'main' );
+        const className = 'shape-shown';
+
+        if( form.elements.showShape.checked ) {
+          shaped.classList.remove( className );
+        } else {
+          shaped.classList.add( className );
+        }
+      }
+
+      const setThreshold = ( value = 0.5 ) => {
+        const shaped = doc.querySelector( 'main' );
+        shaped.style.shapeImageThreshold = +value;
+      }
+
+      const onChange = ( domEvent ) => {
+        if( domEvent.target.id == 'showShape' ) {
+          toggleShape();
+        }
+
+        if( domEvent.target.id == 'shapeImageThreshold' ) {
+          setThreshold( domEvent.target.value );
+        }
+      }
+
+      const onReset = ( domEvent ) => {
+        setThreshold( 0.4 );
+      }
+
+      const onLoad = () => {
+        form.reset();
+      }
+
+      form.addEventListener( 'change', onChange );
+      form.addEventListener( 'reset', onReset );
+
+      win.addEventListener( 'load', onLoad );
+    })( window, document )
+
+  </script>
+</body>
+</html>
